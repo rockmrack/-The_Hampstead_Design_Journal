@@ -1,17 +1,20 @@
-import { createGlobalStyle } from 'styled-components';
+// Font configuration for The Hampstead Design Journal
+// Using Next.js font optimization with Playfair Display
+// Configuration is handled in app/layout.tsx
 
-const Fonts = createGlobalStyle`
-  @font-face {
-    font-family: 'CustomFont';
-    src: url('/fonts/CustomFont.woff2') format('woff2'),
-         url('/fonts/CustomFont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  body {
-    font-family: 'CustomFont', sans-serif;
-  }
-`;
-
-export default Fonts;
+export const fontConfig = {
+  heading: 'var(--font-playfair)',
+  body: 'system-ui, -apple-system, sans-serif',
+  sizes: {
+    h1: 'clamp(2.5rem, 5vw, 4rem)',
+    h2: 'clamp(2rem, 4vw, 3rem)',
+    h3: 'clamp(1.5rem, 3vw, 2rem)',
+    body: '1.125rem',
+    small: '0.875rem',
+  },
+  lineHeights: {
+    tight: '1.2',
+    normal: '1.75',
+    loose: '2',
+  },
+};
