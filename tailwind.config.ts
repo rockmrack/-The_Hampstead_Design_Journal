@@ -19,14 +19,14 @@ const config: Config = {
       },
       fontFamily: {
         serif: ['var(--font-playfair)', 'Times New Roman', 'Georgia', 'serif'],
-        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       typography: {
         DEFAULT: {
           css: {
             maxWidth: '75ch',
             color: '#1a1a1a',
-            lineHeight: '1.75',
+            lineHeight: '1.85',
             fontSize: '1.125rem',
             h1: {
               fontFamily: 'var(--font-playfair)',
@@ -36,12 +36,59 @@ const config: Config = {
             h2: {
               fontFamily: 'var(--font-playfair)',
               fontWeight: '400',
+              marginTop: '2.5em',
             },
             h3: {
               fontFamily: 'var(--font-playfair)',
               fontWeight: '400',
+              marginTop: '2em',
+            },
+            p: {
+              marginTop: '1.5em',
+              marginBottom: '1.5em',
+            },
+            a: {
+              color: '#1a1a1a',
+              textDecoration: 'underline',
+              textUnderlineOffset: '4px',
+              '&:hover': {
+                textDecorationThickness: '2px',
+              },
+            },
+            blockquote: {
+              fontStyle: 'italic',
+              borderLeftColor: '#1a1a1a',
+              borderLeftWidth: '4px',
+            },
+            strong: {
+              color: '#1a1a1a',
+              fontWeight: '600',
             },
           },
+        },
+        hampstead: {
+          css: {
+            '--tw-prose-body': '#333333',
+            '--tw-prose-headings': '#1a1a1a',
+            '--tw-prose-links': '#1a1a1a',
+            '--tw-prose-bold': '#1a1a1a',
+            '--tw-prose-quotes': '#333333',
+            '--tw-prose-quote-borders': '#1a1a1a',
+          },
+        },
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-out',
+        'slide-up': 'slideUp 0.5s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },
