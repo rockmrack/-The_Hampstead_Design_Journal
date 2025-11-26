@@ -1,0 +1,17 @@
+import { createGlobalStyle } from 'styled-components';
+
+const Fonts = createGlobalStyle`
+  @font-face {
+    font-family: 'CustomFont';
+    src: url('/fonts/CustomFont.woff2') format('woff2'),
+         url('/fonts/CustomFont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    font-family: 'CustomFont', sans-serif;
+  }
+`;
+
+export default Fonts;
