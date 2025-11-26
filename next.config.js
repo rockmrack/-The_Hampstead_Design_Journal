@@ -1,18 +1,11 @@
-module.exports = {
+const { withContentlayer } = require('next-contentlayer');
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['example.com'], // Replace with your image domains
-  },
-  async redirects() {
-    return [
-      {
-        source: '/old-route',
-        destination: '/new-route',
-        permanent: true,
-      },
-    ];
-  },
-  env: {
-    CUSTOM_API_URL: process.env.CUSTOM_API_URL, // Example of using environment variables
+    domains: ['images.unsplash.com'], // Added Unsplash for potential demo images
   },
 };
+
+module.exports = withContentlayer(nextConfig);

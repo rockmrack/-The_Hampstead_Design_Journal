@@ -11,12 +11,16 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     @apply box-border;
   }
 
   body {
-    @apply font-sans text-hampstead-black bg-hampstead-white leading-relaxed;
+    @apply font-sans text-hampstead-black bg-hampstead-white leading-relaxed antialiased;
     font-size: 1.0625rem;
   }
 
@@ -46,7 +50,7 @@
   }
 
   a {
-    @apply text-hampstead-black underline decoration-1 underline-offset-4 hover:decoration-2 transition-all;
+    @apply text-hampstead-black transition-all;
   }
 
   strong {
