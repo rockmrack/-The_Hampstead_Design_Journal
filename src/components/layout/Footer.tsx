@@ -1,106 +1,172 @@
 import React from 'react';
 import Link from 'next/link';
-import { Instagram, Twitter, Mail, ArrowRight } from 'lucide-react';
+import { Instagram, Mail, ArrowRight, MapPin, Phone } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-hampstead-black text-hampstead-white pt-20 pb-10">
-      <div className="editorial-container">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-          {/* Brand Column */}
-          <div className="md:col-span-4">
-            <h2 className="font-serif text-3xl mb-6 text-hampstead-cream">
+    <footer className="bg-hampstead-black text-hampstead-white">
+      {/* Main Footer Content */}
+      <div className="editorial-container pt-16 md:pt-20 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-12">
+          
+          {/* Column 1: The Journal Brand */}
+          <div>
+            <h2 className="font-serif text-2xl md:text-3xl mb-4 text-hampstead-cream">
               The Hampstead Design Journal
             </h2>
-            <p className="text-hampstead-grey/80 leading-relaxed mb-8 max-w-sm">
-              The authoritative voice on architecture, heritage restoration, and interior design in North West London.
+            <p className="text-hampstead-grey/80 leading-relaxed mb-6">
+              Celebrating the architecture, history, and lifestyle of North West London.
             </p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-hampstead-grey hover:text-hampstead-white transition-colors">
+            <nav className="space-y-3">
+              <Link 
+                href="/archive" 
+                className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
+              >
+                The Archive
+              </Link>
+              <Link 
+                href="/categories/interiors-materials" 
+                className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
+              >
+                Interiors
+              </Link>
+              <Link 
+                href="/archive#map" 
+                className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
+              >
+                Planning Map
+              </Link>
+            </nav>
+            
+            {/* Social Links */}
+            <div className="flex space-x-5 mt-8">
+              <a 
+                href="https://instagram.com/hampsteadrenovations" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-hampstead-grey hover:text-hampstead-white transition-colors"
+                aria-label="Follow us on Instagram"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-hampstead-grey hover:text-hampstead-white transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="mailto:editor@hampsteadjournal.com" className="text-hampstead-grey hover:text-hampstead-white transition-colors">
+              <a 
+                href="mailto:info@hampsteadrenovations.com" 
+                className="text-hampstead-grey hover:text-hampstead-white transition-colors"
+                aria-label="Email us"
+              >
                 <Mail className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          {/* Navigation Columns */}
-          <div className="md:col-span-2">
-            <h3 className="font-serif text-lg mb-6 text-hampstead-cream">Sections</h3>
-            <ul className="space-y-4">
-              <li>
-                <Link href="/categories/heritage-architecture" className="text-hampstead-grey/80 hover:text-hampstead-white transition-colors">
-                  Heritage
-                </Link>
-              </li>
-              <li>
-                <Link href="/categories/planning-regulations" className="text-hampstead-grey/80 hover:text-hampstead-white transition-colors">
-                  Planning
-                </Link>
-              </li>
-              <li>
-                <Link href="/categories/interiors-materials" className="text-hampstead-grey/80 hover:text-hampstead-white transition-colors">
-                  Interiors
-                </Link>
-              </li>
-              <li>
-                <Link href="/categories/market-watch" className="text-hampstead-grey/80 hover:text-hampstead-white transition-colors">
-                  Market Watch
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="md:col-span-2">
-            <h3 className="font-serif text-lg mb-6 text-hampstead-cream">Journal</h3>
-            <ul className="space-y-4">
-              <li>
-                <Link href="/about" className="text-hampstead-grey/80 hover:text-hampstead-white transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-hampstead-grey/80 hover:text-hampstead-white transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/editorial-policy" className="text-hampstead-grey/80 hover:text-hampstead-white transition-colors">
-                  Editorial Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter Column */}
-          <div className="md:col-span-4">
-            <h3 className="font-serif text-lg mb-6 text-hampstead-cream">Stay Informed</h3>
-            <p className="text-hampstead-grey/80 mb-6 text-sm">
-              Subscribe to our weekly dispatch of design insights and market analysis.
+          {/* Column 2: Technical Expertise (The Soft Sell) */}
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-hampstead-grey/50 mb-3 block">
+              Editor&apos;s Desk
+            </span>
+            <h3 className="font-serif text-xl mb-4 text-hampstead-cream">
+              Technical Expertise
+            </h3>
+            <p className="text-hampstead-grey/80 leading-relaxed mb-6">
+              All technical advice, planning guidance, and material specifications in this 
+              journal are provided by our parent company.
             </p>
-            <form className="flex border-b border-hampstead-grey/30 pb-2">
-              <input 
-                type="email" 
-                placeholder="Email address" 
-                className="bg-transparent border-none focus:ring-0 text-hampstead-white placeholder-hampstead-grey/50 w-full px-0"
-              />
-              <button type="submit" className="text-hampstead-white hover:text-hampstead-cream">
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </form>
+            <a 
+              href="https://hampsteadrenovations.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-hampstead-white hover:text-hampstead-cream transition-colors font-medium"
+            >
+              Visit Hampstead Renovations
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+
+          {/* Column 3: The Physical Anchor (The Hard Sell) */}
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-hampstead-grey/50 mb-3 block">
+              Visit Us
+            </span>
+            <h3 className="font-serif text-xl mb-4 text-hampstead-cream">
+              Visit the Material Library
+            </h3>
+            <p className="text-hampstead-grey/80 leading-relaxed mb-6">
+              See the materials featured in these articles at our HQ.
+            </p>
+            
+            {/* NAP - Name, Address, Phone (Critical for Local SEO) */}
+            <address className="not-italic text-hampstead-grey/80 space-y-3">
+              <p className="font-medium text-hampstead-white">
+                Hampstead Renovations
+              </p>
+              <p className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 mt-1 flex-shrink-0 text-hampstead-grey/60" />
+                <span>
+                  Unit 3, Palace Court<br />
+                  250 Finchley Road<br />
+                  London NW3 6DN
+                </span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Phone className="w-4 h-4 flex-shrink-0 text-hampstead-grey/60" />
+                <a 
+                  href="tel:+442074319823" 
+                  className="hover:text-hampstead-white transition-colors"
+                >
+                  020 7431 9823
+                </a>
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail className="w-4 h-4 flex-shrink-0 text-hampstead-grey/60" />
+                <a 
+                  href="mailto:info@hampsteadrenovations.com" 
+                  className="hover:text-hampstead-white transition-colors"
+                >
+                  info@hampsteadrenovations.com
+                </a>
+              </p>
+            </address>
+            
+            <a 
+              href="https://maps.google.com/?q=Unit+3+Palace+Court+250+Finchley+Road+London+NW3+6DN"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-4 text-sm text-hampstead-grey/60 hover:text-hampstead-white transition-colors underline underline-offset-4"
+            >
+              Get Directions
+            </a>
           </div>
         </div>
+      </div>
 
-        <div className="border-t border-hampstead-grey/20 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-hampstead-grey/60">
-          <p>&copy; {new Date().getFullYear()} The Hampstead Design Journal. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="hover:text-hampstead-white transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-hampstead-white transition-colors">Terms</Link>
-            <Link href="/sitemap" className="hover:text-hampstead-white transition-colors">Sitemap</Link>
+      {/* Bottom Bar */}
+      <div className="border-t border-hampstead-grey/20">
+        <div className="editorial-container py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-hampstead-grey/60">
+            <p>
+              &copy; {new Date().getFullYear()} The Hampstead Design Journal. 
+              <span className="hidden sm:inline"> Curated by </span>
+              <a 
+                href="https://hampsteadrenovations.com" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-hampstead-white transition-colors"
+              >
+                <span className="sm:hidden"> • </span>
+                Hampstead Renovations
+              </a>
+            </p>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+              <Link href="/privacy" className="hover:text-hampstead-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="hover:text-hampstead-white transition-colors">
+                Terms
+              </Link>
+              <Link href="/sitemap.xml" className="hover:text-hampstead-white transition-colors">
+                Sitemap
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@ import RelatedArticles from '@/components/articles/RelatedArticles';
 import ReadingProgress from '@/components/articles/ReadingProgress';
 import ArticleJsonLd from '@/components/seo/ArticleJsonLd';
 import ShareButtons from '@/components/articles/ShareButtons';
+import AuthorBio from '@/components/articles/AuthorBio';
 
 interface ArticlePageProps {
   params: { slug: string };
@@ -153,22 +154,8 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 <ArticleBody code={article.body.code} />
               </div>
 
-              {/* Author Bio */}
-              <div className="mt-16 p-8 bg-hampstead-cream border border-hampstead-grey">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-full bg-hampstead-charcoal/10 flex items-center justify-center flex-shrink-0">
-                    <User className="w-8 h-8 text-hampstead-charcoal/40" />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-xl mb-2">About the Author</h3>
-                    <p className="text-hampstead-charcoal/80 leading-relaxed">
-                      <strong>{article.author}</strong> is curated by the editorial team at 
-                      Hampstead Renovations, specialists in heritage restoration and high-end 
-                      residential projects across North West London since 2009.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              {/* Author Bio - Trust Signal */}
+              <AuthorBio />
 
               {/* Mobile Share Buttons */}
               <div className="lg:hidden mt-8 pt-8 border-t border-hampstead-grey">
