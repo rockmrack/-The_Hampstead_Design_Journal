@@ -25,9 +25,10 @@ const Navigation: React.FC = () => {
   }, [pathname]);
 
   const navLinks = [
-    { href: '/categories/heritage-architecture', label: 'Heritage' },
-    { href: '/categories/planning-regulations', label: 'Planning' },
+    { href: '/articles', label: 'Latest' },
     { href: '/categories/interiors-materials', label: 'Interiors' },
+    { href: '/categories/planning-regulations', label: 'Planning' },
+    { href: '/archive', label: 'The Archive', featured: true },
     { href: '/categories/market-watch', label: 'Market Watch' },
   ];
 
@@ -65,10 +66,11 @@ const Navigation: React.FC = () => {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'text-sm uppercase tracking-widest hover:text-hampstead-charcoal transition-colors border-b-2 border-transparent pb-1',
-                  pathname === link.href
+                  'text-sm uppercase tracking-widest hover:text-hampstead-charcoal transition-colors border-b-2 pb-1',
+                  pathname === link.href || pathname.startsWith(link.href + '/')
                     ? 'border-hampstead-black'
-                    : 'hover:border-hampstead-grey'
+                    : 'border-transparent hover:border-hampstead-grey',
+                  'featured' in link && link.featured && 'font-semibold'
                 )}
               >
                 {link.label}
