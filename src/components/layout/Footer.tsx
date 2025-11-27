@@ -25,16 +25,34 @@ const Footer: React.FC = () => {
                 The Archive
               </Link>
               <Link 
-                href="/categories/interiors-materials" 
-                className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
-              >
-                Interiors
-              </Link>
-              <Link 
-                href="/archive#map" 
+                href="/planning-map" 
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Planning Map
+              </Link>
+              <Link 
+                href="/calculators" 
+                className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
+              >
+                Cost Calculators
+              </Link>
+              <Link 
+                href="/guides" 
+                className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
+              >
+                Guides
+              </Link>
+              <Link 
+                href="/market" 
+                className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
+              >
+                Market Dashboard
+              </Link>
+              <Link 
+                href="/careers" 
+                className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
+              >
+                Careers
               </Link>
             </nav>
             

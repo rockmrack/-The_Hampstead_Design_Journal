@@ -29,7 +29,15 @@ const Navigation: React.FC = () => {
     { href: '/categories/interiors-materials', label: 'Interiors' },
     { href: '/categories/planning-regulations', label: 'Planning' },
     { href: '/archive', label: 'The Archive', featured: true },
-    { href: '/categories/market-watch', label: 'Market Watch' },
+    { href: '/market', label: 'Market' },
+  ];
+
+  const toolLinks = [
+    { href: '/calculators', label: 'Cost Calculators' },
+    { href: '/valuation', label: 'Property Valuation' },
+    { href: '/planning-map', label: 'Planning Map' },
+    { href: '/guides', label: 'Guides' },
+    { href: '/suppliers', label: 'Suppliers Directory' },
   ];
 
   return (
@@ -136,11 +144,33 @@ const Navigation: React.FC = () => {
                     </Link>
                   ))}
                   <div className="h-px bg-hampstead-grey my-4" />
+                  <Link href="/calculators" className="text-lg text-hampstead-charcoal">
+                    Calculators
+                  </Link>
+                  <Link href="/valuation" className="text-lg text-hampstead-charcoal">
+                    Property Valuation
+                  </Link>
+                  <Link href="/planning-map" className="text-lg text-hampstead-charcoal">
+                    Planning Map
+                  </Link>
+                  <Link href="/guides" className="text-lg text-hampstead-charcoal">
+                    Guides
+                  </Link>
+                  <Link href="/suppliers" className="text-lg text-hampstead-charcoal">
+                    Suppliers Directory
+                  </Link>
+                  <Link href="/market" className="text-lg text-hampstead-charcoal">
+                    Market Dashboard
+                  </Link>
+                  <div className="h-px bg-hampstead-grey my-4" />
                   <Link href="/about" className="text-lg text-hampstead-charcoal">
                     About Us
                   </Link>
                   <Link href="/contact" className="text-lg text-hampstead-charcoal">
                     Contact
+                  </Link>
+                  <Link href="/careers" className="text-lg text-hampstead-charcoal">
+                    Careers
                   </Link>
                 </nav>
 
