@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from 'next/font/google';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
+import SkipLink from '../components/ui/SkipLink';
 import './globals.css';
 import 'leaflet/dist/leaflet.css';
 
@@ -70,8 +71,11 @@ export default function RootLayout({
         <LocalBusinessSchema />
       </head>
       <body className="antialiased min-h-screen flex flex-col">
+        <SkipLink />
         <Header />
-        <main className="flex-1 pt-20 md:pt-24">{children}</main>
+        <main id="main-content" className="flex-1 pt-20 md:pt-24" role="main" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

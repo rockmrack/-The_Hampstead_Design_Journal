@@ -180,7 +180,7 @@ const glossaryTerms: GlossaryTerm[] = [
   { term: 'Zinc', definition: 'A metal used for roofing, cladding, and architectural details. Develops a characteristic grey patina over time.', category: 'Materials' }
 ];
 
-const categories = [...new Set(glossaryTerms.map(t => t.category))].sort();
+const categories = Array.from(new Set(glossaryTerms.map(t => t.category))).sort();
 
 export default function GlossaryPage() {
   const [searchQuery, setSearchQuery] = useState('');

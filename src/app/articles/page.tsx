@@ -7,6 +7,9 @@ import { ArrowRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Articles | The Hampstead Design Journal',
   description: 'Expert insights on heritage restoration, planning policy, interior design, and property markets across Hampstead, Belsize Park, and NW3.',
+  alternates: {
+    canonical: '/articles',
+  },
 };
 
 function getCategoryLabel(category: string): string {

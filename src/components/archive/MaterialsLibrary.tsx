@@ -24,6 +24,9 @@ interface Material {
     composition?: string;
     finish?: string;
     color?: string;
+    patterns?: string;
+    thickness?: string;
+    cames?: string;
   };
   sources: {
     name: string;

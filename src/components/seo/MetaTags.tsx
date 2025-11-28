@@ -1,31 +1,53 @@
-import React from 'react';
-import Head from 'next/head';
+import type { Metadata } from 'next';
 
 interface MetaTagsProps {
   title: string;
   description: string;
   keywords?: string;
   author?: string;
+  image?: string;
 }
 
-const MetaTags: React.FC<MetaTagsProps> = ({ title, description, keywords, author }) => {
-  return (
-    <Head>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
-      {author && <meta name="author" content={author} />}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={window.location.href} />
-      <meta property="og:image" content="/path/to/image.jpg" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="/path/to/image.jpg" />
-    </Head>
-  );
+/**
+ * Generate metadata object for Next.js 14+ App Router
+ * Use this function in page files to set metadata
+ */
+export function generateMetaTags({
+  title,
+  description,
+  keywords,
+  author,
+  image = '/images/og-default.jpg'
+}: MetaTagsProps): Metadata {
+  return {
+    title,
+    description,
+    keywords: keywords?.split(',').map(k => k.trim()),
+    authors: author ? [{ name: author }] : undefined,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      images: [image],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [image],
+    },
+  };
+}
+
+/**
+ * MetaTags component for use in page metadata export
+ * Note: In Next.js 14+, use generateMetadata function or export metadata object instead
+ */
+const MetaTags = ({ title, description, keywords, author, image }: MetaTagsProps) => {
+  // This component is kept for backwards compatibility
+  // In Next.js App Router, metadata should be exported from page files
+  return null;
 };
 
+export { MetaTags };
 export default MetaTags;

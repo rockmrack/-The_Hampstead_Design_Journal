@@ -60,6 +60,20 @@
   em {
     @apply italic;
   }
+
+  /* Accessibility: Focus states */
+  :focus {
+    @apply outline-none;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-hampstead-charcoal ring-2 ring-hampstead-charcoal ring-offset-2;
+  }
+
+  /* Skip link styles */
+  .sr-only:focus {
+    @apply not-sr-only;
+  }
 }
 
 @layer components {
@@ -78,6 +92,17 @@
   .section-spacing {
     @apply py-12 md:py-16 lg:py-20;
   }
+
+  /* Accessible button focus */
+  button:focus-visible,
+  [role="button"]:focus-visible {
+    @apply ring-2 ring-hampstead-charcoal ring-offset-2 outline-none;
+  }
+
+  /* Link focus for navigation */
+  nav a:focus-visible {
+    @apply underline underline-offset-4 decoration-2;
+  }
 }
 
 /* High-end editorial typography refinements */
@@ -93,5 +118,25 @@
 
   .editorial-divider {
     @apply w-24 h-px bg-hampstead-charcoal mx-auto my-12;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --hampstead-black: #000000;
+      --hampstead-charcoal: #1a1a1a;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

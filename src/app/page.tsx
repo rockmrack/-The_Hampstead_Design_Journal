@@ -10,6 +10,9 @@ import LatestArticles from '../components/home/LatestArticles';
 export const metadata: Metadata = {
   title: 'The Hampstead Design Journal | Architecture, Interiors, and Living in NW3',
   description: 'The authoritative voice on architecture, heritage restoration, and interior design in North West London. Expert insights on Hampstead\'s finest homes.',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function HomePage() {

@@ -1,23 +1,29 @@
 import React from 'react';
-import { MDXProvider } from '@mdx-js/react';
 import { Typography } from '../ui/Typography';
 
+interface ComponentProps {
+  children?: React.ReactNode;
+  [key: string]: unknown;
+}
+
 const components = {
-  h1: (props) => <Typography variant="h1" {...props} />,
-  h2: (props) => <Typography variant="h2" {...props} />,
-  h3: (props) => <Typography variant="h3" {...props} />,
-  p: (props) => <Typography variant="body" {...props} />,
-  // Add more custom components as needed
+  h1: (props: ComponentProps) => <Typography variant="h1" {...props} />,
+  h2: (props: ComponentProps) => <Typography variant="h2" {...props} />,
+  h3: (props: ComponentProps) => <Typography variant="h3" {...props} />,
+  p: (props: ComponentProps) => <Typography variant="body" {...props} />,
 };
 
-const ArticleContent = ({ content }) => {
+interface ArticleContentProps {
+  content: React.ReactNode;
+}
+
+const ArticleContent: React.FC<ArticleContentProps> = ({ content }) => {
   return (
-    <MDXProvider components={components}>
-      <div className="article-content">
-        {content}
-      </div>
-    </MDXProvider>
+    <div className="article-content prose prose-lg prose-hampstead max-w-none">
+      {content}
+    </div>
   );
 };
 
+export { components };
 export default ArticleContent;

@@ -7,9 +7,9 @@ interface ArticleCardProps {
   title: string;
   excerpt: string;
   thumbnail?: string;
-  slug: string;
-  date: string;
-  category: string;
+  slug?: string;
+  date?: string;
+  category?: string;
   className?: string;
   variant?: 'vertical' | 'horizontal' | 'featured';
 }
@@ -18,9 +18,9 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   title, 
   excerpt, 
   thumbnail, 
-  slug, 
-  date, 
-  category,
+  slug = '#', 
+  date = new Date().toISOString(), 
+  category = 'Article',
   className,
   variant = 'vertical'
 }) => {

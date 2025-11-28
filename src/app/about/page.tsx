@@ -4,6 +4,9 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'About | The Hampstead Design Journal',
   description: 'The authoritative voice on architecture, heritage, and design in Hampstead. Curated by the experts at Hampstead Renovations.',
+  alternates: {
+    canonical: '/about',
+  },
 };
 
 export default function AboutPage() {

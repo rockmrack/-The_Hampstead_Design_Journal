@@ -41,6 +41,9 @@ export function generateMetadata({ params }: CategoryPageProps): Metadata {
   return {
     title: `${category.title} | The Hampstead Design Journal`,
     description: category.description,
+    alternates: {
+      canonical: `/categories/${params.category}`,
+    },
   };
 }
 

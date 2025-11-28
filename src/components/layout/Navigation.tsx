@@ -3,13 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Search, Instagram, Twitter } from 'lucide-react';
+import { Menu, X, Search, Instagram, Twitter, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const Navigation: React.FC = () => {
 
   useEffect(() => {
     setIsOpen(false);
+    setExpandedSection(null);
   }, [pathname]);
 
   const navLinks = [
@@ -32,13 +34,52 @@ const Navigation: React.FC = () => {
     { href: '/market', label: 'Market' },
   ];
 
-  const toolLinks = [
-    { href: '/calculators', label: 'Cost Calculators' },
-    { href: '/valuation', label: 'Property Valuation' },
-    { href: '/planning-map', label: 'Planning Map' },
-    { href: '/guides', label: 'Guides' },
-    { href: '/suppliers', label: 'Suppliers Directory' },
-  ];
+  // Organized mobile navigation sections
+  const mobileNavSections = {
+    explore: {
+      label: 'Explore',
+      links: [
+        { href: '/articles', label: 'Latest Articles' },
+        { href: '/categories/interiors-materials', label: 'Interiors & Materials' },
+        { href: '/categories/planning-regulations', label: 'Planning & Regulations' },
+        { href: '/archive', label: 'Heritage Archive' },
+      ],
+    },
+    tools: {
+      label: 'Tools & Resources',
+      links: [
+        { href: '/calculators', label: 'Cost Calculators' },
+        { href: '/valuation', label: 'Property Valuation' },
+        { href: '/planning-map', label: 'Planning Map' },
+        { href: '/guides', label: 'Guides' },
+        { href: '/compare', label: 'Compare Materials' },
+        { href: '/glossary', label: 'Architectural Glossary' },
+      ],
+    },
+    discover: {
+      label: 'Discover',
+      links: [
+        { href: '/market', label: 'Market Dashboard' },
+        { href: '/suppliers', label: 'Suppliers Directory' },
+        { href: '/events', label: 'Events Calendar' },
+        { href: '/projects', label: 'Our Projects' },
+      ],
+    },
+    company: {
+      label: 'Company',
+      links: [
+        { href: '/about', label: 'About Us' },
+        { href: '/testimonials', label: 'Testimonials' },
+        { href: '/faq', label: 'FAQ' },
+        { href: '/contact', label: 'Contact' },
+        { href: '/careers', label: 'Careers' },
+      ],
+    },
+  };
+
+  const toggleSection = (section: string) => {
+    setExpandedSection(expandedSection === section ? null : section);
+  };
 
   return (
     <>
@@ -56,6 +97,8 @@ const Navigation: React.FC = () => {
             onClick={() => setIsOpen(true)}
             className="lg:hidden p-2 -ml-2 text-hampstead-black hover:text-hampstead-charcoal transition-colors"
             aria-label="Open menu"
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
             <Menu className="w-6 h-6" />
           </button>
@@ -68,7 +111,7 @@ const Navigation: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8" aria-label="Main navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -88,12 +131,13 @@ const Navigation: React.FC = () => {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
-            <button
+            <Link
+              href="/search"
               className="p-2 text-hampstead-black hover:text-hampstead-charcoal transition-colors"
               aria-label="Search"
             >
               <Search className="w-5 h-5" />
-            </button>
+            </Link>
             <Link
               href="/subscribe"
               className="hidden md:inline-block px-5 py-2 bg-hampstead-black text-hampstead-white text-sm uppercase tracking-wide hover:bg-hampstead-charcoal transition-colors"
@@ -114,8 +158,13 @@ const Navigation: React.FC = () => {
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
               className="fixed inset-0 bg-black/20 z-50 lg:hidden backdrop-blur-sm"
+              aria-hidden="true"
             />
             <motion.div
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation menu"
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
@@ -123,82 +172,91 @@ const Navigation: React.FC = () => {
               className="fixed inset-y-0 left-0 w-[300px] bg-hampstead-cream z-50 lg:hidden border-r border-hampstead-grey shadow-2xl overflow-y-auto"
             >
               <div className="p-6 flex flex-col h-full">
-                <div className="flex justify-between items-center mb-12">
+                <div className="flex justify-between items-center mb-8">
                   <span className="font-serif text-xl">Menu</span>
                   <button
                     onClick={() => setIsOpen(false)}
                     className="p-2 -mr-2 text-hampstead-black hover:text-hampstead-charcoal"
+                    aria-label="Close menu"
                   >
                     <X className="w-6 h-6" />
                   </button>
                 </div>
 
-                <nav className="flex flex-col space-y-6 mb-12">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="font-serif text-2xl text-hampstead-black hover:text-hampstead-charcoal transition-colors"
-                    >
-                      {link.label}
-                    </Link>
+                <nav className="flex flex-col space-y-2 mb-8" aria-label="Mobile navigation">
+                  {Object.entries(mobileNavSections).map(([key, section]) => (
+                    <div key={key} className="border-b border-hampstead-grey/50 pb-2">
+                      <button
+                        onClick={() => toggleSection(key)}
+                        className="flex items-center justify-between w-full py-3 text-left"
+                        aria-expanded={expandedSection === key}
+                        aria-controls={`section-${key}`}
+                      >
+                        <span className="font-serif text-lg font-medium">{section.label}</span>
+                        <ChevronDown
+                          className={cn(
+                            'w-5 h-5 transition-transform duration-200',
+                            expandedSection === key && 'rotate-180'
+                          )}
+                        />
+                      </button>
+                      <AnimatePresence>
+                        {expandedSection === key && (
+                          <motion.div
+                            id={`section-${key}`}
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pl-4 pb-3 space-y-3">
+                              {section.links.map((link) => (
+                                <Link
+                                  key={link.href}
+                                  href={link.href}
+                                  className={cn(
+                                    'block text-hampstead-charcoal hover:text-hampstead-black transition-colors',
+                                    pathname === link.href && 'text-hampstead-black font-medium'
+                                  )}
+                                >
+                                  {link.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   ))}
-                  <div className="h-px bg-hampstead-grey my-4" />
-                  <Link href="/calculators" className="text-lg text-hampstead-charcoal">
-                    Calculators
-                  </Link>
-                  <Link href="/valuation" className="text-lg text-hampstead-charcoal">
-                    Property Valuation
-                  </Link>
-                  <Link href="/planning-map" className="text-lg text-hampstead-charcoal">
-                    Planning Map
-                  </Link>
-                  <Link href="/guides" className="text-lg text-hampstead-charcoal">
-                    Guides
-                  </Link>
-                  <Link href="/suppliers" className="text-lg text-hampstead-charcoal">
-                    Suppliers Directory
-                  </Link>
-                  <Link href="/market" className="text-lg text-hampstead-charcoal">
-                    Market Dashboard
-                  </Link>
-                  <Link href="/compare" className="text-lg text-hampstead-charcoal">
-                    Compare Materials
-                  </Link>
-                  <div className="h-px bg-hampstead-grey my-4" />
-                  <Link href="/projects" className="text-lg text-hampstead-charcoal">
-                    Our Projects
-                  </Link>
-                  <Link href="/testimonials" className="text-lg text-hampstead-charcoal">
-                    Testimonials
-                  </Link>
-                  <Link href="/faq" className="text-lg text-hampstead-charcoal">
-                    FAQ
-                  </Link>
-                  <Link href="/glossary" className="text-lg text-hampstead-charcoal">
-                    Glossary
-                  </Link>
-                  <Link href="/events" className="text-lg text-hampstead-charcoal">
-                    Events
-                  </Link>
-                  <div className="h-px bg-hampstead-grey my-4" />
-                  <Link href="/about" className="text-lg text-hampstead-charcoal">
-                    About Us
-                  </Link>
-                  <Link href="/contact" className="text-lg text-hampstead-charcoal">
-                    Contact
-                  </Link>
-                  <Link href="/careers" className="text-lg text-hampstead-charcoal">
-                    Careers
-                  </Link>
                 </nav>
 
+                {/* Subscribe CTA */}
+                <Link
+                  href="/subscribe"
+                  className="block w-full py-3 bg-hampstead-black text-hampstead-white text-center text-sm uppercase tracking-wide hover:bg-hampstead-charcoal transition-colors mb-8"
+                >
+                  Subscribe to Newsletter
+                </Link>
+
                 <div className="mt-auto">
-                  <div className="flex space-x-6 mb-8">
-                    <a href="#" className="text-hampstead-charcoal hover:text-hampstead-black">
+                  <div className="flex space-x-6 mb-6">
+                    <a
+                      href="https://instagram.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-hampstead-charcoal hover:text-hampstead-black"
+                      aria-label="Follow us on Instagram"
+                    >
                       <Instagram className="w-5 h-5" />
                     </a>
-                    <a href="#" className="text-hampstead-charcoal hover:text-hampstead-black">
+                    <a
+                      href="https://twitter.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-hampstead-charcoal hover:text-hampstead-black"
+                      aria-label="Follow us on Twitter"
+                    >
                       <Twitter className="w-5 h-5" />
                     </a>
                   </div>

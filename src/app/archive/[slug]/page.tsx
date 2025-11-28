@@ -204,6 +204,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${profile.fullName} | Heritage Archive`,
     description: profile.excerpt,
     keywords: `${profile.name} history, ${profile.name} architecture, ${profile.name} conservation, ${profile.location} heritage, ${profile.era} houses`,
+    alternates: {
+      canonical: `/archive/${resolvedParams.slug}`,
+    },
   };
 }
 

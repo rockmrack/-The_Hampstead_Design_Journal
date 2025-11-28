@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: 'The Heritage Archive | The Hampstead Design Journal',
   description: 'The definitive resource for preserving North West London\'s architectural legacy. Street profiles, conservation guides, materials library, historic trades, restoration case studies, and 300 years of architectural history.',
   keywords: 'Hampstead history, NW3 architecture, Victorian houses London, heritage restoration, conservation area, Arts and Crafts, Georgian, Edwardian, listed building, lime mortar, sash windows, heritage materials',
+  alternates: {
+    canonical: '/archive',
+  },
 };
 
 // Comprehensive street profiles database - now 30+ streets
