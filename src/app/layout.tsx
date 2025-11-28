@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
 import './globals.css';
 import 'leaflet/dist/leaflet.css';
 
@@ -65,6 +66,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <head>
+        <LocalBusinessSchema />
+      </head>
       <body className="antialiased min-h-screen flex flex-col">
         <Header />
         <main className="flex-1 pt-20 md:pt-24">{children}</main>

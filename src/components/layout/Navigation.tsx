@@ -162,6 +162,25 @@ const Navigation: React.FC = () => {
                   <Link href="/market" className="text-lg text-hampstead-charcoal">
                     Market Dashboard
                   </Link>
+                  <Link href="/compare" className="text-lg text-hampstead-charcoal">
+                    Compare Materials
+                  </Link>
+                  <div className="h-px bg-hampstead-grey my-4" />
+                  <Link href="/projects" className="text-lg text-hampstead-charcoal">
+                    Our Projects
+                  </Link>
+                  <Link href="/testimonials" className="text-lg text-hampstead-charcoal">
+                    Testimonials
+                  </Link>
+                  <Link href="/faq" className="text-lg text-hampstead-charcoal">
+                    FAQ
+                  </Link>
+                  <Link href="/glossary" className="text-lg text-hampstead-charcoal">
+                    Glossary
+                  </Link>
+                  <Link href="/events" className="text-lg text-hampstead-charcoal">
+                    Events
+                  </Link>
                   <div className="h-px bg-hampstead-grey my-4" />
                   <Link href="/about" className="text-lg text-hampstead-charcoal">
                     About Us
