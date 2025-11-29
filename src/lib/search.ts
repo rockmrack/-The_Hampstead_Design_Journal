@@ -3,7 +3,7 @@
  * Full-text search, fuzzy matching, filters, suggestions
  */
 
-import Fuse from 'fuse.js';
+import Fuse, { IFuseOptions, FuseResult } from 'fuse.js';
 
 export interface SearchableItem {
   id: string;
@@ -61,7 +61,7 @@ export interface SearchResponse {
 }
 
 // Fuse.js configuration optimized for content search
-const fuseOptions: Fuse.IFuseOptions<SearchableItem> = {
+const fuseOptions: IFuseOptions<SearchableItem> = {
   keys: [
     { name: 'title', weight: 0.4 },
     { name: 'description', weight: 0.2 },
@@ -180,9 +180,9 @@ class SearchEngine {
   }
 
   private applyFilters(
-    results: Fuse.FuseResult<SearchableItem>[],
+    results: FuseResult<SearchableItem>[],
     filters: SearchFilters
-  ): Fuse.FuseResult<SearchableItem>[] {
+  ): FuseResult<SearchableItem>[] {
     return results.filter((r) => {
       const item = r.item;
 
@@ -216,10 +216,10 @@ class SearchEngine {
   }
 
   private sortResults(
-    results: Fuse.FuseResult<SearchableItem>[],
+    results: FuseResult<SearchableItem>[],
     sortBy: SearchOptions['sortBy'] = 'relevance',
     sortOrder: SearchOptions['sortOrder'] = 'desc'
-  ): Fuse.FuseResult<SearchableItem>[] {
+  ): FuseResult<SearchableItem>[] {
     const multiplier = sortOrder === 'asc' ? 1 : -1;
 
     return [...results].sort((a, b) => {
@@ -238,7 +238,7 @@ class SearchEngine {
     });
   }
 
-  private calculateFacets(results: Fuse.FuseResult<SearchableItem>[]): SearchResponse['facets'] {
+  private calculateFacets(results: FuseResult<SearchableItem>[]): SearchResponse['facets'] {
     const types: Record<string, number> = {};
     const categories: Record<string, number> = {};
 
@@ -255,7 +255,7 @@ class SearchEngine {
     return { types, categories };
   }
 
-  private generateSuggestions(query: string, results: Fuse.FuseResult<SearchableItem>[]): string[] {
+  private generateSuggestions(query: string, results: FuseResult<SearchableItem>[]): string[] {
     const suggestions = new Set<string>();
 
     // Add related terms from top results
@@ -343,7 +343,7 @@ class SearchEngine {
     const titles = results.map((r) => r.item.title);
     
     // Return unique suggestions
-    return [...new Set(titles)].slice(0, limit);
+    return Array.from(new Set(titles)).slice(0, limit);
   }
 
   // Get all items for indexing

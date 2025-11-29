@@ -14,7 +14,16 @@ export function usePageView(pageData?: {
   category?: string;
 }) {
   useEffect(() => {
-    analytics.pageView(pageData);
+    // Build PageViewEvent with required fields from browser context
+    const path = typeof window !== 'undefined' ? window.location.pathname : '/';
+    const title = pageData?.title || (typeof document !== 'undefined' ? document.title : 'Page');
+    const referrer = typeof document !== 'undefined' ? document.referrer : undefined;
+    
+    analytics.pageView({
+      path,
+      title,
+      referrer,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }
@@ -26,7 +35,7 @@ export function usePageView(pageData?: {
 export function useTrackEvent() {
   const track = useCallback((
     eventName: string,
-    properties?: Record<string, unknown>
+    properties?: Record<string, string | number | boolean>
   ) => {
     analytics.track(eventName, properties);
   }, []);
@@ -40,7 +49,7 @@ export function useTrackEvent() {
 
 interface TrackClickOptions {
   eventName?: string;
-  properties?: Record<string, unknown>;
+  properties?: Record<string, string | number | boolean>;
 }
 
 export function useTrackClick<T extends HTMLElement = HTMLButtonElement>(
@@ -51,11 +60,12 @@ export function useTrackClick<T extends HTMLElement = HTMLButtonElement>(
   const handleClick = useCallback(
     (event: React.MouseEvent<T>) => {
       const target = event.currentTarget;
+      const href = 'href' in target ? (target as unknown as HTMLAnchorElement).href : undefined;
       
       analytics.track(eventName, {
         element: target.tagName.toLowerCase(),
-        text: target.textContent?.slice(0, 100),
-        href: (target as HTMLAnchorElement).href || undefined,
+        text: target.textContent?.slice(0, 100) || '',
+        ...(href ? { href } : {}),
         ...properties,
       });
     },
@@ -146,10 +156,18 @@ export function useTimeOnPage(intervals: number[] = [30, 60, 120, 300]) {
 export function useContentInteraction() {
   const trackContentInteraction = useCallback((
     contentId: string,
-    action: 'view' | 'click' | 'share' | 'bookmark' | 'comment',
-    metadata?: Record<string, unknown>
+    contentType: 'article' | 'archive' | 'tool' | 'guide' | 'calculator',
+    action: 'view' | 'scroll' | 'share' | 'save' | 'print' | 'copy',
+    depth?: number,
+    duration?: number
   ) => {
-    analytics.contentInteraction(contentId, action, metadata);
+    analytics.contentInteraction({
+      contentType,
+      contentId,
+      action,
+      depth,
+      duration,
+    });
   }, []);
 
   return trackContentInteraction;
@@ -199,10 +217,17 @@ export function useFormAnalytics(options: FormAnalyticsOptions) {
       ? Math.floor((Date.now() - startTime.current) / 1000)
       : 0;
 
-    analytics.formSubmit(formName, success, {
+    // Track via the formSubmit method with field names
+    const fields = Array.from(interactedFields.current);
+    analytics.formSubmit(formName, success, fields);
+    
+    // Also track detailed form completion event
+    analytics.track('form_complete', {
+      formName,
+      success,
       duration,
       fieldsInteracted: interactedFields.current.size,
-      errors,
+      hasErrors: (errors?.length || 0) > 0,
     });
 
     // Reset
@@ -216,7 +241,7 @@ export function useFormAnalytics(options: FormAnalyticsOptions) {
       analytics.track('form_abandon', {
         formName,
         duration,
-        fieldsInteracted: Array.from(interactedFields.current),
+        fieldsCount: interactedFields.current.size,
       });
     }
   }, [formName]);
@@ -244,7 +269,7 @@ export function useConversion() {
   const trackConversion = useCallback((
     type: 'newsletter_signup' | 'contact_form' | 'consultation_booking' | 'download' | 'share',
     value?: number,
-    metadata?: Record<string, unknown>
+    metadata?: Record<string, string | number | boolean>
   ) => {
     analytics.conversion(type, value, metadata);
   }, []);
@@ -262,7 +287,7 @@ export function useSearchTracking() {
   const trackSearch = useCallback((
     query: string,
     resultsCount: number,
-    filters?: Record<string, unknown>
+    filters?: Record<string, string>
   ) => {
     // Debounce rapid searches
     const now = Date.now();
@@ -328,8 +353,11 @@ export function usePerformanceTracking() {
           // First Input Delay
           const fidObserver = new PerformanceObserver((list) => {
             const entries = list.getEntries();
-            entries.forEach((entry: PerformanceEventTiming) => {
-              analytics.performance('FID', entry.processingStart - entry.startTime);
+            entries.forEach((entry) => {
+              const eventTiming = entry as PerformanceEventTiming;
+              if ('processingStart' in eventTiming) {
+                analytics.performance('FID', eventTiming.processingStart - entry.startTime);
+              }
             });
           });
           fidObserver.observe({ entryTypes: ['first-input'] });

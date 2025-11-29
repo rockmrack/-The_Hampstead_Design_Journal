@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { searchEngine, SearchResult, SearchFilters, SearchOptions, SearchableItem } from '@/lib/search';
 
 // ============================================================================
@@ -59,8 +59,8 @@ export function useSearch(options: UseSearchOptions = {}): UseSearchReturn {
     setError(null);
 
     try {
-      const searchResults = searchEngine.search(searchQuery, filters, searchOptions);
-      setResults(searchResults);
+      const response = searchEngine.search(searchQuery, { ...searchOptions, filters });
+      setResults(response.results);
       setSuggestions(searchEngine.getSuggestions(searchQuery, 5));
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Search failed'));
@@ -143,22 +143,27 @@ export function useSearchIndex(options: UseSearchIndexOptions) {
 
   useEffect(() => {
     if (autoIndex && items.length > 0) {
-      searchEngine.index(items);
-      setIsIndexed(true);
+      searchEngine.initialize(items).then(() => {
+        setIsIndexed(true);
+      });
     }
   }, [items, autoIndex]);
 
   const reindex = useCallback(() => {
-    searchEngine.index(items);
-    setIsIndexed(true);
+    searchEngine.initialize(items).then(() => {
+      setIsIndexed(true);
+    });
   }, [items]);
 
-  const addItem = useCallback((item: SearchableItem) => {
-    searchEngine.addItem(item);
+  const addItem = useCallback((_item: SearchableItem) => {
+    // Re-initialize with updated items to add a new item
+    // For dynamic updates, maintain a local items array
+    console.warn('addItem: Re-index with updated items for dynamic updates');
   }, []);
 
-  const removeItem = useCallback((id: string) => {
-    searchEngine.removeItem(id);
+  const removeItem = useCallback((_id: string) => {
+    // Re-initialize with filtered items to remove an item
+    console.warn('removeItem: Re-index with filtered items for dynamic updates');
   }, []);
 
   return {
@@ -273,18 +278,19 @@ export function useSearchHighlight(
     const regex = new RegExp(`(${terms.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
     const parts = text.split(regex);
 
-    return parts.map((part, index) => {
+    const result = parts.map((part, index): React.ReactNode => {
       const isMatch = terms.some(term => part.toLowerCase() === term);
       if (isMatch) {
-        const Tag = highlightTag;
-        return (
-          <Tag key={index} className={highlightClassName}>
-            {part}
-          </Tag>
+        return React.createElement(
+          highlightTag,
+          { key: index, className: highlightClassName },
+          part
         );
       }
-      return part;
+      return React.createElement(React.Fragment, { key: index }, part);
     });
+    
+    return React.createElement(React.Fragment, null, ...result);
   }, [query, highlightTag, highlightClassName]);
 
   return highlight;

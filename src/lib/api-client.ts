@@ -75,7 +75,8 @@ class APICache {
     }
 
     const regex = typeof pattern === 'string' ? new RegExp(pattern) : pattern;
-    for (const key of this.cache.keys()) {
+    const keys = Array.from(this.cache.keys());
+    for (const key of keys) {
       if (regex.test(key)) {
         this.cache.delete(key);
       }
