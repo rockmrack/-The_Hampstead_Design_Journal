@@ -14,17 +14,17 @@ export default function PlanningRegulationsPage() {
           <h1 className="font-serif text-balance">Planning & Regulations</h1>
           <div className="editorial-divider" />
           <p className="text-xl md:text-2xl leading-loose text-hampstead-charcoal">
-            Expert guidance on navigating Camden's planning policies, conservation area rules,
+            Expert guidance on navigating Camden&apos;s planning policies, conservation area rules,
             and building regulations for your Hampstead project.
           </p>
         </header>
 
         <div className="max-w-5xl mx-auto">
           <p className="text-lg leading-loose mb-8">
-            Understanding Camden Council's planning requirements is essential for any renovation
+            Understanding Camden Council&apos;s planning requirements is essential for any renovation
             project in Hampstead. From Basement Impact Assessments to Conservation Area Consent,
             we demystify the regulatory landscape to help you achieve your vision while respecting
-            the area's architectural heritage.
+            the area&apos;s architectural heritage.
           </p>
 
           <div className="mt-12">

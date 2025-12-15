@@ -68,20 +68,20 @@ export default function AboutPage() {
             <p className="leading-loose">
               The Hampstead Design Journal is curated by the team at{' '}
               <strong>Hampstead Renovations</strong>. Based at 250 Finchley Road, we have 
-              been the custodians of North West London's finest homes since 2009.
+              been the custodians of North West London&apos;s finest homes since 2009.
             </p>
 
             <p className="leading-loose">
               This editorial connection is deliberate. We do not write about theoretical 
               restoration techniques—we execute them. We do not speculate about Camden 
               planning policy—we navigate it weekly. We do not recommend materials we 
-              haven't specified in dozens of projects.
+              haven&apos;t specified in dozens of projects.
             </p>
 
             <p className="leading-loose">
               Our contributors include structural engineers, conservation architects, 
               planning consultants, and craftspeople who have spent decades working 
-              exclusively in Hampstead's period properties. Their expertise informs 
+              exclusively in Hampstead&apos;s period properties. Their expertise informs 
               every article.
             </p>
 
@@ -99,7 +99,7 @@ export default function AboutPage() {
                 </h3>
                 <p className="text-base">
                   The history, construction methods, and restoration techniques specific 
-                  to Hampstead's Arts & Crafts, Victorian, and Edwardian buildings.
+                  to Hampstead&apos;s Arts &amp; Crafts, Victorian, and Edwardian buildings.
                 </p>
               </div>
 
@@ -110,7 +110,7 @@ export default function AboutPage() {
                   </Link>
                 </h3>
                 <p className="text-base">
-                  Navigating Camden Council's planning policies, conservation area rules, 
+                  Navigating Camden Council&apos;s planning policies, conservation area rules, 
                   and building regulations.
                 </p>
               </div>
@@ -148,7 +148,7 @@ export default function AboutPage() {
 
             <ul className="space-y-3 my-8 text-lg">
               <li>• Planning a renovation or restoration project</li>
-              <li>• Navigating Camden's planning process</li>
+              <li>• Navigating Camden&apos;s planning process</li>
               <li>• Selecting materials or contractors</li>
               <li>• Analyzing property investment opportunities</li>
               <li>• Simply interested in the architecture and design of Hampstead</li>

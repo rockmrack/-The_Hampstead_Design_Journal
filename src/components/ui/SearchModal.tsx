@@ -80,6 +80,12 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     return () => clearTimeout(timer);
   }, [query, activeFilter]);
 
+  const handleResultClick = useCallback((result: SearchResult) => {
+    // Recent search is saved automatically by the search method
+    onClose();
+    // Navigation will be handled by the Link component
+  }, [onClose]);
+
   // Keyboard navigation
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     const totalItems = results.length + suggestions.length;
@@ -106,13 +112,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         onClose();
         break;
     }
-  }, [results, suggestions, selectedIndex, onClose]);
-
-  const handleResultClick = (result: SearchResult) => {
-    // Recent search is saved automatically by the search method
-    onClose();
-    // Navigation will be handled by the Link component
-  };
+  }, [results, suggestions, selectedIndex, onClose, handleResultClick]);
 
   const handleSuggestionClick = (suggestion: string) => {
     setQuery(suggestion);
@@ -288,7 +288,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               {query && !isLoading && results.length === 0 && (
                 <div className="text-center py-12">
                   <p className="text-hampstead-charcoal/70">
-                    No results found for "<span className="font-medium">{query}</span>"
+                    No results found for &ldquo;<span className="font-medium">{query}</span>&rdquo;
                   </p>
                   <p className="text-sm text-hampstead-charcoal/50 mt-2">
                     Try adjusting your search or filters

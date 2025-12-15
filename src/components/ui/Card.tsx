@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
 // ============================================================================
@@ -134,14 +135,18 @@ export function CardFooter({ className, children, ...props }: CardFooterProps) {
 // Card Image
 // ============================================================================
 
-interface CardImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface CardImageProps {
+  src: string;
+  alt: string;
   aspectRatio?: 'video' | 'square' | '4/3' | 'auto';
+  className?: string;
 }
 
 export function CardImage({
   className,
   aspectRatio = '4/3',
-  ...props
+  src,
+  alt,
 }: CardImageProps) {
   const aspectClasses = {
     video: 'aspect-video',
@@ -151,10 +156,13 @@ export function CardImage({
   };
 
   return (
-    <div className={cn('-mx-5 -mt-5 mb-4', aspectClasses[aspectRatio])}>
-      <img
-        className={cn('w-full h-full object-cover', className)}
-        {...props}
+    <div className={cn('-mx-5 -mt-5 mb-4 relative', aspectClasses[aspectRatio])}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className={cn('object-cover', className)}
       />
     </div>
   );
@@ -344,15 +352,17 @@ export function TestimonialCard({
       )}
       
       <blockquote className="text-hampstead-charcoal/80 italic mb-4">
-        "{quote}"
+        &ldquo;{quote}&rdquo;
       </blockquote>
       
       <div className="flex items-center gap-3">
         {author.avatar ? (
-          <img
+          <Image
             src={author.avatar}
             alt={author.name}
-            className="w-10 h-10 rounded-full object-cover"
+            width={40}
+            height={40}
+            className="rounded-full object-cover"
           />
         ) : (
           <div className="w-10 h-10 rounded-full bg-hampstead-sage/10 flex items-center justify-center">

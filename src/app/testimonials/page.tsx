@@ -557,7 +557,7 @@ export default function TestimonialsPage() {
           </h2>
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
             Start your heritage renovation journey with a team trusted by 
-            Hampstead's most discerning homeowners
+            Hampstead&apos;s most discerning homeowners
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

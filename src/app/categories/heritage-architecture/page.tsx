@@ -16,14 +16,14 @@ export default function HeritageArchitecturePage() {
           <div className="editorial-divider" />
           <p className="text-xl md:text-2xl leading-loose text-hampstead-charcoal">
             Exploring the architectural heritage of Hampstead and the art of preserving
-            North West London's finest period properties.
+            North West London&apos;s finest period properties.
           </p>
         </header>
 
         <div className="max-w-5xl mx-auto">
           <p className="text-lg leading-loose mb-8">
-            From the red brick Arts & Crafts homes of Redington Road to the grand Victorian
-            villas of Frognal, Hampstead's architectural heritage is unmatched. This section
+            From the red brick Arts &amp; Crafts homes of Redington Road to the grand Victorian
+            villas of Frognal, Hampstead&apos;s architectural heritage is unmatched. This section
             explores the history, craftsmanship, and specialist techniques required to restore
             and preserve these extraordinary buildings.
           </p>

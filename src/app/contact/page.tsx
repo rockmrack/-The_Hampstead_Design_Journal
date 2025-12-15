@@ -99,7 +99,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-xl md:text-2xl text-hampstead-charcoal/80 leading-relaxed">
               Whether you have questions about a project, want to collaborate on editorial content, 
-              or simply wish to say hello, we'd love to hear from you.
+              or simply wish to say hello, we&apos;d love to hear from you.
             </p>
           </div>
         </div>
@@ -191,7 +191,7 @@ export default function ContactPage() {
                     <Check className="w-12 h-12 text-green-600 mx-auto mb-4" />
                     <h3 className="font-serif text-2xl mb-2">Message Sent</h3>
                     <p className="text-green-800 mb-6">
-                      Thank you for reaching out. We'll respond within 24-48 hours.
+                      Thank you for reaching out. We&apos;ll respond within 24-48 hours.
                     </p>
                     <button
                       onClick={() => setStatus('idle')}

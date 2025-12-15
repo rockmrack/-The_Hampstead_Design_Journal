@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 
@@ -40,10 +41,12 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         isFeatured && "aspect-[16/9]"
       )}>
         {thumbnail ? (
-          <img 
+          <Image 
             src={thumbnail} 
-            alt={title} 
-            className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" 
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-105" 
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 bg-hampstead-grey/30">

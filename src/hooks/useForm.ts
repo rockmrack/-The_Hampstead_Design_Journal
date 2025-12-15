@@ -69,10 +69,9 @@ export function useForm<T extends z.ZodObject<z.ZodRawShape>>(config: FormConfig
   const [submitCount, setSubmitCount] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Analytics tracking
-  const formAnalytics = analyticsFormName 
-    ? useFormAnalytics({ formName: analyticsFormName })
-    : null;
+  // Analytics tracking - always call hook unconditionally
+  const formAnalytics = useFormAnalytics({ formName: analyticsFormName || 'unnamed-form' });
+  const shouldTrackAnalytics = Boolean(analyticsFormName);
 
   // Get current values as object
   const values = useMemo(() => {
@@ -144,7 +143,7 @@ export function useForm<T extends z.ZodObject<z.ZodRawShape>>(config: FormConfig
       const error = validateOnBlur && touched ? validateField(name, field?.value || '') : field?.error;
       
       // Track field interaction
-      if (touched && formAnalytics) {
+      if (touched && shouldTrackAnalytics) {
         formAnalytics.trackFieldInteraction(name as string, 'blur', field?.value);
       }
       
@@ -157,7 +156,7 @@ export function useForm<T extends z.ZodObject<z.ZodRawShape>>(config: FormConfig
         },
       };
     });
-  }, [validateOnBlur, validateField, formAnalytics]);
+  }, [validateOnBlur, validateField, formAnalytics, shouldTrackAnalytics]);
 
   // Set field error manually
   const setError = useCallback((name: FieldName, error: string | null) => {

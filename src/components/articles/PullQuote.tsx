@@ -8,7 +8,7 @@ export default function PullQuote({ children, author, role }: PullQuoteProps) {
   return (
     <figure className="my-12 py-8 border-t border-b border-hampstead-grey">
       <blockquote className="font-serif text-2xl md:text-3xl text-center leading-relaxed text-hampstead-charcoal italic">
-        "{children}"
+        &ldquo;{children}&rdquo;
       </blockquote>
       {(author || role) && (
         <figcaption className="mt-6 text-center">

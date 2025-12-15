@@ -322,7 +322,7 @@ export default function ProjectsPage() {
               Our Projects
             </h1>
             <p className="text-xl md:text-2xl text-white/80 leading-relaxed mb-8">
-              Transforming North West London's finest heritage properties. 
+              Transforming North West London&apos;s finest heritage properties. 
               Explore our portfolio of award-winning renovations, restorations, 
               and sensitive modernisations.
             </p>
@@ -593,7 +593,7 @@ export default function ProjectsPage() {
           </h2>
           <p className="text-hampstead-charcoal/70 text-lg mb-8 max-w-2xl mx-auto">
             Book a consultation with our heritage renovation specialists. 
-            We'll discuss your vision, assess your property, and provide 
+            We&apos;ll discuss your vision, assess your property, and provide 
             a detailed proposal within two weeks.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -719,7 +719,7 @@ export default function ProjectsPage() {
                 <div className="bg-hampstead-black text-white rounded-xl p-6 md:p-8 mb-8">
                   <Quote className="w-10 h-10 text-white/30 mb-4" />
                   <blockquote className="text-lg md:text-xl leading-relaxed mb-6">
-                    "{selectedProject.testimonial.quote}"
+                    &ldquo;{selectedProject.testimonial.quote}&rdquo;
                   </blockquote>
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">

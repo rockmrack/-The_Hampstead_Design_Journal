@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
 // ============================================================================
@@ -138,9 +139,11 @@ export function Avatar({
   return (
     <div className={cn('relative inline-flex', className)}>
       {src ? (
-        <img
+        <Image
           src={src}
           alt={alt}
+          width={size === 'xs' ? 24 : size === 'sm' ? 32 : size === 'md' ? 40 : size === 'lg' ? 48 : 64}
+          height={size === 'xs' ? 24 : size === 'sm' ? 32 : size === 'md' ? 40 : size === 'lg' ? 48 : 64}
           className={cn(
             'rounded-full object-cover',
             sizeClasses[size]

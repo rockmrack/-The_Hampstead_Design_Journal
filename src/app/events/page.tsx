@@ -723,8 +723,8 @@ export default function EventsPage() {
             Host a Heritage Event
           </h2>
           <p className="text-hampstead-charcoal/70 text-lg mb-8 max-w-2xl mx-auto">
-            Have a recently completed renovation you'd like to share? Interested in 
-            hosting a workshop or speaking at an event? We're always looking for 
+            Have a recently completed renovation you&apos;d like to share? Interested in 
+            hosting a workshop or speaking at an event? We&apos;re always looking for 
             partners and venues.
           </p>
           <Link

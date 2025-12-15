@@ -482,7 +482,7 @@ export function schemaToScript(schema: object): string {
   return JSON.stringify(schema, null, 0);
 }
 
-export default {
+const seoSchemas = {
   generateWebsiteSchema,
   generateOrganizationSchema,
   generateArticleSchema,
@@ -493,3 +493,5 @@ export default {
   generateHowToSchema,
   schemaToScript,
 };
+
+export default seoSchemas;

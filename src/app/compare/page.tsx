@@ -579,7 +579,7 @@ export default function ComparePage() {
             Need Specific Advice?
           </h2>
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
-            Every heritage property is unique. Book a consultation and we'll 
+            Every heritage property is unique. Book a consultation and we&apos;ll 
             recommend the best solutions for your specific building and requirements.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

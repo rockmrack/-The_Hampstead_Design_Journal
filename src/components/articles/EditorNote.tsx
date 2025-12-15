@@ -11,7 +11,7 @@ export default function EditorNote() {
           <strong>Hampstead Renovations</strong>.
         </p>
         <p className="text-base md:text-lg leading-loose mb-8">
-          Based at 250 Finchley Road, we have been the custodians of North West London's
+          Based at 250 Finchley Road, we have been the custodians of North West London&apos;s
           finest homes since 2009.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

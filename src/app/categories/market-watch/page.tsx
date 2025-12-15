@@ -31,7 +31,7 @@ export default function MarketWatchPage() {
             <ul className="space-y-4 text-lg">
               <li>• Price per square foot: renovated vs. unmodernised properties</li>
               <li>• ROI analysis: extensions, loft conversions, and basement excavations</li>
-              <li>• The "done-up" premium in different Hampstead postcodes</li>
+              <li>• The &ldquo;done-up&rdquo; premium in different Hampstead postcodes</li>
               <li>• Market timing: when to renovate before selling</li>
               <li>• Investment opportunities in NW3</li>
             </ul>
