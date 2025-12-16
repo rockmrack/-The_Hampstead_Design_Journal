@@ -21,10 +21,12 @@ describe('Validation Library', () => {
       });
 
       expect(result.success).toBe(true);
-      expect(result.data).toEqual({
-        email: 'test@example.com',
-        name: 'John Doe',
-      });
+      if (result.success) {
+        expect(result.data).toEqual({
+          email: 'test@example.com',
+          name: 'John Doe',
+        });
+      }
     });
 
     it('returns errors for invalid data', () => {
@@ -34,16 +36,20 @@ describe('Validation Library', () => {
       });
 
       expect(result.success).toBe(false);
-      expect(result.errors).toHaveProperty('email');
-      expect(result.errors).toHaveProperty('name');
+      if (!result.success) {
+        expect(result.errors).toHaveProperty('email');
+        expect(result.errors).toHaveProperty('name');
+      }
     });
 
     it('handles missing fields', () => {
       const result = validateForm(testSchema, {});
 
       expect(result.success).toBe(false);
-      expect(result.errors).toHaveProperty('email');
-      expect(result.errors).toHaveProperty('name');
+      if (!result.success) {
+        expect(result.errors).toHaveProperty('email');
+        expect(result.errors).toHaveProperty('name');
+      }
     });
   });
 
@@ -54,14 +60,18 @@ describe('Validation Library', () => {
       const result = validateField(emailSchema, 'test@example.com');
       
       expect(result.success).toBe(true);
-      expect(result.data).toBe('test@example.com');
+      if (result.success) {
+        expect(result.data).toBe('test@example.com');
+      }
     });
 
     it('returns error for invalid field', () => {
       const result = validateField(emailSchema, 'invalid');
       
       expect(result.success).toBe(false);
-      expect(result.error).toBe('Invalid email');
+      if (!result.success) {
+        expect(result.error).toBe('Invalid email');
+      }
     });
   });
 
@@ -70,9 +80,13 @@ describe('Validation Library', () => {
       const result = newsletterSchema.safeParse({
         email: 'test@example.com',
         firstName: 'John',
-        interests: ['architecture'],
+        interests: ['heritage-architecture'],
+        gdprConsent: true,
       });
 
+      if (!result.success) {
+        console.log('Newsletter Error:', result.error);
+      }
       expect(result.success).toBe(true);
     });
 
@@ -80,6 +94,7 @@ describe('Validation Library', () => {
       const result = newsletterSchema.safeParse({
         email: 'invalid',
         firstName: 'John',
+        gdprConsent: true,
       });
 
       expect(result.success).toBe(false);
@@ -88,6 +103,7 @@ describe('Validation Library', () => {
     it('allows optional firstName', () => {
       const result = newsletterSchema.safeParse({
         email: 'test@example.com',
+        gdprConsent: true,
       });
 
       expect(result.success).toBe(true);
@@ -96,7 +112,8 @@ describe('Validation Library', () => {
     it('validates interests array', () => {
       const result = newsletterSchema.safeParse({
         email: 'test@example.com',
-        interests: ['architecture', 'interiors', 'living'],
+        interests: ['heritage-architecture', 'interiors-materials', 'market-watch'],
+        gdprConsent: true,
       });
 
       expect(result.success).toBe(true);
@@ -107,8 +124,9 @@ describe('Validation Library', () => {
     const validData = {
       name: 'John Doe',
       email: 'john@example.com',
-      subject: 'general-inquiry',
+      subject: 'general-enquiry',
       message: 'This is a test message with more than 20 characters.',
+      gdprConsent: true,
     };
 
     it('accepts valid contact data', () => {
@@ -158,28 +176,27 @@ describe('Validation Library', () => {
       name: 'John Doe',
       email: 'john@example.com',
       phone: '+44 20 1234 5678',
-      propertyType: 'victorian',
-      projectType: 'renovation',
-      budget: '100k-250k',
-      timeline: '6-12-months',
-      propertyAddress: {
-        line1: '123 Test Street',
-        city: 'London',
-        postcode: 'NW3 1AB',
-      },
-      description: 'Looking to renovate a Victorian property with period features.',
-      preferredDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+      consultationType: 'renovation-planning',
+      propertyPostcode: 'NW3 1AB',
+      projectDescription: 'Looking to renovate a Victorian property with period features. This description needs to be at least 50 characters long so I am adding some filler text here.',
+      estimatedBudget: '100k-250k',
+      preferredTimeframe: '6-12-months',
+      preferredContactTime: 'morning',
+      gdprConsent: true,
     };
 
     it('accepts valid consultation data', () => {
       const result = consultationSchema.safeParse(validData);
+      if (!result.success) {
+        console.log('Consultation Error:', result.error);
+      }
       expect(result.success).toBe(true);
     });
 
-    it('rejects invalid property type', () => {
+    it('rejects invalid consultation type', () => {
       const result = consultationSchema.safeParse({
         ...validData,
-        propertyType: 'invalid',
+        consultationType: 'invalid',
       });
 
       expect(result.success).toBe(false);
@@ -188,31 +205,19 @@ describe('Validation Library', () => {
     it('validates postcode format', () => {
       const result = consultationSchema.safeParse({
         ...validData,
-        propertyAddress: {
-          ...validData.propertyAddress,
-          postcode: 'INVALID',
-        },
+        propertyPostcode: 'INVALID',
       });
 
       expect(result.success).toBe(false);
     });
 
-    it('rejects past dates', () => {
+    it('rejects short description', () => {
       const result = consultationSchema.safeParse({
         ...validData,
-        preferredDate: new Date('2020-01-01').toISOString(),
+        projectDescription: 'Too short',
       });
 
       expect(result.success).toBe(false);
-    });
-
-    it('allows optional hasPlanning field', () => {
-      const result = consultationSchema.safeParse({
-        ...validData,
-        hasPlanning: true,
-      });
-
-      expect(result.success).toBe(true);
     });
   });
 });
@@ -254,7 +259,7 @@ describe('Custom Validators', () => {
 
   describe('UK Phone Number Validation', () => {
     const phoneSchema = z.string().regex(
-      /^(?:\+44|0)(?:\d\s?){9,10}$/,
+      /^(?:\+44\s?|0)(?:\d\s?){9,10}$/,
       'Invalid UK phone number'
     );
 

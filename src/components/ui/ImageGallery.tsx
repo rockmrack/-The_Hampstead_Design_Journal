@@ -15,6 +15,7 @@ import {
   Grid3X3
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { sanitizeUrl } from '@braintree/sanitize-url';
 
 export interface GalleryImage {
   src: string;
@@ -128,16 +129,15 @@ export default function ImageGallery({
 
   const handleDownload = async (image: GalleryImage) => {
     try {
-      const response = await fetch(image.src);
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url;
-      a.download = image.alt.replace(/\s+/g, '-').toLowerCase() + '.jpg';
+      const safeHref = sanitizeUrl(image.src);
+      if (!safeHref || safeHref === 'about:blank') return;
+
+      a.href = safeHref;
+      a.download = 'image.jpg';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      URL.revokeObjectURL(url);
     } catch {
       // Handle error
     }

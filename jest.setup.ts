@@ -34,25 +34,29 @@ class MockResizeObserver implements ResizeObserver {
 global.ResizeObserver = MockResizeObserver;
 
 // Mock matchMedia
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: jest.fn().mockImplementation((query: string) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
-});
+if (typeof window !== 'undefined') {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: jest.fn().mockImplementation((query: string) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    })),
+  });
+}
 
 // Mock scrollTo
-Object.defineProperty(window, 'scrollTo', {
-  writable: true,
-  value: jest.fn(),
-});
+if (typeof window !== 'undefined') {
+  Object.defineProperty(window, 'scrollTo', {
+    writable: true,
+    value: jest.fn(),
+  });
+}
 
 // Mock localStorage
 const localStorageMock = (() => {
@@ -75,23 +79,27 @@ const localStorageMock = (() => {
   };
 })();
 
-Object.defineProperty(window, 'localStorage', {
-  value: localStorageMock,
-});
+if (typeof window !== 'undefined') {
+  Object.defineProperty(window, 'localStorage', {
+    value: localStorageMock,
+  });
 
-// Mock sessionStorage
-Object.defineProperty(window, 'sessionStorage', {
-  value: localStorageMock,
-});
+  // Mock sessionStorage
+  Object.defineProperty(window, 'sessionStorage', {
+    value: localStorageMock,
+  });
+}
 
 // Mock clipboard API
-Object.defineProperty(navigator, 'clipboard', {
-  value: {
-    writeText: jest.fn().mockResolvedValue(undefined),
-    readText: jest.fn().mockResolvedValue(''),
-  },
-  writable: true,
-});
+if (typeof navigator !== 'undefined') {
+  Object.defineProperty(navigator, 'clipboard', {
+    value: {
+      writeText: jest.fn().mockResolvedValue(undefined),
+      readText: jest.fn().mockResolvedValue(''),
+    },
+    writable: true,
+  });
+}
 
 // Mock fetch
 global.fetch = jest.fn(() =>

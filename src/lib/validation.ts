@@ -317,3 +317,17 @@ export function createInitialFormState<T>(initialData?: Partial<T>): FormState<T
     isValid: false,
   };
 }
+
+export function validateField<T extends z.ZodSchema>(
+  schema: T,
+  data: unknown
+): { success: true; data: z.infer<T> } | { success: false; error: string } {
+  const result = schema.safeParse(data);
+  
+  if (result.success) {
+    return { success: true, data: result.data };
+  }
+  
+  return { success: false, error: result.error.errors[0].message };
+}
+

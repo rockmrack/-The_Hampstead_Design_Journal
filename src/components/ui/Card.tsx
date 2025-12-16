@@ -471,3 +471,21 @@ export function PricingCard({
     </Card>
   );
 }
+
+
+export function CardTitle({ className, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h3 className={cn('text-lg font-display font-semibold text-hampstead-charcoal', className)} {...props}>
+      {children}
+    </h3>
+  );
+}
+
+export function CardDescription({ className, children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
+  return (
+    <p className={cn('mt-1 text-sm text-hampstead-charcoal/60', className)} {...props}>
+      {children}
+    </p>
+  );
+}
+

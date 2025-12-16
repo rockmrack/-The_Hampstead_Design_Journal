@@ -8,23 +8,28 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { searchEngine, SearchResult, SearchFilters } from '@/lib/search';
 
+import { toSafeInternalHref } from '@/lib/url';
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+                  {results.map((result, index) => {
+                    const safeHref = toSafeInternalHref(result.url);
+                    if (!safeHref) return null;
 
-export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [activeFilter, setActiveFilter] = useState<string | null>(null);
-  const [recentSearches, setRecentSearches] = useState<string[]>([]);
-  const [selectedIndex, setSelectedIndex] = useState(-1);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const resultsRef = useRef<HTMLDivElement>(null);
-
-  // Popular/trending searches (could be dynamic from analytics)
+                    return (
+                      <Link
+                        key={result.id}
+                        href={safeHref}
+                        onClick={() => handleResultClick(result)}
+                        data-search-item
+                        className={cn(
+                          'flex gap-4 p-4 hover:bg-hampstead-grey/10 transition-colors',
+                          selectedIndex === index && 'bg-hampstead-grey/10'
+                        )}
+                        role="option"
+                        aria-selected={selectedIndex === index}
+                      >
   const trendingSearches = [
     'herringbone flooring',
     'sash windows',
@@ -237,8 +242,9 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   {/* Recent Searches */}
                   {recentSearches.length > 0 && (
                     <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-sm font-medium text-hampstead-charcoal/70 flex items-center gap-2">
+                      </Link>
+                    );
+                  })}
                           <Clock className="w-4 h-4" />
                           Recent Searches
                         </h3>

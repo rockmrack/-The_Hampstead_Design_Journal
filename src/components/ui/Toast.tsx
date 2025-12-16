@@ -104,7 +104,7 @@ export function ToastProvider({
         >
           <AnimatePresence>
             {toasts.map((toast) => (
-              <ToastItem
+              <Toast
                 key={toast.id}
                 toast={toast}
                 onDismiss={() => removeToast(toast.id)}
@@ -129,7 +129,7 @@ interface ToastItemProps {
   position: ToastPosition;
 }
 
-function ToastItem({ toast, onDismiss, position }: ToastItemProps) {
+export function Toast({ toast, onDismiss, position }: ToastItemProps) {
   const { type, title, message, duration = 5000, dismissible = true, action } = toast;
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [isPaused, setIsPaused] = useState(false);

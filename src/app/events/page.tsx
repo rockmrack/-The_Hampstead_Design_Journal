@@ -20,29 +20,7 @@ import {
   Palette
 } from 'lucide-react';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
-
-// Safe URL validation helper to prevent XSS
-// Security: Validates and sanitizes URLs to prevent XSS attacks
-// Only allows http: and https: protocols, blocking javascript: and data: URIs
-const sanitizeUrl = (url: string | undefined): string | null => {
-  if (!url) return null;
-  try {
-    const parsed = new URL(url);
-    // Only allow safe protocols - blocks javascript:, data:, vbscript: etc.
-    if (!['http:', 'https:'].includes(parsed.protocol)) {
-      return null;
-    }
-    // Return the sanitized URL string from the parsed URL object
-    return parsed.href;
-  } catch {
-    return null;
-  }
-};
-
-// Backward compatibility alias
-const isValidUrl = (url: string | undefined): boolean => {
-  return sanitizeUrl(url) !== null;
-};
+import { sanitizeUrl } from '@braintree/sanitize-url';
 
 interface Event {
   id: string;
@@ -684,15 +662,19 @@ export default function EventsPage() {
                             </div>
                             {/* SECURITY: Sanitize URL at render time to ensure safe href */}
                             {(() => {
-                              // Sanitize directly from the event's bookingUrl property
-                              // sanitizeUrl validates protocol (http/https only) and returns parsed.href
-                              // This blocks javascript:, data:, vbscript: and other XSS vectors
+                              if (!event.bookingUrl) return null;
+
                               const safeHref = sanitizeUrl(event.bookingUrl);
-                              if (!safeHref) return null;
+                              if (!safeHref || safeHref === 'about:blank') return null;
+
+                              try {
+                                const parsed = new URL(safeHref, window.location.origin);
+                                if (!['http:', 'https:'].includes(parsed.protocol)) return null;
+                              } catch {
+                                return null;
+                              }
+
                               return (
-                                // snyk:ignore javascript/DOMXSS - URL is sanitized via sanitizeUrl() which validates protocol
-                                // The booking URLs come from a static array defined at module level, and sanitizeUrl()
-                                // validates that only http: and https: protocols are allowed, blocking XSS vectors.
                                 <a
                                   href={safeHref}
                                   target="_blank"

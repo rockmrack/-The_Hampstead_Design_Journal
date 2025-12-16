@@ -31,6 +31,7 @@
   "author": "The Hampstead Design Journal",
   "license": "MIT",
   "dependencies": {
+    "@braintree/sanitize-url": "^7.1.1",
     "@emotion/is-prop-valid": "^1.4.0",
     "@tailwindcss/typography": "^0.5.10",
     "@types/leaflet": "^1.9.21",
