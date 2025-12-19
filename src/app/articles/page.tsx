@@ -23,9 +23,13 @@ function getCategoryLabel(category: string): string {
 }
 
 export default function ArticlesPage() {
-  const articles = allArticles.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
-  const featuredArticle = articles.find((a) => a.featured) || articles[0];
-  const remainingArticles = articles.filter((a) => a.slug !== featuredArticle?.slug);
+  const sortedArticles = allArticles.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  const featuredArticle = sortedArticles.find((a) => a.featured) || sortedArticles[0];
+  // Only show first 24 articles on the listing page - users can use search for more
+  const remainingArticles = sortedArticles
+    .filter((a) => a.slug !== featuredArticle?.slug)
+    .slice(0, 23);
+  const totalArticles = sortedArticles.length;
 
   return (
     <>
@@ -93,7 +97,12 @@ export default function ArticlesPage() {
       {/* All Articles Grid */}
       <section className="py-16">
         <div className="editorial-container">
-          <h2 className="font-serif text-3xl mb-12">All Articles</h2>
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="font-serif text-3xl">Latest Articles</h2>
+            <span className="text-sm text-hampstead-charcoal/60">
+              Showing 24 of {totalArticles.toLocaleString()} articles
+            </span>
+          </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {remainingArticles.map((article) => (
@@ -118,6 +127,17 @@ export default function ArticlesPage() {
                 </Link>
               </article>
             ))}
+          </div>
+
+          {/* Link to search for more */}
+          <div className="mt-16 text-center">
+            <Link
+              href="/search"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-hampstead-black text-hampstead-white hover:bg-hampstead-charcoal transition-colors"
+            >
+              Browse all {totalArticles.toLocaleString()} articles
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>

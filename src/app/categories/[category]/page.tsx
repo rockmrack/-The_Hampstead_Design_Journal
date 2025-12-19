@@ -54,12 +54,14 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     notFound();
   }
 
-  const articles = allArticles
+  const allCategoryArticles = allArticles
     .filter((article) => article.category === params.category)
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
-  const featuredArticle = articles[0];
-  const remainingArticles = articles.slice(1);
+  const totalArticles = allCategoryArticles.length;
+  const featuredArticle = allCategoryArticles[0];
+  // Limit to 24 articles per category page
+  const remainingArticles = allCategoryArticles.slice(1, 24);
 
   return (
     <>
@@ -82,12 +84,12 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             </p>
           </div>
           <div className="mt-8 text-sm text-hampstead-charcoal/60">
-            {articles.length} {articles.length === 1 ? 'article' : 'articles'}
+            {totalArticles} {totalArticles === 1 ? 'article' : 'articles'}
           </div>
         </div>
       </section>
 
-      {articles.length === 0 ? (
+      {totalArticles === 0 ? (
         <section className="py-24">
           <div className="editorial-container text-center">
             <p className="text-xl text-hampstead-charcoal/60">
@@ -172,6 +174,19 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                     </article>
                   ))}
                 </div>
+
+                {/* Link to search for more if there are more articles */}
+                {totalArticles > 24 && (
+                  <div className="mt-16 text-center">
+                    <Link
+                      href={`/search?category=${params.category}`}
+                      className="inline-flex items-center gap-2 px-8 py-3 bg-hampstead-black text-hampstead-white hover:bg-hampstead-charcoal transition-colors"
+                    >
+                      Browse all {totalArticles.toLocaleString()} articles in {categoryInfo.title}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                )}
               </div>
             </section>
           )}

@@ -16,13 +16,25 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const articles = allArticles.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  // Only get the 4 most recent articles for the home page
+  const latestArticles = allArticles
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+    .slice(0, 4)
+    .map(article => ({
+      _id: article._id,
+      title: article.title,
+      slug: article.slug,
+      date: article.date,
+      excerpt: article.excerpt,
+      category: article.category,
+      url: article.url,
+    }));
 
   return (
     <>
       <HeroSection />
 
-      <LatestArticles articles={articles} />
+      <LatestArticles articles={latestArticles} />
 
       {/* Heritage Archive Feature */}
       <section className="section-spacing bg-hampstead-black text-white">
