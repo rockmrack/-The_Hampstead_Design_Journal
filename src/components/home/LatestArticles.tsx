@@ -23,7 +23,7 @@ interface LatestArticlesProps {
 export default function LatestArticles({ articles }: LatestArticlesProps) {
   // Split articles into featured (first one) and the rest
   const featuredArticle = articles[0];
-  const recentArticles = articles.slice(1, 4); // Next 3 articles
+  const recentArticles = articles.slice(1, 10); // Next 9 articles
 
   if (!featuredArticle) return null;
 

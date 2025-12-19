@@ -25,10 +25,10 @@ function getCategoryLabel(category: string): string {
 export default function ArticlesPage() {
   const sortedArticles = allArticles.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
   const featuredArticle = sortedArticles.find((a) => a.featured) || sortedArticles[0];
-  // Only show first 24 articles on the listing page - users can use search for more
+  // Show first 47 articles on the listing page (48 total with featured)
   const remainingArticles = sortedArticles
     .filter((a) => a.slug !== featuredArticle?.slug)
-    .slice(0, 23);
+    .slice(0, 47);
   const totalArticles = sortedArticles.length;
 
   return (
@@ -100,7 +100,7 @@ export default function ArticlesPage() {
           <div className="flex items-center justify-between mb-12">
             <h2 className="font-serif text-3xl">Latest Articles</h2>
             <span className="text-sm text-hampstead-charcoal/60">
-              Showing 24 of {totalArticles.toLocaleString()} articles
+              Showing 48 of {totalArticles.toLocaleString()} articles
             </span>
           </div>
           

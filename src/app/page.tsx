@@ -16,10 +16,10 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  // Only get the 4 most recent articles for the home page
+  // Get the 10 most recent articles for the home page
   const latestArticles = allArticles
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
-    .slice(0, 4)
+    .slice(0, 10)
     .map(article => ({
       _id: article._id,
       title: article.title,

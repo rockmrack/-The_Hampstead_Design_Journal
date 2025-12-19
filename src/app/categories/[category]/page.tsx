@@ -60,8 +60,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
   const totalArticles = allCategoryArticles.length;
   const featuredArticle = allCategoryArticles[0];
-  // Limit to 24 articles per category page
-  const remainingArticles = allCategoryArticles.slice(1, 24);
+  // Limit to 48 articles per category page
+  const remainingArticles = allCategoryArticles.slice(1, 48);
 
   return (
     <>
@@ -176,7 +176,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 </div>
 
                 {/* Link to search for more if there are more articles */}
-                {totalArticles > 24 && (
+                {totalArticles > 48 && (
                   <div className="mt-16 text-center">
                     <Link
                       href={`/search?category=${params.category}`}
