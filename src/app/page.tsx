@@ -28,6 +28,7 @@ export default function HomePage() {
       excerpt: article.excerpt,
       category: article.category,
       url: article.url,
+      coverImage: article.coverImage,
     }));
 
   return (

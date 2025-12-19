@@ -3,6 +3,7 @@ import { allArticles } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { format } from 'date-fns';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, Clock, Calendar, User, ChevronRight } from 'lucide-react';
 import ArticleBody from '@/components/articles/ArticleBody';
 import TableOfContents from '@/components/articles/TableOfContents';
@@ -136,6 +137,22 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               </div>
             </div>
           </div>
+
+          {/* Cover Image */}
+          {article.coverImage && (
+            <div className="editorial-container pb-8 md:pb-12">
+              <div className="aspect-[21/9] relative overflow-hidden bg-hampstead-grey/30">
+                <Image
+                  src={article.coverImage}
+                  alt={article.title}
+                  fill
+                  sizes="100vw"
+                  priority
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          )}
         </header>
 
         {/* Main Content */}

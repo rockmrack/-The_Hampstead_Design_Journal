@@ -2,6 +2,7 @@ import { allArticles } from 'contentlayer/generated';
 import { compareDesc, format } from 'date-fns';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -56,10 +57,20 @@ export default function ArticlesPage() {
               Featured
             </span>
             <article className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="aspect-[4/3] bg-hampstead-grey/30 overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic">
-                  Featured Image
-                </div>
+              <div className="aspect-[4/3] bg-hampstead-grey/30 overflow-hidden relative">
+                {featuredArticle.coverImage ? (
+                  <Image
+                    src={featuredArticle.coverImage}
+                    alt={featuredArticle.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic">
+                    Featured Image
+                  </div>
+                )}
               </div>
               <div>
                 <Link 
@@ -108,10 +119,20 @@ export default function ArticlesPage() {
             {remainingArticles.map((article) => (
               <article key={article.slug} className="group">
                 <Link href={`/articles/${article.slug}`} className="block">
-                  <div className="aspect-[4/3] bg-hampstead-grey/30 mb-4 overflow-hidden">
-                    <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic group-hover:bg-hampstead-grey/50 transition-colors">
-                      No Image
-                    </div>
+                  <div className="aspect-[4/3] bg-hampstead-grey/30 mb-4 overflow-hidden relative">
+                    {article.coverImage ? (
+                      <Image
+                        src={article.coverImage}
+                        alt={article.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic group-hover:bg-hampstead-grey/50 transition-colors">
+                        No Image
+                      </div>
+                    )}
                   </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-hampstead-charcoal/60 mb-2">
                     <span>{getCategoryLabel(article.category)}</span>

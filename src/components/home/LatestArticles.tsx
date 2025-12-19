@@ -14,6 +14,7 @@ interface Article {
   excerpt: string;
   category: string;
   url: string;
+  coverImage?: string;
 }
 
 interface LatestArticlesProps {
@@ -56,7 +57,7 @@ export default function LatestArticles({ articles }: LatestArticlesProps) {
             date={featuredArticle.date}
             category={featuredArticle.category}
             variant="featured"
-            thumbnail="/images/placeholder-hero.jpg" // Placeholder until we have real images
+            thumbnail={featuredArticle.coverImage}
           />
         </motion.div>
 
@@ -77,7 +78,7 @@ export default function LatestArticles({ articles }: LatestArticlesProps) {
                 date={article.date}
                 category={article.category}
                 variant="vertical"
-                thumbnail={`/images/placeholder-${index + 1}.jpg`}
+                thumbnail={article.coverImage}
               />
             </motion.div>
           ))}

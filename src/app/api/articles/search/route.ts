@@ -44,6 +44,7 @@ export async function GET(request: NextRequest) {
     excerpt: article.excerpt,
     category: article.category,
     date: article.date,
+    coverImage: article.coverImage,
   }));
 
   return NextResponse.json({

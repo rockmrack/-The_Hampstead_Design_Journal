@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, X, ArrowRight, Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,6 +13,7 @@ interface ArticleResult {
   excerpt: string;
   category: string;
   date: string;
+  coverImage?: string;
 }
 
 interface SearchResponse {
@@ -212,10 +214,20 @@ export default function SearchPage() {
                       className="group"
                     >
                       <Link href={`/articles/${article.slug}`} className="block">
-                        <div className="aspect-[4/3] bg-hampstead-grey/30 mb-4 overflow-hidden">
-                          <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic group-hover:bg-hampstead-grey/50 transition-colors">
-                            No Image
-                          </div>
+                        <div className="aspect-[4/3] bg-hampstead-grey/30 mb-4 overflow-hidden relative">
+                          {article.coverImage ? (
+                            <Image
+                              src={article.coverImage}
+                              alt={article.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic group-hover:bg-hampstead-grey/50 transition-colors">
+                              No Image
+                            </div>
+                          )}
                         </div>
                         <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-hampstead-charcoal/60 mb-2">
                           <span>{getCategoryLabel(article.category)}</span>
