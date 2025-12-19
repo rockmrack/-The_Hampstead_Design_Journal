@@ -21,75 +21,264 @@ const TOTAL_ARTICLES = 1500;
 const START_DATE = new Date('2023-01-01');
 const END_DATE = new Date('2025-12-15');
 
-// Unsplash image collections for each category
+// Unsplash image collections for each category - London/British specific images
+// Using specific Unsplash photo IDs that are verified to show British/London architecture
 const UNSPLASH_IMAGES = {
   architecture: [
-    'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1448630360428-65456885c650?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=1200&h=800&fit=crop',
+    // London Georgian/Victorian townhouses and terraces
+    'https://images.unsplash.com/photo-1549517045-bc93de075e53?w=1200&h=800&fit=crop', // London Georgian terrace
+    'https://images.unsplash.com/photo-1555992828-ca4dbe41d294?w=1200&h=800&fit=crop', // London brick townhouse
+    'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&h=800&fit=crop', // Red brick Victorian
+    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop', // Classic townhouse facade
+    'https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=1200&h=800&fit=crop', // London street houses
+    'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&h=800&fit=crop', // British terrace row
+    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop', // Traditional London building
+    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop', // Georgian door details
+    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=800&fit=crop', // English period home
+    'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&h=800&fit=crop', // British residential street
   ],
   'heritage-architecture': [
-    'https://images.unsplash.com/photo-1555952494-efd681c7e3f9?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1577495508048-b635879837f1?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1464146072230-91cabc968266?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1200&h=800&fit=crop',
+    // Victorian/Edwardian/Georgian heritage buildings
+    'https://images.unsplash.com/photo-1577495508048-b635879837f1?w=1200&h=800&fit=crop', // Victorian brick facade
+    'https://images.unsplash.com/photo-1555952494-efd681c7e3f9?w=1200&h=800&fit=crop', // Period property exterior
+    'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=1200&h=800&fit=crop', // Heritage building details
+    'https://images.unsplash.com/photo-1464146072230-91cabc968266?w=1200&h=800&fit=crop', // Traditional English architecture
+    'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1200&h=800&fit=crop', // Restored period home
+    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop', // Georgian townhouse
+    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop', // Classic period facade
+    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop', // Historic entrance
   ],
   interiors: [
-    'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1616137466211-f939a420be84?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&h=800&fit=crop',
+    // Traditional British/period interiors
+    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop', // Period living room
+    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop', // Classic interior
+    'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&h=800&fit=crop', // Traditional sitting room
+    'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=800&fit=crop', // Period kitchen
+    'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&h=800&fit=crop', // Heritage interior
+    'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1200&h=800&fit=crop', // Classic British interior
+    'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=1200&h=800&fit=crop', // Traditional bathroom
+    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop', // Period room
+    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop', // Elegant interior
+    'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&h=800&fit=crop', // Traditional decor
   ],
   'interiors-materials': [
-    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600566752547-c2c7a7c72e06?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1200&h=800&fit=crop',
+    // Materials, flooring, fixtures close-ups
+    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop', // Wood flooring detail
+    'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200&h=800&fit=crop', // Kitchen materials
+    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&h=800&fit=crop', // Bathroom fixtures
+    'https://images.unsplash.com/photo-1600566752547-c2c7a7c72e06?w=1200&h=800&fit=crop', // Interior materials
+    'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=1200&h=800&fit=crop', // Worktop detail
+    'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&h=800&fit=crop', // Period fixtures
+    'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1200&h=800&fit=crop', // Tile detail
+    'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1200&h=800&fit=crop', // Classic materials
   ],
   'planning-regulations': [
-    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop',
+    // Architectural drawings, documents, planning context
+    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&h=800&fit=crop', // Architectural blueprints
+    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=800&fit=crop', // Planning documents
+    'https://images.unsplash.com/photo-1434082033009-b81d41d32e1c?w=1200&h=800&fit=crop', // Architectural plans
+    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop', // Period building
+    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop', // Conservation area building
+    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop', // Listed building entrance
+  ],
+  living: [
+    // London neighborhoods, parks, lifestyle
+    'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&h=800&fit=crop', // London cityscape
+    'https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=1200&h=800&fit=crop', // London street scene
+    'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=1200&h=800&fit=crop', // London neighborhood
+    'https://images.unsplash.com/photo-1520986606214-8b456906c813?w=1200&h=800&fit=crop', // London park
+    'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=1200&h=800&fit=crop', // London residential area
+    'https://images.unsplash.com/photo-1500380804539-4e1e8c092f7d?w=1200&h=800&fit=crop', // London life
+  ],
+  'market-watch': [
+    // Real estate, property, London homes for sale context
+    'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop', // House keys/sale concept
+    'https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?w=1200&h=800&fit=crop', // Property investment
+    'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1200&h=800&fit=crop', // Real estate concept
+    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop', // Property exterior
+    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop', // London property
+    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop', // Period property entrance
+  ],
+};
+
+// Topic-specific image mapping for more accurate image matching
+const TOPIC_IMAGES: Record<string, string[]> = {
+  // Architecture topics
+  'victorian': [
+    'https://images.unsplash.com/photo-1577495508048-b635879837f1?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1555992828-ca4dbe41d294?w=1200&h=800&fit=crop',
+  ],
+  'georgian': [
+    'https://images.unsplash.com/photo-1549517045-bc93de075e53?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop',
+  ],
+  'edwardian': [
+    'https://images.unsplash.com/photo-1555952494-efd681c7e3f9?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1200&h=800&fit=crop',
+  ],
+  'terrace': [
+    'https://images.unsplash.com/photo-1549517045-bc93de075e53?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=1200&h=800&fit=crop',
+  ],
+  'arts and crafts': [
+    'https://images.unsplash.com/photo-1464146072230-91cabc968266?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1200&h=800&fit=crop',
+  ],
+  'walking tour': [
+    'https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&h=800&fit=crop',
+  ],
+  // Interior topics
+  'kitchen': [
+    'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=1200&h=800&fit=crop',
+  ],
+  'bathroom': [
+    'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600566752547-c2c7a7c72e06?w=1200&h=800&fit=crop',
+  ],
+  'living room': [
+    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&h=800&fit=crop',
+  ],
+  'bedroom': [
+    'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1200&h=800&fit=crop',
+  ],
+  // Materials topics
+  'flooring': [
+    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&h=800&fit=crop',
+  ],
+  'herringbone': [
+    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1200&h=800&fit=crop',
+  ],
+  'tile': [
+    'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&h=800&fit=crop',
+  ],
+  'panelling': [
+    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&h=800&fit=crop',
+  ],
+  'wallpaper': [
+    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&h=800&fit=crop',
+  ],
+  'sash window': [
+    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop',
+  ],
+  'door': [
+    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop',
+  ],
+  // Planning topics
+  'planning': [
     'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&h=800&fit=crop',
     'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=800&fit=crop',
     'https://images.unsplash.com/photo-1434082033009-b81d41d32e1c?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop',
   ],
-  living: [
-    'https://images.unsplash.com/photo-1519999482648-25049ddd37b1?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&h=800&fit=crop',
+  'basement': [
+    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1434082033009-b81d41d32e1c?w=1200&h=800&fit=crop',
   ],
-  'market-watch': [
+  'extension': [
+    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop',
+  ],
+  'conservation': [
+    'https://images.unsplash.com/photo-1555952494-efd681c7e3f9?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop',
+  ],
+  'listed building': [
+    'https://images.unsplash.com/photo-1555952494-efd681c7e3f9?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop',
+  ],
+  'tree preservation': [
+    'https://images.unsplash.com/photo-1520986606214-8b456906c813?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=1200&h=800&fit=crop',
+  ],
+  // Living/lifestyle topics
+  'school': [
+    'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=1200&h=800&fit=crop',
+  ],
+  'transport': [
+    'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=1200&h=800&fit=crop',
+  ],
+  'underground': [
+    'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=1200&h=800&fit=crop',
+  ],
+  'park': [
+    'https://images.unsplash.com/photo-1520986606214-8b456906c813?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1500380804539-4e1e8c092f7d?w=1200&h=800&fit=crop',
+  ],
+  'heath': [
+    'https://images.unsplash.com/photo-1520986606214-8b456906c813?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1500380804539-4e1e8c092f7d?w=1200&h=800&fit=crop',
+  ],
+  'garden': [
+    'https://images.unsplash.com/photo-1520986606214-8b456906c813?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1500380804539-4e1e8c092f7d?w=1200&h=800&fit=crop',
+  ],
+  // Market topics
+  'property market': [
     'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=800&fit=crop',
     'https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?w=1200&h=800&fit=crop',
     'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1200&h=800&fit=crop',
+  ],
+  'price': [
+    'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?w=1200&h=800&fit=crop',
+  ],
+  'investment': [
+    'https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1200&h=800&fit=crop',
+  ],
+  'renovation': [
+    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1200&h=800&fit=crop',
+  ],
+  // History topics
+  'wartime': [
+    'https://images.unsplash.com/photo-1555952494-efd681c7e3f9?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1549517045-bc93de075e53?w=1200&h=800&fit=crop',
+  ],
+  'history': [
+    'https://images.unsplash.com/photo-1555952494-efd681c7e3f9?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1549517045-bc93de075e53?w=1200&h=800&fit=crop',
+  ],
+  'famous resident': [
+    'https://images.unsplash.com/photo-1549517045-bc93de075e53?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop',
+  ],
+  // Heating/systems
+  'underfloor heating': [
+    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&h=800&fit=crop',
+  ],
+  'smart home': [
+    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop',
+  ],
+  'lighting': [
+    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop',
   ],
 };
 
@@ -832,6 +1021,21 @@ function getRandomImage(category: string): string {
   return randomElement(images);
 }
 
+// Smart image selection based on article title/topic
+function getTopicImage(title: string, category: string): string {
+  const lowerTitle = title.toLowerCase();
+  
+  // Check for topic-specific keywords in title
+  for (const [topic, images] of Object.entries(TOPIC_IMAGES)) {
+    if (lowerTitle.includes(topic)) {
+      return randomElement(images);
+    }
+  }
+  
+  // Fall back to category-based image
+  return getRandomImage(category);
+}
+
 // ============================================================================
 // ARTICLE GENERATION
 // ============================================================================
@@ -878,7 +1082,7 @@ function generateArticle(topic: any, category: string, index: number): ArticleDa
   const date = generateDate();
   const excerpt = generateExcerpt(location, category, title);
   const content = generateEnhancedContent(location, street, category, title);
-  const image = getRandomImage(category);
+  const image = getTopicImage(title, category);
   
   return {
     title,
