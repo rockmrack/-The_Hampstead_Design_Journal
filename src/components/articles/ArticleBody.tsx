@@ -26,28 +26,28 @@ const components = {
     </h3>
   ),
   p: ({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="text-lg leading-loose mb-6 text-hampstead-charcoal" {...props}>
+    <p className="text-[1.15rem] leading-[1.9] mb-8 text-hampstead-charcoal font-light [&:first-of-type]:first-letter:float-left [&:first-of-type]:first-letter:text-7xl [&:first-of-type]:first-letter:pr-4 [&:first-of-type]:first-letter:font-serif [&:first-of-type]:first-letter:leading-[0.8] [&:first-of-type]:first-letter:mt-2" {...props}>
       {children}
     </p>
   ),
   ul: ({ children, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="list-disc pl-6 mb-6 space-y-2 text-lg text-hampstead-charcoal" {...props}>
+    <ul className="list-disc pl-6 mb-8 space-y-3 text-[1.15rem] text-hampstead-charcoal font-light" {...props}>
       {children}
     </ul>
   ),
   ol: ({ children, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className="list-decimal pl-6 mb-6 space-y-2 text-lg text-hampstead-charcoal" {...props}>
+    <ol className="list-decimal pl-6 mb-8 space-y-3 text-[1.15rem] text-hampstead-charcoal font-light" {...props}>
       {children}
     </ol>
   ),
   li: ({ children, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className="leading-relaxed" {...props}>
+    <li className="leading-relaxed pl-2" {...props}>
       {children}
     </li>
   ),
   blockquote: ({ children, ...props }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote 
-      className="border-l-4 border-hampstead-black pl-6 my-8 italic text-xl text-hampstead-charcoal/80"
+      className="border-l-2 border-hampstead-black pl-8 my-12 font-serif text-2xl md:text-3xl italic text-hampstead-black leading-tight"
       {...props}
     >
       {children}

@@ -5,7 +5,7 @@ import { compareDesc } from 'date-fns';
 import { ArrowRight, MapPin, BookOpen, Landmark } from 'lucide-react';
 import NewsletterSignup from '../components/layout/NewsletterSignup';
 import HeroSection from '../components/home/HeroSection';
-import LatestArticles from '../components/home/LatestArticles';
+import MagazineGrid from '../components/home/MagazineGrid';
 
 export const metadata: Metadata = {
   title: 'The Hampstead Design Journal | Architecture, Interiors, and Living in NW3',
@@ -35,7 +35,7 @@ export default function HomePage() {
     <>
       <HeroSection />
 
-      <LatestArticles articles={latestArticles} />
+      <MagazineGrid articles={latestArticles} />
 
       {/* Heritage Archive Feature */}
       <section className="section-spacing bg-hampstead-black text-white">
