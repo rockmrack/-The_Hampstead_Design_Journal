@@ -18,7 +18,7 @@ export default function GlossaryPage() {
             Architectural Glossary
           </h1>
           <p className="text-lg text-hampstead-charcoal/70 leading-relaxed">
-            Decoding the language of London's built heritage.
+            Decoding the language of London&apos;s built heritage.
           </p>
         </div>
         <ArchitecturalGlossary />

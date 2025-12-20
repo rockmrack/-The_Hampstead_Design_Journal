@@ -18,7 +18,7 @@ export default function BluePlaquesPage() {
             Blue Plaques Map
           </h1>
           <p className="text-lg text-hampstead-charcoal/70 leading-relaxed">
-            Walking in the footsteps of Hampstead's most famous residents.
+            Walking in the footsteps of Hampstead&apos;s most famous residents.
           </p>
         </div>
         <BluePlaqueMap />

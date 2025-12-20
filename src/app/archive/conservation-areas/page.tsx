@@ -18,7 +18,7 @@ export default function ConservationAreasPage() {
             Conservation Area Guide
           </h1>
           <p className="text-lg text-hampstead-charcoal/70 leading-relaxed">
-            Navigating the complexities of planning permission in North West London's most protected neighbourhoods.
+            Navigating the complexities of planning permission in North West London&apos;s most protected neighbourhoods.
           </p>
         </div>
         <ConservationAreaGuide />
