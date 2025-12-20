@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import ProcessTimeline from '@/components/planning/ProcessTimeline';
+import DocumentChecklist from '@/components/planning/DocumentChecklist';
+import PlanningFAQ from '@/components/planning/PlanningFAQ';
 
 export const metadata: Metadata = {
   title: 'Planning & Regulations | The Hampstead Design Journal',
@@ -8,42 +11,54 @@ export const metadata: Metadata = {
 
 export default function PlanningRegulationsPage() {
   return (
-    <div className="editorial-spacing">
-      <div className="editorial-container">
-        <header className="max-w-3xl mx-auto mb-16 text-center">
-          <h1 className="font-serif text-balance">Planning & Regulations</h1>
-          <div className="editorial-divider" />
-          <p className="text-xl md:text-2xl leading-loose text-hampstead-charcoal">
-            Expert guidance on navigating Camden&apos;s planning policies, conservation area rules,
-            and building regulations for your Hampstead project.
-          </p>
-        </header>
-
-        <div className="max-w-5xl mx-auto">
-          <p className="text-lg leading-loose mb-8">
-            Understanding Camden Council&apos;s planning requirements is essential for any renovation
-            project in Hampstead. From Basement Impact Assessments to Conservation Area Consent,
-            we demystify the regulatory landscape to help you achieve your vision while respecting
-            the area&apos;s architectural heritage.
-          </p>
-
-          <div className="mt-12">
-            <h3 className="text-2xl mb-6 font-serif">Key Topics</h3>
-            <ul className="space-y-4 text-lg">
-              <li>• Basement conversions and excavation policy</li>
-              <li>• Conservation area regulations</li>
-              <li>• Listed building consent</li>
-              <li>• Party wall agreements</li>
-              <li>• Construction Management Plans</li>
-            </ul>
-          </div>
-
-          <div className="mt-12">
-            <h3 className="text-2xl mb-3 font-serif">Featured Articles</h3>
-            <p className="text-hampstead-charcoal">Articles coming soon...</p>
+    <main className="min-h-screen">
+      <section className="bg-hampstead-cream border-b border-hampstead-grey py-16 md:py-24">
+        <div className="editorial-container">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="text-xs font-bold uppercase tracking-widest text-hampstead-charcoal/50 mb-4 block">
+              Policy & Guidance
+            </span>
+            <h1 className="font-serif text-5xl md:text-6xl mb-6">Planning & Regulations</h1>
+            <div className="w-24 h-1 bg-hampstead-olive mx-auto mb-8" />
+            <p className="text-xl md:text-2xl leading-relaxed text-hampstead-charcoal/80">
+              Expert guidance on navigating Camden&apos;s planning policies, conservation area rules,
+              and building regulations for your Hampstead project.
+            </p>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="editorial-container">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-lg leading-loose mb-8 text-hampstead-charcoal/80">
+              Understanding Camden Council&apos;s planning requirements is essential for any renovation
+              project in Hampstead. From Basement Impact Assessments to Conservation Area Consent,
+              we demystify the regulatory landscape to help you achieve your vision while respecting
+              the area&apos;s architectural heritage.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <ProcessTimeline />
+      <DocumentChecklist />
+      <PlanningFAQ />
+
+      <section className="py-16 bg-hampstead-black text-white text-center">
+        <div className="editorial-container">
+          <h2 className="font-serif text-3xl mb-6">Need Professional Help?</h2>
+          <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
+            Browse our directory of architects and planning consultants who specialize in Camden conservation areas.
+          </p>
+          <a 
+            href="/archive/trades" 
+            className="inline-block px-8 py-4 border border-white/30 hover:bg-white hover:text-hampstead-black transition-colors uppercase tracking-widest text-sm font-bold"
+          >
+            Find a Specialist
+          </a>
+        </div>
+      </section>
+    </main>
   );
 }

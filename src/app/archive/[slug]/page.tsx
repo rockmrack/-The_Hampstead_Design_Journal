@@ -178,6 +178,63 @@ Recent planning policy has become stricter following public concern about dereli
     },
     relatedStreets: ['redington-road', 'hampstead-garden-suburb', 'well-walk'],
   },
+  'church-row': {
+    name: 'Church Row',
+    fullName: 'The Church Row Archive',
+    era: 'Georgian',
+    period: '1700-1720',
+    conservationArea: 'Hampstead',
+    location: 'NW3',
+    heroImage: '/images/archive/streets/church-row-hero.jpg',
+    excerpt: 'Arguably the finest Georgian street in London. A perfectly preserved terrace of early 18th-century townhouses leading to the Parish Church.',
+    history: `Church Row is the jewel in Hampstead's crown. Built in the early 18th century (c. 1720) during the height of Hampstead's popularity as a spa resort, it remains one of the most complete and unspoiled Georgian streets in the entire country.
+
+The street was developed to provide high-quality lodging for wealthy visitors taking the waters. The architecture reflects the Queen Anne and early Georgian style: flat facades, sash windows flush with the brickwork, and intricate door cases.
+
+Unlike many London streets that were redeveloped in the Victorian era, Church Row has survived almost intact. It has been home to numerous literary and artistic figures, including H.G. Wells and the architect George Gilbert Scott.`,
+    builderAnalysis: {
+      brick: {
+        type: 'Brown/Red Stock Brick',
+        detail: 'The bricks are a distinctive mix of brown and red stocks, typical of the early 18th century. They are smaller and more irregular than later Georgian bricks.',
+        warning: 'Modern metric bricks are completely incompatible. Repairs require specialist sourcing of 2-inch handmade bricks.',
+      },
+      mortar: {
+        type: 'Pure Lime Putty',
+        detail: 'The mortar joints are incredibly fine (penny-struck). The lime is pure and white, contrasting with the dark brick.',
+        warning: 'Any use of cement here is a criminal offence (Listed Building). Repointing must be done by a specialist conservator.',
+      },
+      windows: {
+        type: 'Early Georgian Sash (Exposed Boxes)',
+        detail: 'Windows are set flush with the brickwork (pre-1774 Building Act) with exposed sash boxes. Glazing bars are thick and robust.',
+        warning: 'Standard "Georgian style" windows are incorrect. You need specific early-18th-century profiles with exposed boxes.',
+      },
+      roofing: {
+        type: 'Hand-Made Clay Peg Tiles',
+        detail: 'Steeply pitched roofs covered in handmade clay peg tiles. Many properties have dormer windows.',
+        warning: 'Roof repairs must use matching peg tiles. Standard nib tiles are not acceptable.',
+      },
+      details: {
+        type: 'Wrought Iron Railings & Hoods',
+        detail: 'The street is famous for its original wrought iron railings, lamp holders, and door hoods. These are hand-forged, not cast iron.',
+        warning: 'Repairs to ironwork must be done by a blacksmith using traditional forge techniques.',
+      },
+    },
+    planningNotes: `Church Row is one of the most strictly protected streets in the UK:
+
+- **Grade II* Listed Buildings:** Most properties are Grade II* listed, indicating "more than special interest".
+- **Hampstead Conservation Area:** The street is the core of the conservation area.
+- **Article 4 Directions:** Remove almost all permitted development rights.
+
+Planning permission and Listed Building Consent are required for virtually any alteration, internal or external. Even painting the front door a different colour requires consent.`,
+    ourExpertise: 'We have worked on three separate properties on Church Row, handling sensitive internal reconfigurations and external fabric repairs. We understand the extreme level of detail required by Camden\'s conservation officers for this specific street.',
+    beforeAfter: {
+      before: '/images/archive/streets/church-row-1800.jpg',
+      after: '/images/archive/streets/church-row-now.jpg',
+      beforeYear: '1800',
+      afterYear: '2024',
+    },
+    relatedStreets: ['frognal', 'flask-walk', 'well-walk'],
+  },
 };
 
 type StreetSlug = keyof typeof streetProfiles;
