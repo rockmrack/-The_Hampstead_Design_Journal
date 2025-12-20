@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import { getArticlesByCategory } from '@/lib/api';
+import ArticleGrid from '@/components/articles/ArticleGrid';
+import MaterialPalette from '@/components/interiors/MaterialPalette';
 
 export const metadata: Metadata = {
   title: 'Interiors & Materials | The Hampstead Design Journal',
@@ -7,44 +10,43 @@ export const metadata: Metadata = {
 };
 
 export default function InteriorsMaterialsPage() {
+  const articles = getArticlesByCategory('interiors-materials');
+
   return (
-    <div className="editorial-spacing">
-      <div className="editorial-container">
-        <header className="max-w-3xl mx-auto mb-16 text-center">
-          <h1 className="font-serif text-balance">Interiors & Materials</h1>
-          <div className="editorial-divider" />
-          <p className="text-xl md:text-2xl leading-loose text-hampstead-charcoal">
-            A curated exploration of finishes, materials, and interior design for
-            discerning Hampstead homeowners.
-          </p>
-        </header>
-
-        <div className="max-w-5xl mx-auto">
-          <p className="text-lg leading-loose mb-8">
-            The selection of materials and finishes defines the character of a home. From
-            selecting the perfect engineered oak flooring to specifying natural stone worktops
-            or commissioning bespoke joinery, every detail matters. Here we explore the options
-            available to those creating exceptional interiors in North West London.
-          </p>
-
-          <div className="mt-12">
-            <h3 className="text-2xl mb-6 font-serif">Topics We Cover</h3>
-            <ul className="space-y-4 text-lg">
-              <li>• Flooring: engineered oak, natural stone, reclaimed timber</li>
-              <li>• Kitchen design and material selection</li>
-              <li>• Bathroom finishes and fixtures</li>
-              <li>• Bespoke joinery and fitted furniture</li>
-              <li>• Paint, wallcoverings, and decorative finishes</li>
-              <li>• Lighting design and specification</li>
-            </ul>
-          </div>
-
-          <div className="mt-12">
-            <h3 className="text-2xl mb-3 font-serif">Featured Articles</h3>
-            <p className="text-hampstead-charcoal">Articles coming soon...</p>
+    <main className="min-h-screen">
+      <section className="bg-hampstead-cream border-b border-hampstead-grey py-16 md:py-24">
+        <div className="editorial-container">
+          <div className="max-w-3xl">
+            <span className="text-xs font-bold uppercase tracking-widest text-hampstead-charcoal/50 mb-4 block">
+              Design & Living
+            </span>
+            <h1 className="font-serif text-5xl md:text-6xl mb-6">Interiors & Materials</h1>
+            <p className="text-xl text-hampstead-charcoal/80 leading-relaxed">
+              A curated exploration of finishes, materials, and interior design for
+              discerning Hampstead homeowners. From selecting the perfect engineered oak flooring to specifying natural stone worktops.
+            </p>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <MaterialPalette />
+
+      <section className="py-16">
+        <div className="editorial-container">
+          <div className="flex items-end justify-between mb-12">
+            <h2 className="font-serif text-3xl md:text-4xl">Latest Stories</h2>
+            <div className="hidden md:block h-px bg-hampstead-grey flex-grow ml-8" />
+          </div>
+          
+          {articles.length > 0 ? (
+            <ArticleGrid articles={articles} />
+          ) : (
+            <p className="text-center text-hampstead-charcoal/60 py-12 bg-stone-50">
+              No articles in this category yet. Check back soon.
+            </p>
+          )}
+        </div>
+      </section>
+    </main>
   );
 }
