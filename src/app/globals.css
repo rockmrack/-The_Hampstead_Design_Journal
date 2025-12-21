@@ -8,6 +8,30 @@
   --hampstead-cream: #F8F7F4;
   --hampstead-grey: #E5E5E5;
   --hampstead-charcoal: #333333;
+  --article-font-scale: 1;
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  nav, footer, .no-print {
+    display: none !important;
+  }
+
+  article {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
 }
 
 @layer base {

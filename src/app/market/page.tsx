@@ -146,6 +146,24 @@ export default function MarketDashboardPage() {
               Updated monthly from Land Registry and local agent data.
             </p>
           </div>
+
+          {/* Quick Links */}
+          <div className="flex flex-wrap gap-4 mt-8">
+            <Link 
+              href="/market/pulse" 
+              className="inline-flex items-center px-6 py-3 bg-white text-hampstead-black font-medium hover:bg-hampstead-grey transition-colors"
+            >
+              <Activity className="w-4 h-4 mr-2" />
+              Market Pulse
+            </Link>
+            <Link 
+              href="/market/tracker" 
+              className="inline-flex items-center px-6 py-3 border border-white text-white font-medium hover:bg-white hover:text-hampstead-black transition-colors"
+            >
+              <BarChart2 className="w-4 h-4 mr-2" />
+              Price Tracker
+            </Link>
+          </div>
         </div>
       </section>
 

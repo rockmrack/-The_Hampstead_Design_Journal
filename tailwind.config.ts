@@ -59,10 +59,28 @@ const config: Config = {
               fontStyle: 'italic',
               borderLeftColor: '#1a1a1a',
               borderLeftWidth: '4px',
+              paddingLeft: '1.5em',
+              marginTop: '2em',
+              marginBottom: '2em',
             },
             strong: {
               color: '#1a1a1a',
               fontWeight: '600',
+            },
+            'ul > li::marker': {
+              color: '#1a1a1a',
+            },
+            hr: {
+              borderColor: '#E5E5E5',
+              marginTop: '3em',
+              marginBottom: '3em',
+            },
+            'figure figcaption': {
+              color: '#666666',
+              fontSize: '0.875rem',
+              textAlign: 'center',
+              marginTop: '0.5em',
+              fontFamily: 'var(--font-sans)',
             },
           },
         },

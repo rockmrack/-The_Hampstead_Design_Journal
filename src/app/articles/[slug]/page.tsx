@@ -12,6 +12,7 @@ import ReadingProgress from '@/components/articles/ReadingProgress';
 import ArticleJsonLd from '@/components/seo/ArticleJsonLd';
 import ShareButtons from '@/components/articles/ShareButtons';
 import AuthorBio from '@/components/articles/AuthorBio';
+import TextSizeControl from '@/components/articles/TextSizeControl';
 
 interface ArticlePageProps {
   params: { slug: string };
@@ -161,6 +162,9 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             {/* Sidebar - Table of Contents */}
             <aside className="hidden lg:block lg:col-span-3">
               <div className="sticky top-32">
+                <div className="mb-8">
+                  <TextSizeControl />
+                </div>
                 <TableOfContents headings={article.headings} />
                 <div className="mt-8 pt-8 border-t border-hampstead-grey">
                   <ShareButtons title={article.title} url={article.url} />
@@ -170,7 +174,12 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
             {/* Article Content */}
             <div className="lg:col-span-9">
-              <div className="prose prose-lg prose-hampstead max-w-none">
+              <div 
+                className="prose prose-lg prose-hampstead max-w-none"
+                style={{ 
+                  fontSize: 'calc(1.125rem * var(--article-font-scale, 1))' 
+                } as React.CSSProperties}
+              >
                 <ArticleBody code={article.body.code} />
               </div>
 

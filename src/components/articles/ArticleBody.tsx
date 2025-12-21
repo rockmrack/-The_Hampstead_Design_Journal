@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Callout from './Callout';
 import PullQuote from './PullQuote';
+import KeyTakeaways from './KeyTakeaways';
 
 const components = {
   h2: ({ children, id, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -109,6 +110,7 @@ const components = {
   // Custom components
   Callout,
   PullQuote,
+  KeyTakeaways,
 };
 
 interface ArticleBodyProps {
