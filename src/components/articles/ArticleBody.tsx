@@ -84,26 +84,7 @@ const components = {
       </Link>
     );
   },
-  img: ({ src, alt, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <figure className="my-10">
-      <div className="relative aspect-[16/9] bg-hampstead-grey/30 overflow-hidden">
-        {src && (
-          <Image
-            src={src}
-            alt={alt || ''}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 800px"
-          />
-        )}
-      </div>
-      {alt && (
-        <figcaption className="text-sm text-hampstead-charcoal/60 mt-3 text-center italic">
-          {alt}
-        </figcaption>
-      )}
-    </figure>
-  ),
+  img: () => null,
   hr: () => (
     <hr className="my-12 border-0 h-px bg-hampstead-grey" />
   ),

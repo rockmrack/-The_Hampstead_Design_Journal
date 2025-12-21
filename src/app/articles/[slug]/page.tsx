@@ -139,7 +139,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             </div>
           </div>
 
-          {/* Cover Image */}
+          {/* Cover Image - Hidden as per request
           {article.coverImage && (
             <div className="editorial-container pb-8 md:pb-12">
               <div className="aspect-[21/9] relative overflow-hidden bg-hampstead-grey/30">
@@ -154,6 +154,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               </div>
             </div>
           )}
+          */}
         </header>
 
         {/* Main Content */}
