@@ -39,7 +39,7 @@ export default function PriceTrackerPage() {
         <header className="mb-12">
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-6">Price Tracker</h1>
           <p className="text-xl text-hampstead-charcoal/80 max-w-2xl leading-relaxed">
-            Track real-time sold prices and market movements across North West London's most prestigious postcodes.
+            Track real-time sold prices and market movements across North West London&apos;s most prestigious postcodes.
           </p>
         </header>
 
