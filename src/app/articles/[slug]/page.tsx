@@ -139,22 +139,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             </div>
           </div>
 
-          {/* Cover Image - Hidden as per request
-          {article.coverImage && (
-            <div className="editorial-container pb-8 md:pb-12">
-              <div className="aspect-[21/9] relative overflow-hidden bg-hampstead-grey/30">
-                <Image
-                  src={article.coverImage}
-                  alt={article.title}
-                  fill
-                  sizes="100vw"
-                  priority
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          )}
-          */}
+          {/* Cover Image removed */}
         </header>
 
         {/* Main Content */}
