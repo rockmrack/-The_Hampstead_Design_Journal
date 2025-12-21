@@ -12,7 +12,7 @@ const HERO_STORIES = [
     title: "The Renaissance of Redington Road",
     subtitle: "Architecture",
     excerpt: "How a new generation of architects is reimagining Hampstead's most prestigious Arts & Crafts enclave while strictly adhering to conservation guidelines.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?q=80&w=2070&auto=format&fit=crop",
     link: "/archive/redington-road",
     readTime: "8 min read"
   },
@@ -21,7 +21,7 @@ const HERO_STORIES = [
     title: "Modernist Secrets of Belsize Park",
     subtitle: "Heritage",
     excerpt: "Uncovering the forgotten Isokon experiments and the radical concrete structures that changed North London living forever.",
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?q=80&w=2065&auto=format&fit=crop",
     link: "/articles/modernist-secrets",
     readTime: "6 min read"
   },
@@ -30,7 +30,7 @@ const HERO_STORIES = [
     title: "The Ultimate Guide to Victorian Tile Restoration",
     subtitle: "Interiors",
     excerpt: "From Minton to encaustic: a masterclass in preserving the geometric soul of your hallway.",
-    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop",
     link: "/articles/victorian-tile-restoration",
     readTime: "12 min read"
   }
