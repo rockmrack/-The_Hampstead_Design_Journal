@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { allArticles } from 'contentlayer/generated';
 import { compareDesc } from 'date-fns';
-import { ArrowRight, MapPin, Building2, Compass, Star } from 'lucide-react';
+import { ArrowRight, MapPin, Building2, Compass, Star, TrendingUp, Calendar } from 'lucide-react';
 import NewsletterSignup from '../components/layout/NewsletterSignup';
 import CinematicHero from '../components/home/CinematicHero';
 import MarketTicker from '../components/home/MarketTicker';
 import EditorialSection from '../components/home/EditorialSection';
 import MagazineGrid from '../components/home/MagazineGrid';
+import ExpertVoices from '../components/home/ExpertVoices';
+import CuratedCollection from '../components/home/CuratedCollection';
 
 export const metadata: Metadata = {
   title: 'The Hampstead Design Journal | Architecture, Interiors, and Living in NW3',
@@ -92,6 +94,59 @@ export default function HomePage() {
       {/* Latest News Grid */}
       <MagazineGrid articles={latestArticles} />
 
+      {/* Expert Voices - Social Proof */}
+      <ExpertVoices />
+
+      {/* Market Focus - Data Visualization Placeholder */}
+      <section className="py-24 bg-hampstead-black text-white border-y border-white/10">
+        <div className="editorial-container">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="p-2 bg-white/10 rounded-full">
+                  <TrendingUp className="w-4 h-4 text-white" />
+                </span>
+                <span className="text-xs font-bold uppercase tracking-[0.25em] text-white/50">
+                  Market Focus
+                </span>
+              </div>
+              <h2 className="font-serif text-4xl md:text-5xl mb-6 leading-tight">
+                The NW3 Premium: <br/>
+                <span className="text-white/60">Q4 2025 Analysis</span>
+              </h2>
+              <p className="text-lg text-white/70 leading-relaxed mb-8 font-light">
+                Despite broader market volatility, Hampstead&apos;s conservation areas continue to outperform London averages. 
+                Our latest data reveals a 4.2% uplift in price-per-sq-ft for restored period properties.
+              </p>
+              <Link 
+                href="/market"
+                className="inline-flex items-center gap-3 text-sm uppercase tracking-[0.15em] font-medium border-b border-white/30 pb-2 hover:border-white hover:text-white/80 transition-all"
+              >
+                Read Full Report
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="relative">
+              <div className="aspect-[16/9] bg-white/5 border border-white/10 p-8 relative overflow-hidden group">
+                {/* Abstract Chart Representation */}
+                <div className="absolute bottom-0 left-0 right-0 h-2/3 flex items-end justify-between px-8 pb-8 gap-2 opacity-50 group-hover:opacity-80 transition-opacity duration-700">
+                  {[40, 65, 45, 80, 55, 90, 70, 85].map((h, i) => (
+                    <div key={i} className="w-full bg-white/20 hover:bg-white/40 transition-colors duration-300" style={{ height: `${h}%` }} />
+                  ))}
+                </div>
+                <div className="absolute top-8 left-8">
+                  <div className="text-3xl font-serif">£1,850</div>
+                  <div className="text-xs uppercase tracking-widest text-white/50">Avg. Price / Sq Ft</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Curated Collection - Materials */}
+      <CuratedCollection />
+
       {/* The Living Edit */}
       <EditorialSection 
         title="The Living Edit"
@@ -100,6 +155,41 @@ export default function HomePage() {
         articles={livingArticles.length > 0 ? livingArticles : latestArticles.slice(3, 6)}
         align="right"
       />
+
+      {/* Cultural Agenda - Events */}
+      <section className="py-20 bg-white border-b border-hampstead-grey">
+        <div className="editorial-container">
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="font-serif text-3xl md:text-4xl text-hampstead-black">Cultural Agenda</h2>
+            <Link href="/events" className="text-xs font-bold uppercase tracking-[0.15em] text-hampstead-charcoal/50 hover:text-hampstead-black transition-colors">
+              View All Events
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { date: "12 OCT", title: "Modernism in Hampstead Walking Tour", loc: "2 Willow Road" },
+              { date: "24 OCT", title: "Sustainable Retrofit Symposium", loc: "Burgh House" },
+              { date: "05 NOV", title: "Winter Art Fair Opening Night", loc: "Hampstead School of Art" }
+            ].map((event, idx) => (
+              <div key={idx} className="group cursor-pointer border-t border-hampstead-grey pt-6 hover:border-hampstead-black transition-colors">
+                <div className="flex items-start gap-4">
+                  <div className="flex flex-col items-center min-w-[60px]">
+                    <span className="text-xs font-bold uppercase tracking-widest text-hampstead-charcoal/40">{event.date.split(' ')[1]}</span>
+                    <span className="font-serif text-2xl text-hampstead-black">{event.date.split(' ')[0]}</span>
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-xl mb-2 group-hover:text-hampstead-charcoal/70 transition-colors">{event.title}</h3>
+                    <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-hampstead-charcoal/50">
+                      <MapPin className="w-3 h-3" />
+                      {event.loc}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Heritage Archive Feature - Premium Redesign */}
       <section className="py-28 md:py-36 bg-hampstead-black text-white relative overflow-hidden">
