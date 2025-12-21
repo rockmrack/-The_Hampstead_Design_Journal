@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { allArticles } from 'contentlayer/generated';
 import { compareDesc } from 'date-fns';
-import { ArrowRight, MapPin } from 'lucide-react';
+import { ArrowRight, MapPin, Building2, Compass, Star } from 'lucide-react';
 import NewsletterSignup from '../components/layout/NewsletterSignup';
 import CinematicHero from '../components/home/CinematicHero';
 import MarketTicker from '../components/home/MarketTicker';
@@ -57,6 +57,30 @@ export default function HomePage() {
       
       <MarketTicker />
 
+      {/* Quick Navigation Pillars */}
+      <section className="py-16 bg-white border-b border-hampstead-grey">
+        <div className="editorial-container">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { icon: Building2, label: 'Heritage Archive', href: '/archive', desc: 'Street-by-street history' },
+              { icon: Compass, label: 'Planning Guide', href: '/guides', desc: 'Navigate regulations' },
+              { icon: Star, label: 'Directory', href: '/directory', desc: 'Trusted professionals' },
+              { icon: MapPin, label: 'Market Data', href: '/market', desc: 'Live NW3 prices' },
+            ].map((item, idx) => (
+              <Link 
+                key={idx}
+                href={item.href}
+                className="group p-6 border border-hampstead-grey hover:border-hampstead-black hover:bg-hampstead-cream transition-all duration-300"
+              >
+                <item.icon className="w-6 h-6 mb-4 text-hampstead-charcoal/40 group-hover:text-hampstead-black transition-colors" />
+                <h3 className="font-serif text-lg mb-1 group-hover:text-hampstead-black">{item.label}</h3>
+                <p className="text-xs text-hampstead-charcoal/60">{item.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* The Heritage Edit */}
       <EditorialSection 
         title="The Heritage Edit"
@@ -66,28 +90,7 @@ export default function HomePage() {
       />
 
       {/* Latest News Grid */}
-      <section className="section-spacing bg-hampstead-cream">
-        <div className="editorial-container mb-12">
-          <div className="flex items-end justify-between border-b border-hampstead-black/10 pb-6">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-hampstead-charcoal/50 mb-2 block">
-                Latest Stories
-              </span>
-              <h2 className="font-serif text-3xl md:text-4xl">
-                Journal Entries
-              </h2>
-            </div>
-            <Link 
-              href="/articles"
-              className="hidden md:flex items-center gap-2 text-sm uppercase tracking-widest hover:text-hampstead-charcoal/60 transition-colors"
-            >
-              View All
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-        <MagazineGrid articles={latestArticles} />
-      </section>
+      <MagazineGrid articles={latestArticles} />
 
       {/* The Living Edit */}
       <EditorialSection 
@@ -98,77 +101,104 @@ export default function HomePage() {
         align="right"
       />
 
-      {/* Heritage Archive Feature (Preserved from original) */}
-      <section className="section-spacing bg-hampstead-black text-white">
-        <div className="editorial-container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Heritage Archive Feature - Premium Redesign */}
+      <section className="py-28 md:py-36 bg-hampstead-black text-white relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
+        
+        <div className="editorial-container relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-white/50 mb-4 block">
-                The Heritage Archive
-              </span>
-              <h2 className="font-serif text-4xl md:text-5xl mb-6">
-                A Digital Museum of NW3&apos;s Architectural Legacy
+              <div className="flex items-center gap-4 mb-8">
+                <span className="w-12 h-px bg-white/40" />
+                <span className="text-xs uppercase tracking-[0.3em] text-white/50">
+                  The Heritage Archive
+                </span>
+              </div>
+              
+              <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl mb-8 leading-[0.95] tracking-tight">
+                A Digital Museum of NW3&apos;s Legacy
               </h2>
-              <p className="text-lg text-white/70 leading-relaxed mb-6">
+              
+              <p className="text-xl text-white/60 leading-relaxed mb-10 font-light max-w-lg">
                 Explore the history, construction DNA, and restoration techniques of Hampstead&apos;s 
                 most prestigious streets. From Georgian townhouses to Arts & Crafts mansions.
               </p>
+              
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/archive"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-hampstead-black font-medium hover:bg-hampstead-cream transition-colors"
+                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-hampstead-black font-medium hover:bg-hampstead-cream transition-all duration-300"
                 >
                   Explore The Archive
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
                 </Link>
                 <Link
                   href="/archive/redington-road"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/30 text-white font-medium hover:bg-white/10 transition-colors"
+                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-medium hover:bg-white hover:text-hampstead-black transition-all duration-300"
                 >
                   <MapPin className="w-4 h-4" />
-                  Redington Road Profile
+                  Redington Road
                 </Link>
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
-              <Link href="/archive/redington-road" className="group">
-                <div className="aspect-[3/4] bg-white/10 relative overflow-hidden mb-3">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="text-xs text-white/60 uppercase tracking-wide">Arts & Crafts</span>
-                    <h4 className="font-serif text-lg">Redington Road</h4>
+            {/* Premium Archive Grid */}
+            <div className="grid grid-cols-2 gap-5">
+              {[
+                { href: '/archive/redington-road', style: 'Arts & Crafts', name: 'Redington Road', offset: false },
+                { href: '/archive/frognal', style: 'Mixed Heritage', name: 'Frognal', offset: true },
+                { href: '/archive/the-bishops-avenue', style: 'Edwardian', name: 'Bishops Avenue', offset: false },
+                { href: '/archive/church-row', style: 'Georgian', name: 'Church Row', offset: true },
+              ].map((item, idx) => (
+                <Link 
+                  key={idx}
+                  href={item.href} 
+                  className={`group block ${item.offset ? 'mt-10' : ''}`}
+                >
+                  <div className="aspect-[3/4] bg-white/10 relative overflow-hidden mb-4 border border-white/10 group-hover:border-white/30 transition-all duration-500">
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-500" />
+                    
+                    {/* Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    
+                    {/* Content */}
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <span className="text-[10px] text-white/50 uppercase tracking-[0.2em] block mb-2">
+                        {item.style}
+                      </span>
+                      <h4 className="font-serif text-xl group-hover:translate-x-1 transition-transform duration-300">
+                        {item.name}
+                      </h4>
+                    </div>
+                    
+                    {/* Corner accent */}
+                    <div className="absolute top-4 right-4 w-8 h-8 border-t border-r border-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                </div>
-              </Link>
-              <Link href="/archive/frognal" className="group mt-8">
-                <div className="aspect-[3/4] bg-white/10 relative overflow-hidden mb-3">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="text-xs text-white/60 uppercase tracking-wide">Mixed Heritage</span>
-                    <h4 className="font-serif text-lg">Frognal</h4>
-                  </div>
-                </div>
-              </Link>
-              <Link href="/archive/the-bishops-avenue" className="group">
-                <div className="aspect-[3/4] bg-white/10 relative overflow-hidden mb-3">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="text-xs text-white/60 uppercase tracking-wide">Edwardian</span>
-                    <h4 className="font-serif text-lg">Bishops Avenue</h4>
-                  </div>
-                </div>
-              </Link>
-              <Link href="/archive/church-row" className="group mt-8">
-                <div className="aspect-[3/4] bg-white/10 relative overflow-hidden mb-3">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="text-xs text-white/60 uppercase tracking-wide">Georgian</span>
-                    <h4 className="font-serif text-lg">Church Row</h4>
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats/Credibility Section */}
+      <section className="py-20 bg-hampstead-cream border-b border-hampstead-grey">
+        <div className="editorial-container">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+            {[
+              { value: '15+', label: 'Years Experience' },
+              { value: '500+', label: 'Projects Completed' },
+              { value: '£2.1B', label: 'Property Value Managed' },
+              { value: '48', label: 'Conservation Areas' },
+            ].map((stat, idx) => (
+              <div key={idx} className="space-y-2">
+                <div className="font-serif text-5xl md:text-6xl text-hampstead-black tracking-tight">{stat.value}</div>
+                <div className="text-xs uppercase tracking-[0.2em] text-hampstead-charcoal/60">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

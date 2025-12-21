@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { TrendingUp, ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { TrendingUp, ArrowUpRight, ArrowDownRight, BarChart2 } from 'lucide-react';
 
 const MARKET_DATA = [
   { area: "Hampstead Village", price: "£3.2M", change: "+4.5%", trend: "up" },
@@ -16,39 +17,59 @@ const MARKET_DATA = [
 
 const MarketTicker = () => {
   return (
-    <div className="bg-hampstead-cream border-y border-hampstead-black/5 py-3 overflow-hidden flex items-center relative z-20">
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-hampstead-cream to-transparent z-10" />
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-hampstead-cream to-transparent z-10" />
+    <div className="bg-hampstead-black text-white py-4 overflow-hidden relative z-20">
+      {/* Gradient overlays */}
+      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-hampstead-black to-transparent z-10" />
+      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-hampstead-black to-transparent z-10" />
       
-      <div className="flex items-center px-6 border-r border-hampstead-black/10 z-20 bg-hampstead-cream">
-        <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-hampstead-black whitespace-nowrap">
-          <TrendingUp className="w-4 h-4" />
-          Market Watch
-        </span>
+      <div className="flex items-center">
+        {/* Fixed Label */}
+        <Link 
+          href="/market"
+          className="group flex items-center gap-3 px-8 border-r border-white/10 z-20 bg-hampstead-black hover:bg-white/5 transition-colors"
+        >
+          <div className="w-10 h-10 flex items-center justify-center bg-white/10 group-hover:bg-white/20 transition-colors">
+            <TrendingUp className="w-5 h-5" />
+          </div>
+          <div className="hidden sm:block">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 block">Live Data</span>
+            <span className="text-sm font-medium tracking-wide">Market Watch</span>
+          </div>
+        </Link>
+
+        {/* Scrolling Ticker */}
+        <motion.div 
+          className="flex items-center gap-16 whitespace-nowrap pl-12"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ 
+            repeat: Infinity, 
+            ease: "linear", 
+            duration: 35 
+          }}
+        >
+          {[...MARKET_DATA, ...MARKET_DATA].map((item, idx) => (
+            <div key={idx} className="flex items-center gap-4">
+              <span className="font-serif text-white/90">{item.area}</span>
+              <span className="px-3 py-1 bg-white/10 font-mono text-sm">{item.price}</span>
+              <span className={`flex items-center gap-1 text-sm font-medium ${
+                item.trend === 'up' ? 'text-emerald-400' : 'text-red-400'
+              }`}>
+                {item.trend === 'up' ? <ArrowUpRight className="w-4 h-4" /> : <ArrowDownRight className="w-4 h-4" />}
+                {item.change}
+              </span>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
-      <motion.div 
-        className="flex items-center gap-12 whitespace-nowrap pl-8"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ 
-          repeat: Infinity, 
-          ease: "linear", 
-          duration: 30 
-        }}
+      {/* CTA Button */}
+      <Link
+        href="/market"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center gap-2 px-4 py-2 bg-white text-hampstead-black text-xs uppercase tracking-widest font-medium hover:bg-hampstead-cream transition-colors"
       >
-        {[...MARKET_DATA, ...MARKET_DATA].map((item, idx) => (
-          <div key={idx} className="flex items-center gap-3 text-sm">
-            <span className="font-serif text-hampstead-charcoal">{item.area}</span>
-            <span className="font-mono text-xs text-hampstead-black/60">{item.price}</span>
-            <span className={`flex items-center text-xs font-medium ${
-              item.trend === 'up' ? 'text-green-700' : 'text-red-700'
-            }`}>
-              {item.trend === 'up' ? <ArrowUpRight className="w-3 h-3 mr-1" /> : <ArrowDownRight className="w-3 h-3 mr-1" />}
-              {item.change}
-            </span>
-          </div>
-        ))}
-      </motion.div>
+        <BarChart2 className="w-3.5 h-3.5" />
+        Full Report
+      </Link>
     </div>
   );
 };
