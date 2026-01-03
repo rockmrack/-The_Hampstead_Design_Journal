@@ -333,4 +333,66 @@ html.dark {
   .border-glow:hover::before {
     opacity: 1;
   }
+
+  /* ============================================
+     Mobile-Specific Improvements
+     ============================================ */
+
+  /* Minimum touch target size (48px) for mobile accessibility */
+  .touch-target {
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  /* Tap feedback for touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .tap-feedback {
+      -webkit-tap-highlight-color: rgba(26, 26, 26, 0.1);
+    }
+
+    .tap-feedback:active {
+      opacity: 0.7;
+      transform: scale(0.98);
+    }
+  }
+
+  /* Safe area padding for notched devices */
+  .safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Mobile-optimized scrolling */
+  .scroll-smooth-mobile {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbar on mobile for horizontal scroll areas */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Mobile full-bleed */
+  .mobile-full-bleed {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-full-bleed {
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 }

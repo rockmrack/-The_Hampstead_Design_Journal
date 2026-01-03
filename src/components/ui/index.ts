@@ -100,6 +100,9 @@ export { ThemeToggle } from './ThemeToggle';
 // Image Components
 export { OptimizedImage, BlurImage, ImageWithZoom } from './OptimizedImage';
 
+// Premium Components
+export { PremiumCard } from './PremiumCard';
+
 // Search
 export { default as SearchModal, SearchTrigger } from './SearchModal';
 
