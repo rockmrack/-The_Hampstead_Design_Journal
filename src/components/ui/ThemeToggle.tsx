@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Monitor } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
@@ -14,29 +15,14 @@ interface ThemeToggleProps {
 
 /**
  * ThemeToggle - Elegant theme switching component
+ * Internal component that uses the theme context
  */
-export function ThemeToggle({
+function ThemeToggleInternal({
     className = '',
     showLabel = false,
     variant = 'icon',
 }: ThemeToggleProps) {
-    const [mounted, setMounted] = useState(false);
     const { theme, resolvedTheme, setTheme, toggleTheme } = useTheme();
-
-    // Only render after hydration to avoid SSR mismatch
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) {
-        // Return a placeholder with the same dimensions during SSR
-        return (
-            <div className={cn(
-                variant === 'icon' ? 'w-9 h-9' : variant === 'switch' ? 'w-14 h-7' : 'w-auto h-9',
-                className
-            )} />
-        );
-    }
 
     if (variant === 'icon') {
         return (
@@ -147,5 +133,11 @@ export function ThemeToggle({
         </button>
     );
 }
+
+// Export with no SSR to prevent hydration errors
+export const ThemeToggle = dynamic(() => Promise.resolve(ThemeToggleInternal), {
+    ssr: false,
+    loading: () => <div className="w-9 h-9" />,
+});
 
 export default ThemeToggle;
