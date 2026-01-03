@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Monitor } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
@@ -20,7 +20,23 @@ export function ThemeToggle({
     showLabel = false,
     variant = 'icon',
 }: ThemeToggleProps) {
+    const [mounted, setMounted] = useState(false);
     const { theme, resolvedTheme, setTheme, toggleTheme } = useTheme();
+
+    // Only render after hydration to avoid SSR mismatch
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) {
+        // Return a placeholder with the same dimensions during SSR
+        return (
+            <div className={cn(
+                variant === 'icon' ? 'w-9 h-9' : variant === 'switch' ? 'w-14 h-7' : 'w-auto h-9',
+                className
+            )} />
+        );
+    }
 
     if (variant === 'icon') {
         return (
