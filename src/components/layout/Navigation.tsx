@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, Search, Instagram, Twitter, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '../ui/ThemeToggle';
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -130,7 +131,8 @@ const Navigation: React.FC = () => {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 md:space-x-4">
+            <ThemeToggle className="hidden md:flex" />
             <Link
               href="/search"
               className="p-2 text-hampstead-black hover:text-hampstead-charcoal transition-colors"

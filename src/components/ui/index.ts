@@ -93,6 +93,10 @@ export {
   ReadingProgressCircular,
 } from './ReadingProgress';
 
+// Theme Components
+export { ThemeProvider, useTheme } from './ThemeProvider';
+export { ThemeToggle } from './ThemeToggle';
+
 // Search
 export { default as SearchModal, SearchTrigger } from './SearchModal';
 

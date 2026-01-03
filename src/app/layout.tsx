@@ -4,6 +4,7 @@ import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
 import SkipLink from '../components/ui/SkipLink';
+import { ThemeProvider } from '../components/ui/ThemeProvider';
 import './globals.css';
 import 'leaflet/dist/leaflet.css';
 
@@ -66,17 +67,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         <LocalBusinessSchema />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('hampstead-theme');
+                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </head>
-      <body className="antialiased min-h-screen flex flex-col">
-        <SkipLink />
-        <Header />
-        <main id="main-content" className="flex-1 pt-20 md:pt-24" role="main" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
+      <body className="antialiased min-h-screen flex flex-col bg-hampstead-white text-hampstead-black transition-colors duration-300">
+        <ThemeProvider>
+          <SkipLink />
+          <Header />
+          <main id="main-content" className="flex-1 pt-20 md:pt-24" role="main" tabIndex={-1}>
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

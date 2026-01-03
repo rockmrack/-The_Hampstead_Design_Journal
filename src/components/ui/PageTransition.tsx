@@ -18,7 +18,7 @@ const pageVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as const,
       staggerChildren: 0.1,
     },
   },
@@ -27,7 +27,7 @@ const pageVariants = {
     y: -10,
     transition: {
       duration: 0.3,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as const,
     },
   },
 };
@@ -64,17 +64,17 @@ interface FadeInProps {
   className?: string;
 }
 
-export function FadeIn({ 
-  children, 
-  delay = 0, 
+export function FadeIn({
+  children,
+  delay = 0,
   duration = 0.5,
-  className = '' 
+  className = ''
 }: FadeInProps) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay, duration, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ delay, duration, ease: [0.22, 1, 0.36, 1] as const }}
       className={className}
     >
       {children}
@@ -93,18 +93,18 @@ interface SlideUpProps {
   className?: string;
 }
 
-export function SlideUp({ 
-  children, 
-  delay = 0, 
+export function SlideUp({
+  children,
+  delay = 0,
   duration = 0.6,
   distance = 30,
-  className = '' 
+  className = ''
 }: SlideUpProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: distance }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ delay, duration, ease: [0.22, 1, 0.36, 1] as const }}
       className={className}
     >
       {children}
@@ -159,12 +159,12 @@ export function StaggerItem({ children, className = '' }: StaggerItemProps) {
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 20 },
-        visible: { 
-          opacity: 1, 
+        visible: {
+          opacity: 1,
           y: 0,
           transition: {
             duration: 0.5,
-            ease: [0.22, 1, 0.36, 1],
+            ease: [0.22, 1, 0.36, 1] as const,
           },
         },
       }}
