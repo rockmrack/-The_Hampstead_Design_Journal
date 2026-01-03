@@ -71,6 +71,28 @@ export {
   EmptyState,
 } from './Misc';
 
+// Animation Components
+export {
+  PageTransition,
+  FadeIn,
+  SlideUp,
+  StaggerContainer,
+  StaggerItem,
+} from './PageTransition';
+
+export {
+  ScrollReveal,
+  ScrollRevealGroup,
+  ScrollRevealItem,
+  Parallax,
+} from './ScrollReveal';
+
+export {
+  ReadingProgress,
+  ReadingProgressMinimal,
+  ReadingProgressCircular,
+} from './ReadingProgress';
+
 // Search
 export { default as SearchModal, SearchTrigger } from './SearchModal';
 
