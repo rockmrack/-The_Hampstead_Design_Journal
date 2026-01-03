@@ -97,6 +97,9 @@ export {
 export { ThemeProvider, useTheme } from './ThemeProvider';
 export { ThemeToggle } from './ThemeToggle';
 
+// Image Components
+export { OptimizedImage, BlurImage, ImageWithZoom } from './OptimizedImage';
+
 // Search
 export { default as SearchModal, SearchTrigger } from './SearchModal';
 
