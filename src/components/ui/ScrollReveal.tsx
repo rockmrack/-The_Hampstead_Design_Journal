@@ -19,7 +19,7 @@ interface ScrollRevealProps {
 const getVariants = (variant: AnimationVariant, distance: number): { hidden: Variant; visible: Variant } => {
     const baseTransition = {
         duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.22, 1, 0.36, 1] as const,
     };
 
     const variants: Record<AnimationVariant, { hidden: Variant; visible: Variant }> = {
