@@ -216,7 +216,7 @@ export default function GlossaryPage() {
     "@type": "DefinedTermSet",
     "name": "Heritage Architecture Glossary",
     "description": "A comprehensive glossary of heritage architecture, conservation, and renovation terms for North West London period properties.",
-    "url": "https://hampsteaddesignjournal.com/glossary",
+    "url": "https://www.hampsteadrenovations.co.uk/journal/glossary",
     "hasDefinedTerm": glossaryTerms.slice(0, 50).map(term => ({
       "@type": "DefinedTerm",
       "name": term.term,

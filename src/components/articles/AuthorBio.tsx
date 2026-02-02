@@ -28,7 +28,7 @@ export default function AuthorBio({ articleTopic }: AuthorBioProps) {
           <p className="text-hampstead-charcoal/80 leading-relaxed mb-6">
             The Hampstead Design Journal is curated by the team at{' '}
             <a 
-              href="https://hampsteadrenovations.com" 
+              href="https://www.hampsteadrenovations.co.uk" 
               target="_blank" 
               rel="noopener noreferrer"
               className="font-medium text-hampstead-black underline decoration-1 underline-offset-4 hover:decoration-2"

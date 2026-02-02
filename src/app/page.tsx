@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: 'The Hampstead Design Journal | Architecture, Interiors, and Living in NW3',
   description: 'The authoritative voice on architecture, heritage restoration, and interior design in North West London. Expert insights on Hampstead\'s finest homes.',
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.hampsteadrenovations.co.uk/journal/',
   },
 };
 

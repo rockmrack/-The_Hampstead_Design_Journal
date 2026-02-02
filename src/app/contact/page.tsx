@@ -145,8 +145,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-medium mb-1">Email</h3>
-                    <a href="mailto:editor@hampsteaddesignjournal.com" className="text-hampstead-charcoal/70 hover:text-hampstead-black transition-colors">
-                      editor@hampsteaddesignjournal.com
+                    <a href="mailto:editor@hampsteadrenovations.co.uk" className="text-hampstead-charcoal/70 hover:text-hampstead-black transition-colors">
+                      editor@hampsteadrenovations.co.uk
                     </a>
                   </div>
                 </div>
@@ -169,7 +169,7 @@ export default function ContactPage() {
                 <h3 className="font-serif text-xl mb-3">Project Enquiries</h3>
                 <p className="text-hampstead-charcoal/70 text-sm leading-relaxed">
                   For renovation and restoration consultations, please visit our parent company 
-                  <a href="https://hampsteadrenovations.com" className="underline hover:text-hampstead-black ml-1" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.hampsteadrenovations.co.uk" className="underline hover:text-hampstead-black ml-1" target="_blank" rel="noopener noreferrer">
                     Hampstead Renovations
                   </a>.
                 </p>

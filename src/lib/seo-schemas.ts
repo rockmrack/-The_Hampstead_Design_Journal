@@ -230,9 +230,9 @@ export interface ServiceSchema {
 // Site configuration
 const siteConfig = {
   name: 'The Hampstead Design Journal',
-  url: 'https://hampsteaddesignjournal.com',
+  url: 'https://www.hampsteadrenovations.co.uk/journal',
   description: 'The authoritative voice on architecture, heritage restoration, and interior design in North West London.',
-  logo: 'https://hampsteaddesignjournal.com/images/logo.png',
+  logo: 'https://www.hampsteadrenovations.co.uk/journal/images/logo.png',
   telephone: '+44 20 7433 1234',
   address: {
     streetAddress: '123 Hampstead High Street',

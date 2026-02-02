@@ -12,6 +12,9 @@ interface ArticleJsonLdProps {
   article: Article;
 }
 
+// Base URL for the journal on the main site
+const SITE_URL = 'https://www.hampsteadrenovations.co.uk/journal';
+
 export default function ArticleJsonLd({ article }: ArticleJsonLdProps) {
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -23,20 +26,20 @@ export default function ArticleJsonLd({ article }: ArticleJsonLdProps) {
     author: {
       '@type': 'Organization',
       name: article.author,
-      url: 'https://hampsteaddesignjournal.com',
+      url: SITE_URL,
     },
     publisher: {
       '@type': 'Organization',
       name: 'The Hampstead Design Journal',
-      url: 'https://hampsteaddesignjournal.com',
+      url: SITE_URL,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://hampsteaddesignjournal.com/logo.png',
+        url: `${SITE_URL}/logo.png`,
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://hampsteaddesignjournal.com${article.url}`,
+      '@id': `${SITE_URL}${article.url}`,
     },
     ...(article.coverImage && {
       image: {

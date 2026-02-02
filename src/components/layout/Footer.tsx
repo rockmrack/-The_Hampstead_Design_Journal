@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
                 <Instagram className="w-5 h-5" />
               </a>
               <a 
-                href="mailto:info@hampsteadrenovations.com" 
+                href="mailto:info@hampsteadrenovations.co.uk" 
                 className="text-hampstead-grey hover:text-hampstead-white transition-colors"
                 aria-label="Email us"
               >
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
               journal are provided by our parent company.
             </p>
             <a 
-              href="https://hampsteadrenovations.com"
+              href="https://www.hampsteadrenovations.co.uk"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-hampstead-white hover:text-hampstead-cream transition-colors font-medium"
@@ -137,10 +137,10 @@ const Footer: React.FC = () => {
               <p className="flex items-center gap-2">
                 <Mail className="w-4 h-4 flex-shrink-0 text-hampstead-grey/60" />
                 <a 
-                  href="mailto:info@hampsteadrenovations.com" 
+                  href="mailto:info@hampsteadrenovations.co.uk" 
                   className="hover:text-hampstead-white transition-colors"
                 >
-                  info@hampsteadrenovations.com
+                  info@hampsteadrenovations.co.uk
                 </a>
               </p>
             </address>
@@ -165,7 +165,7 @@ const Footer: React.FC = () => {
               &copy; {new Date().getFullYear()} The Hampstead Design Journal. 
               <span className="hidden sm:inline"> Curated by </span>
               <a 
-                href="https://hampsteadrenovations.com" 
+                href="https://www.hampsteadrenovations.co.uk" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-hampstead-white transition-colors"

@@ -270,7 +270,7 @@ export default function ProjectsPage() {
     "@type": "CollectionPage",
     "name": "Heritage Renovation Projects Portfolio",
     "description": "Explore our portfolio of heritage renovation projects across North West London, featuring before/after transformations of Georgian, Victorian, and Edwardian properties.",
-    "url": "https://hampsteaddesignjournal.com/projects",
+    "url": "https://www.hampsteadrenovations.co.uk/journal/projects",
     "mainEntity": {
       "@type": "ItemList",
       "numberOfItems": projects.length,

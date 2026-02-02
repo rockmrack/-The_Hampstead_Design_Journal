@@ -5,5 +5,51 @@
   "framework": "nextjs",
   "env": {
     "VERCEL_BYPASS_FALLBACK_OVERSIZED_ERROR": "1"
-  }
+  },
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "the-hampstead-design-journal.vercel.app"
+        }
+      ],
+      "destination": "https://www.hampsteadrenovations.co.uk/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/articles/:slug*",
+      "has": [
+        {
+          "type": "host",
+          "value": "the-hampstead-design-journal.vercel.app"
+        }
+      ],
+      "destination": "https://www.hampsteadrenovations.co.uk/journal/articles/:slug*/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "the-hampstead-design-journal.vercel.app"
+        }
+      ],
+      "destination": "https://www.hampsteadrenovations.co.uk/journal/categories/:path*/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "the-hampstead-design-journal.vercel.app"
+        }
+      ],
+      "destination": "https://www.hampsteadrenovations.co.uk/journal/:path*/",
+      "permanent": true
+    }
+  ]
 }

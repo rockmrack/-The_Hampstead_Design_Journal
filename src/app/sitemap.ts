@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next';
 import { allArticles } from 'contentlayer/generated';
 
-const BASE_URL = 'https://hampsteaddesignjournal.com';
+// Canonical domain for the journal (served under /journal/ on main site)
+const BASE_URL = 'https://www.hampsteadrenovations.co.uk/journal';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Static pages
+  // Static pages - now relative to /journal base path
   const staticPages = [
     '',
     '/about',
@@ -42,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1 : route.startsWith('/categories') ? 0.8 : 0.7,
   }));
 
-  // Dynamic article pages
+  // Dynamic article pages - now under /journal/articles/
   const articlePages = allArticles.map((article) => ({
     url: `${BASE_URL}/articles/${article.slug}`,
     lastModified: new Date(article.date),

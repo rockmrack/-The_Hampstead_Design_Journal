@@ -4,21 +4,21 @@ const LocalBusinessSchema: React.FC = () => {
   const localBusinessData = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
-    "@id": "https://hampsteadrenovations.com/#organization",
+    "@id": "https://www.hampsteadrenovations.co.uk/#organization",
     "name": "Hampstead Renovations",
     "alternateName": "The Hampstead Design Journal",
     "description": "Heritage renovation specialists in North West London. Expert restoration of period properties in Hampstead, Belsize Park, and surrounding conservation areas.",
-    "url": "https://hampsteadrenovations.com",
+    "url": "https://www.hampsteadrenovations.co.uk",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://hampsteaddesignjournal.com/logo.png",
+      "url": "https://www.hampsteadrenovations.co.uk/journal/logo.png",
       "width": 600,
       "height": 60
     },
     "image": [
-      "https://hampsteaddesignjournal.com/images/showroom-1x1.jpg",
-      "https://hampsteaddesignjournal.com/images/showroom-4x3.jpg",
-      "https://hampsteaddesignjournal.com/images/showroom-16x9.jpg"
+      "https://www.hampsteadrenovations.co.uk/journal/images/showroom-1x1.jpg",
+      "https://www.hampsteadrenovations.co.uk/journal/images/showroom-4x3.jpg",
+      "https://www.hampsteadrenovations.co.uk/journal/images/showroom-16x9.jpg"
     ],
     "address": {
       "@type": "PostalAddress",
@@ -34,7 +34,7 @@ const LocalBusinessSchema: React.FC = () => {
       "longitude": -0.1802
     },
     "telephone": "+442074319823",
-    "email": "info@hampsteadrenovations.com",
+    "email": "info@hampsteadrenovations.co.uk",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -165,18 +165,18 @@ const LocalBusinessSchema: React.FC = () => {
   const websiteData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://hampsteaddesignjournal.com/#website",
+    "@id": "https://www.hampsteadrenovations.co.uk/journal/#website",
     "name": "The Hampstead Design Journal",
-    "url": "https://hampsteaddesignjournal.com",
+    "url": "https://www.hampsteadrenovations.co.uk/journal",
     "description": "The authoritative voice on architecture, heritage restoration, and interior design in North West London",
     "publisher": {
-      "@id": "https://hampsteadrenovations.com/#organization"
+      "@id": "https://www.hampsteadrenovations.co.uk/#organization"
     },
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://hampsteaddesignjournal.com/search?q={search_term_string}"
+        "urlTemplate": "https://www.hampsteadrenovations.co.uk/journal/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     },
@@ -186,17 +186,17 @@ const LocalBusinessSchema: React.FC = () => {
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://hampsteaddesignjournal.com/#publisher",
+    "@id": "https://www.hampsteadrenovations.co.uk/journal/#publisher",
     "name": "The Hampstead Design Journal",
-    "url": "https://hampsteaddesignjournal.com",
+    "url": "https://www.hampsteadrenovations.co.uk/journal",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://hampsteaddesignjournal.com/logo.png",
+      "url": "https://www.hampsteadrenovations.co.uk/journal/logo.png",
       "width": 600,
       "height": 60
     },
     "parentOrganization": {
-      "@id": "https://hampsteadrenovations.com/#organization"
+      "@id": "https://www.hampsteadrenovations.co.uk/#organization"
     }
   };
 

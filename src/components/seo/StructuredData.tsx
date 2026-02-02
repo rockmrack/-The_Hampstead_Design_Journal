@@ -5,10 +5,10 @@ const StructuredData = () => {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "The Hampstead Design Journal",
-        "url": "https://www.hampsteaddesignjournal.com",
+        "url": "https://www.hampsteadrenovations.co.uk/journal",
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://www.hampsteaddesignjournal.com/search?q={search_term_string}",
+            "target": "https://www.hampsteadrenovations.co.uk/journal/search?q={search_term_string}",
             "query-input": "required name=search_term_string"
         }
     };

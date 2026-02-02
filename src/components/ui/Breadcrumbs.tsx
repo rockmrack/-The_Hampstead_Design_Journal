@@ -15,7 +15,8 @@ interface BreadcrumbsProps {
 }
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
-  // Generate BreadcrumbList schema
+  // Generate BreadcrumbList schema - using main site URL with /journal basePath
+  const baseUrl = 'https://www.hampsteadrenovations.co.uk/journal';
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -24,13 +25,13 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://hampsteaddesignjournal.com"
+        "item": baseUrl
       },
       ...items.map((item, index) => ({
         "@type": "ListItem",
         "position": index + 2,
         "name": item.label,
-        ...(item.href && { "item": `https://hampsteaddesignjournal.com${item.href}` })
+        ...(item.href && { "item": `${baseUrl}${item.href}` })
       }))
     ]
   };

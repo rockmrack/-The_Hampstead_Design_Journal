@@ -28,13 +28,16 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   const article = allArticles.find((a) => a.slug === params.slug);
   if (!article) return {};
 
+  // Canonical URL on the main site
+  const canonicalUrl = `https://www.hampsteadrenovations.co.uk/journal/articles/${params.slug}/`;
+
   return {
     title: `${article.title} | The Hampstead Design Journal`,
     description: article.excerpt,
     keywords: article.keywords,
     authors: [{ name: article.author }],
     alternates: {
-      canonical: `/articles/${params.slug}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: article.title,
@@ -42,6 +45,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       type: 'article',
       publishedTime: article.date,
       authors: [article.author],
+      url: canonicalUrl,
       images: article.coverImage ? [article.coverImage] : [],
     },
     twitter: {

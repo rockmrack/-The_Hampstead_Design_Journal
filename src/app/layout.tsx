@@ -21,7 +21,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://hampsteaddesignjournal.com'),
+  metadataBase: new URL('https://www.hampsteadrenovations.co.uk/journal'),
   title: {
     default: 'The Hampstead Design Journal | Architecture, Interiors, and Living in NW3',
     template: '%s | The Hampstead Design Journal',
@@ -42,6 +42,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_GB',
     siteName: 'The Hampstead Design Journal',
+    url: 'https://www.hampsteadrenovations.co.uk/journal/',
   },
   twitter: {
     card: 'summary_large_image',
