@@ -81,7 +81,7 @@ export default function HeroSection() {
                   priority
                   sizes="(max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-40" />
               </div>
               
               {/* Floating Badge */}
