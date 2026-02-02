@@ -97,24 +97,11 @@ async function flushEvents(): Promise<void> {
     console.log('[Analytics] Flushing events:', events);
   }
   
-  // Send to analytics endpoint
-  try {
-    if (typeof window !== 'undefined' && navigator.sendBeacon) {
-      navigator.sendBeacon('/api/analytics', JSON.stringify({ events }));
-    } else {
-      await fetch('/api/analytics', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ events }),
-        keepalive: true,
-      });
-    }
-  } catch (error) {
-    if (config.debug) {
-      console.error('[Analytics] Failed to send events:', error);
-    }
-    // Re-queue failed events
-    eventQueue.push(...events);
+  // Static export - analytics events are logged client-side only
+  // For production, integrate with a third-party analytics service like 
+  // Google Analytics, Plausible, or Fathom that works with static sites
+  if (config.debug) {
+    console.log('[Analytics] Events (static mode):', events);
   }
 }
 

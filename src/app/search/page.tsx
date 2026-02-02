@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search, X, ArrowRight, Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { motion, AnimatePresence } from 'framer-motion';
+import { allArticles } from 'contentlayer/generated';
 
 interface ArticleResult {
   slug: string;
@@ -14,14 +15,7 @@ interface ArticleResult {
   category: string;
   date: string;
   coverImage?: string;
-}
-
-interface SearchResponse {
-  articles: ArticleResult[];
-  categories: string[];
-  total: number;
-  page: number;
-  hasMore: boolean;
+  keywords?: string;
 }
 
 function getCategoryLabel(category: string): string {
@@ -39,66 +33,66 @@ function getCategoryLabel(category: string): string {
 
 const ITEMS_PER_PAGE = 24;
 
+// Pre-process articles for search (client-side)
+const searchableArticles: ArticleResult[] = allArticles
+  .map(article => ({
+    slug: article.slug,
+    title: article.title,
+    excerpt: article.excerpt,
+    category: article.category,
+    date: article.date,
+    coverImage: article.coverImage,
+    keywords: article.keywords || '',
+  }))
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const allCategories = Array.from(new Set(searchableArticles.map(a => a.category))).sort();
+
 export default function SearchPage() {
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [articles, setArticles] = useState<ArticleResult[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
-  const [total, setTotal] = useState(0);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(false);
+  const [displayCount, setDisplayCount] = useState(ITEMS_PER_PAGE);
   const [loading, setLoading] = useState(false);
-  const [initialLoad, setInitialLoad] = useState(true);
 
-  const fetchArticles = useCallback(async (searchQuery: string, category: string | null, pageNum: number, append: boolean = false) => {
-    setLoading(true);
-    try {
-      const params = new URLSearchParams({
-        page: pageNum.toString(),
-        limit: ITEMS_PER_PAGE.toString(),
-      });
-      if (searchQuery.trim()) {
-        params.set('q', searchQuery.trim());
-      }
-      if (category) {
-        params.set('category', category);
-      }
+  // Filter articles based on query and category
+  const filteredArticles = useMemo(() => {
+    let filtered = searchableArticles;
 
-      const res = await fetch(`/api/articles/search?${params}`);
-      if (!res.ok) throw new Error('Search failed');
-      
-      const data: SearchResponse = await res.json();
-      
-      if (append) {
-        setArticles(prev => [...prev, ...data.articles]);
-      } else {
-        setArticles(data.articles);
-      }
-      setCategories(data.categories);
-      setTotal(data.total);
-      setHasMore(data.hasMore);
-      setPage(pageNum);
-    } catch (error) {
-      console.error('Search error:', error);
-    } finally {
-      setLoading(false);
-      setInitialLoad(false);
+    if (selectedCategory) {
+      filtered = filtered.filter(a => a.category === selectedCategory);
     }
-  }, []);
 
-  // Initial load and when filters change
+    if (query.trim()) {
+      const searchTerms = query.toLowerCase().split(/\s+/);
+      filtered = filtered.filter(article => {
+        const searchableText = `${article.title} ${article.excerpt} ${article.keywords}`.toLowerCase();
+        return searchTerms.every(term => searchableText.includes(term));
+      });
+    }
+
+    return filtered;
+  }, [query, selectedCategory]);
+
+  const displayedArticles = useMemo(() => {
+    return filteredArticles.slice(0, displayCount);
+  }, [filteredArticles, displayCount]);
+
+  const hasMore = displayCount < filteredArticles.length;
+  const total = filteredArticles.length;
+
+  // Reset display count when filters change
   useEffect(() => {
-    const debounce = setTimeout(() => {
-      fetchArticles(query, selectedCategory, 1, false);
-    }, 300);
-    return () => clearTimeout(debounce);
-  }, [query, selectedCategory, fetchArticles]);
+    setDisplayCount(ITEMS_PER_PAGE);
+  }, [query, selectedCategory]);
 
   const loadMore = useCallback(() => {
-    if (!loading && hasMore) {
-      fetchArticles(query, selectedCategory, page + 1, true);
-    }
-  }, [loading, hasMore, query, selectedCategory, page, fetchArticles]);
+    setLoading(true);
+    // Simulate async loading for smooth UX
+    setTimeout(() => {
+      setDisplayCount(prev => prev + ITEMS_PER_PAGE);
+      setLoading(false);
+    }, 100);
+  }, []);
 
   const clearFilters = useCallback(() => {
     setQuery('');
@@ -115,7 +109,7 @@ export default function SearchPage() {
               Search the Archive
             </h1>
             <p className="text-xl text-hampstead-charcoal/80 leading-relaxed mb-10">
-              Explore our collection of {total.toLocaleString()} articles on heritage, planning, interiors, and market insights.
+              Explore our collection of {searchableArticles.length.toLocaleString()} articles on heritage, planning, interiors, and market insights.
             </p>
 
             {/* Search Input */}
@@ -157,7 +151,7 @@ export default function SearchPage() {
             >
               All
             </button>
-            {categories.map((cat) => (
+            {allCategories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat === selectedCategory ? null : cat)}
@@ -182,22 +176,13 @@ export default function SearchPage() {
 
           {/* Results Count */}
           <div className="mb-8 text-sm text-hampstead-charcoal/60">
-            {loading && initialLoad ? (
-              <span className="flex items-center gap-2">
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Loading...
-              </span>
-            ) : (
-              <>
-                {total.toLocaleString()} {total === 1 ? 'result' : 'results'}
-                {query && ` for "${query}"`}
-              </>
-            )}
+            {total.toLocaleString()} {total === 1 ? 'result' : 'results'}
+            {query && ` for "${query}"`}
           </div>
 
           {/* Results Grid */}
           <AnimatePresence mode="wait">
-            {articles.length > 0 ? (
+            {displayedArticles.length > 0 ? (
               <motion.div
                 key="results"
                 initial={{ opacity: 0 }}
@@ -205,7 +190,7 @@ export default function SearchPage() {
                 exit={{ opacity: 0 }}
               >
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                  {articles.map((article, index) => (
+                  {displayedArticles.map((article, index) => (
                     <motion.article
                       key={`${article.slug}-${index}`}
                       initial={{ opacity: 0, y: 20 }}
@@ -268,7 +253,7 @@ export default function SearchPage() {
                   </div>
                 )}
               </motion.div>
-            ) : !loading && !initialLoad ? (
+            ) : (
               <motion.div
                 key="empty"
                 initial={{ opacity: 0 }}
@@ -287,7 +272,7 @@ export default function SearchPage() {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </button>
               </motion.div>
-            ) : null}
+            )}
           </AnimatePresence>
         </div>
       </section>
