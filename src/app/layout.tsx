@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
@@ -8,14 +8,23 @@ import { ThemeProvider } from '../components/ui/ThemeProvider';
 import './globals.css';
 import 'leaflet/dist/leaflet.css';
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
+const playfair = localFont({
+  src: [
+    {
+      path: '../../public/fonts/PlayfairDisplay-Latin.woff2',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/PlayfairDisplay-Italic-Latin.woff2',
+      style: 'italic',
+    },
+  ],
   variable: '--font-playfair',
   display: 'swap',
 });
 
-const inter = Inter({
-  subsets: ['latin'],
+const inter = localFont({
+  src: '../../public/fonts/Inter-Latin.woff2',
   variable: '--font-inter',
   display: 'swap',
 });

@@ -16,7 +16,7 @@
     "test:ci": "jest --ci --coverage --maxWorkers=2",
     "test:update": "jest --updateSnapshot",
     "validate": "npm run lint && npm run type-check && npm run test:ci",
-    "prepare": "npm run build"
+    "prepare": "echo ready"
   },
   "keywords": [
     "architecture",
