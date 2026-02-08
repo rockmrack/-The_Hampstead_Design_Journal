@@ -96,14 +96,14 @@ const CinematicHero = () => {
               quality={90}
             />
           </motion.div>
-          {/* Premium gradient overlay - lightened for better image visibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          {/* Premium gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/60 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20" />
         </motion.div>
       </AnimatePresence>
 
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/20 to-transparent z-10" />
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/50 to-transparent z-10" />
       <div className="absolute top-1/2 left-0 w-px h-32 -translate-y-1/2 bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block ml-8" />
 
       {/* Main Content */}
