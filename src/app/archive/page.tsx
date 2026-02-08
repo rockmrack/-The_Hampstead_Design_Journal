@@ -449,7 +449,7 @@ export default function ArchivePage() {
             {featuredStreets.map((street) => (
               <Link
                 key={street.slug}
-                href={`/archive/${street.slug}`}
+                href={`/journal/archive/${street.slug}`}
                 className="group bg-white border border-hampstead-grey hover:border-hampstead-charcoal/30 transition-colors"
               >
                 <div className="aspect-video bg-hampstead-cream relative overflow-hidden">
@@ -515,7 +515,7 @@ export default function ArchivePage() {
             {otherStreets.map((street) => (
               <Link
                 key={street.slug}
-                href={`/archive/${street.slug}`}
+                href={`/journal/archive/${street.slug}`}
                 className="group p-4 bg-white border border-hampstead-grey hover:border-hampstead-charcoal/30 transition-colors"
               >
                 <div className="flex items-center gap-2 text-xs text-hampstead-charcoal/50 mb-1">
@@ -598,7 +598,7 @@ export default function ArchivePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link
-              href="/archive/timeline"
+              href="/journal/archive/timeline"
               className="p-6 bg-white border border-hampstead-grey hover:border-hampstead-charcoal/30 transition-colors group"
             >
               <Clock className="w-8 h-8 text-hampstead-charcoal/30 mb-4" />
@@ -611,7 +611,7 @@ export default function ArchivePage() {
             </Link>
 
             <Link
-              href="/archive/conservation-areas"
+              href="/journal/archive/conservation-areas"
               className="p-6 bg-white border border-hampstead-grey hover:border-hampstead-charcoal/30 transition-colors group"
             >
               <Landmark className="w-8 h-8 text-hampstead-charcoal/30 mb-4" />
@@ -624,7 +624,7 @@ export default function ArchivePage() {
             </Link>
 
             <Link
-              href="/archive/materials"
+              href="/journal/archive/materials"
               className="p-6 bg-white border border-hampstead-grey hover:border-hampstead-charcoal/30 transition-colors group"
             >
               <Paintbrush className="w-8 h-8 text-hampstead-charcoal/30 mb-4" />
@@ -637,7 +637,7 @@ export default function ArchivePage() {
             </Link>
 
             <Link
-              href="/archive/trades"
+              href="/journal/archive/trades"
               className="p-6 bg-white border border-hampstead-grey hover:border-hampstead-charcoal/30 transition-colors group"
             >
               <Wrench className="w-8 h-8 text-hampstead-charcoal/30 mb-4" />
@@ -650,7 +650,7 @@ export default function ArchivePage() {
             </Link>
 
             <Link
-              href="/archive/case-studies"
+              href="/journal/archive/case-studies"
               className="p-6 bg-white border border-hampstead-grey hover:border-hampstead-charcoal/30 transition-colors group"
             >
               <FileText className="w-8 h-8 text-hampstead-charcoal/30 mb-4" />
@@ -663,7 +663,7 @@ export default function ArchivePage() {
             </Link>
 
             <Link
-              href="/archive/lost-details"
+              href="/journal/archive/lost-details"
               className="p-6 bg-white border border-hampstead-grey hover:border-hampstead-charcoal/30 transition-colors group"
             >
               <Library className="w-8 h-8 text-hampstead-charcoal/30 mb-4" />
@@ -676,7 +676,7 @@ export default function ArchivePage() {
             </Link>
 
             <Link
-              href="/archive/glossary"
+              href="/journal/archive/glossary"
               className="p-6 bg-white border border-hampstead-grey hover:border-hampstead-charcoal/30 transition-colors group"
             >
               <BookOpen className="w-8 h-8 text-hampstead-charcoal/30 mb-4" />
@@ -689,7 +689,7 @@ export default function ArchivePage() {
             </Link>
 
             <Link
-              href="/archive/blue-plaques"
+              href="/journal/archive/blue-plaques"
               className="p-6 bg-white border border-hampstead-grey hover:border-hampstead-charcoal/30 transition-colors group"
             >
               <Building className="w-8 h-8 text-hampstead-charcoal/30 mb-4" />
@@ -717,14 +717,14 @@ export default function ArchivePage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/contact?subject=heritage-survey"
+              href="/journal/contact?subject=heritage-survey"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-hampstead-black font-medium hover:bg-hampstead-cream transition-colors"
             >
               Book a Heritage Survey
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/contact"
+              href="/journal/contact"
               className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white font-medium hover:bg-white/10 transition-colors"
             >
               Contact Us

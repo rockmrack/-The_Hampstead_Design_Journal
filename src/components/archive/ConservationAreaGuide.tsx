@@ -517,7 +517,7 @@ const ConservationAreaGuide: React.FC<ConservationAreaGuideProps> = ({
 
           {limit && conservationAreas.length > limit && (
             <Link
-              href="/archive/conservation-areas"
+              href="/journal/archive/conservation-areas"
               className="block text-center py-3 text-sm font-medium hover:text-hampstead-charcoal/70 transition-colors"
             >
               View all conservation areas →
@@ -697,7 +697,7 @@ const ConservationAreaGuide: React.FC<ConservationAreaGuideProps> = ({
                         Need help navigating {selectedArea.name} Conservation Area requirements?
                       </p>
                       <Link
-                        href={`/contact?subject=planning-advice&area=${encodeURIComponent(selectedArea.name)}`}
+                        href={`/journal/contact?subject=planning-advice&area=${encodeURIComponent(selectedArea.name)}`}
                         className="inline-flex items-center gap-2 px-4 py-2 bg-white text-hampstead-black text-sm font-medium hover:bg-hampstead-cream transition-colors"
                       >
                         Get Planning Advice
@@ -717,7 +717,7 @@ const ConservationAreaGuide: React.FC<ConservationAreaGuideProps> = ({
                       {selectedArea.streets.map((street, i) => (
                         <Link
                           key={i}
-                          href={`/archive/${street.toLowerCase().replace(/\s+/g, '-')}`}
+                          href={`/journal/archive/${street.toLowerCase().replace(/\s+/g, '-')}`}
                           className="flex items-center justify-between p-3 bg-hampstead-cream hover:bg-hampstead-grey/50 transition-colors group"
                         >
                           <div className="flex items-center gap-2">

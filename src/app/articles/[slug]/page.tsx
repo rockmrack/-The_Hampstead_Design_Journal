@@ -3,7 +3,6 @@ import { allArticles } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { format } from 'date-fns';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowLeft, Clock, Calendar, User, ChevronRight } from 'lucide-react';
 import ArticleBody from '@/components/articles/ArticleBody';
 import TableOfContents from '@/components/articles/TableOfContents';
@@ -12,7 +11,6 @@ import ReadingProgress from '@/components/articles/ReadingProgress';
 import ArticleJsonLd from '@/components/seo/ArticleJsonLd';
 import ShareButtons from '@/components/articles/ShareButtons';
 import AuthorBio from '@/components/articles/AuthorBio';
-import TextSizeControl from '@/components/articles/TextSizeControl';
 
 interface ArticlePageProps {
   params: { slug: string };
@@ -28,16 +26,13 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   const article = allArticles.find((a) => a.slug === params.slug);
   if (!article) return {};
 
-  // Canonical URL on the main site
-  const canonicalUrl = `https://www.hampsteadrenovations.co.uk/journal/articles/${params.slug}/`;
-
   return {
     title: `${article.title} | The Hampstead Design Journal`,
     description: article.excerpt,
     keywords: article.keywords,
     authors: [{ name: article.author }],
     alternates: {
-      canonical: canonicalUrl,
+      canonical: `/articles/${params.slug}`,
     },
     openGraph: {
       title: article.title,
@@ -45,7 +40,6 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       type: 'article',
       publishedTime: article.date,
       authors: [article.author],
-      url: canonicalUrl,
       images: article.coverImage ? [article.coverImage] : [],
     },
     twitter: {
@@ -88,16 +82,16 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <div className="editorial-container py-12 md:py-20">
             {/* Breadcrumb */}
             <nav className="flex items-center text-sm text-hampstead-charcoal/60 mb-8">
-              <Link href="/" className="hover:text-hampstead-black transition-colors">
+              <Link href="/journal" className="hover:text-hampstead-black transition-colors">
                 Home
               </Link>
               <ChevronRight className="w-4 h-4 mx-2" />
-              <Link href="/articles" className="hover:text-hampstead-black transition-colors">
+              <Link href="/journal/articles" className="hover:text-hampstead-black transition-colors">
                 Articles
               </Link>
               <ChevronRight className="w-4 h-4 mx-2" />
               <Link 
-                href={`/categories/${article.category}`} 
+                href={`/journal/categories/${article.category}`} 
                 className="hover:text-hampstead-black transition-colors"
               >
                 {getCategoryLabel(article.category)}
@@ -107,7 +101,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             <div className="max-w-4xl">
               {/* Category Badge */}
               <Link 
-                href={`/categories/${article.category}`}
+                href={`/journal/categories/${article.category}`}
                 className="inline-block px-3 py-1 text-xs font-medium uppercase tracking-widest bg-hampstead-black text-hampstead-white mb-6 hover:bg-hampstead-charcoal transition-colors"
               >
                 {getCategoryLabel(article.category)}
@@ -142,8 +136,6 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               </div>
             </div>
           </div>
-
-          {/* Cover Image removed */}
         </header>
 
         {/* Main Content */}
@@ -152,9 +144,6 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             {/* Sidebar - Table of Contents */}
             <aside className="hidden lg:block lg:col-span-3">
               <div className="sticky top-32">
-                <div className="mb-8">
-                  <TextSizeControl />
-                </div>
                 <TableOfContents headings={article.headings} />
                 <div className="mt-8 pt-8 border-t border-hampstead-grey">
                   <ShareButtons title={article.title} url={article.url} />
@@ -164,12 +153,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
             {/* Article Content */}
             <div className="lg:col-span-9">
-              <div 
-                className="prose prose-lg prose-hampstead max-w-none"
-                style={{ 
-                  fontSize: 'calc(1.125rem * var(--article-font-scale, 1))' 
-                } as React.CSSProperties}
-              >
+              <div className="prose prose-lg prose-hampstead max-w-none">
                 <ArticleBody code={article.body.code} />
               </div>
 
@@ -192,7 +176,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         {/* Back Link */}
         <div className="editorial-container pb-16">
           <Link 
-            href="/articles" 
+            href="/journal/articles" 
             className="inline-flex items-center text-sm uppercase tracking-widest hover:text-hampstead-charcoal transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />

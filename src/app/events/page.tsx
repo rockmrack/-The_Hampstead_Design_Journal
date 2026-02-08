@@ -381,7 +381,7 @@ export default function EventsPage() {
     "@type": "ItemList",
     "name": "Heritage Architecture Events",
     "description": "Architecture walks, workshops, and heritage events in Hampstead and North West London",
-    "url": "https://www.hampsteadrenovations.co.uk/journal/events",
+    "url": "https://hampsteaddesignjournal.com/events",
     "numberOfItems": events.length,
     "itemListElement": events.slice(0, 10).map((event, index) => ({
       "@type": "ListItem",
@@ -710,7 +710,7 @@ export default function EventsPage() {
             partners and venues.
           </p>
           <Link
-            href="/contact"
+            href="/journal/contact"
             className="inline-flex items-center justify-center gap-2 bg-hampstead-black text-white px-8 py-4 rounded-lg font-medium hover:bg-hampstead-charcoal transition-colors"
           >
             Get in Touch

@@ -1,22 +1,11 @@
 'use client';
 
-import { useState, useCallback, useEffect, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
+import { allArticles } from 'contentlayer/generated';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Search, X, ArrowRight, Loader2 } from 'lucide-react';
+import { Search, X, ArrowRight } from 'lucide-react';
 import { format } from 'date-fns';
 import { motion, AnimatePresence } from 'framer-motion';
-import { allArticles } from 'contentlayer/generated';
-
-interface ArticleResult {
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  date: string;
-  coverImage?: string;
-  keywords?: string;
-}
 
 function getCategoryLabel(category: string): string {
   const labels: Record<string, string> = {
@@ -24,75 +13,38 @@ function getCategoryLabel(category: string): string {
     'planning-regulations': 'Planning & Regulations',
     'interiors-materials': 'Interiors & Materials',
     'market-watch': 'Market Watch',
-    'architecture': 'Architecture',
-    'interiors': 'Interiors',
-    'living': 'Living',
   };
-  return labels[category] || category.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  return labels[category] || category;
 }
-
-const ITEMS_PER_PAGE = 24;
-
-// Pre-process articles for search (client-side)
-const searchableArticles: ArticleResult[] = allArticles
-  .map(article => ({
-    slug: article.slug,
-    title: article.title,
-    excerpt: article.excerpt,
-    category: article.category,
-    date: article.date,
-    coverImage: article.coverImage,
-    keywords: article.keywords || '',
-  }))
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-const allCategories = Array.from(new Set(searchableArticles.map(a => a.category))).sort();
 
 export default function SearchPage() {
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [displayCount, setDisplayCount] = useState(ITEMS_PER_PAGE);
-  const [loading, setLoading] = useState(false);
 
-  // Filter articles based on query and category
+  const categories = useMemo(() => {
+    const cats = new Set(allArticles.map((a) => a.category));
+    return Array.from(cats);
+  }, []);
+
   const filteredArticles = useMemo(() => {
-    let filtered = searchableArticles;
+    let results = allArticles;
 
+    // Filter by category
     if (selectedCategory) {
-      filtered = filtered.filter(a => a.category === selectedCategory);
+      results = results.filter((a) => a.category === selectedCategory);
     }
 
+    // Filter by search query
     if (query.trim()) {
       const searchTerms = query.toLowerCase().split(/\s+/);
-      filtered = filtered.filter(article => {
-        const searchableText = `${article.title} ${article.excerpt} ${article.keywords}`.toLowerCase();
-        return searchTerms.every(term => searchableText.includes(term));
+      results = results.filter((article) => {
+        const searchableText = `${article.title} ${article.excerpt} ${article.keywords || ''}`.toLowerCase();
+        return searchTerms.every((term) => searchableText.includes(term));
       });
     }
 
-    return filtered;
+    return results;
   }, [query, selectedCategory]);
-
-  const displayedArticles = useMemo(() => {
-    return filteredArticles.slice(0, displayCount);
-  }, [filteredArticles, displayCount]);
-
-  const hasMore = displayCount < filteredArticles.length;
-  const total = filteredArticles.length;
-
-  // Reset display count when filters change
-  useEffect(() => {
-    setDisplayCount(ITEMS_PER_PAGE);
-  }, [query, selectedCategory]);
-
-  const loadMore = useCallback(() => {
-    setLoading(true);
-    // Simulate async loading for smooth UX
-    setTimeout(() => {
-      setDisplayCount(prev => prev + ITEMS_PER_PAGE);
-      setLoading(false);
-    }, 100);
-  }, []);
 
   const clearFilters = useCallback(() => {
     setQuery('');
@@ -109,7 +61,7 @@ export default function SearchPage() {
               Search the Archive
             </h1>
             <p className="text-xl text-hampstead-charcoal/80 leading-relaxed mb-10">
-              Explore our collection of {searchableArticles.length.toLocaleString()} articles on heritage, planning, interiors, and market insights.
+              Explore our collection of articles on heritage, planning, interiors, and market insights.
             </p>
 
             {/* Search Input */}
@@ -151,7 +103,7 @@ export default function SearchPage() {
             >
               All
             </button>
-            {allCategories.map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat === selectedCategory ? null : cat)}
@@ -176,82 +128,48 @@ export default function SearchPage() {
 
           {/* Results Count */}
           <div className="mb-8 text-sm text-hampstead-charcoal/60">
-            {total.toLocaleString()} {total === 1 ? 'result' : 'results'}
+            {filteredArticles.length} {filteredArticles.length === 1 ? 'result' : 'results'}
             {query && ` for "${query}"`}
           </div>
 
           {/* Results Grid */}
           <AnimatePresence mode="wait">
-            {displayedArticles.length > 0 ? (
+            {filteredArticles.length > 0 ? (
               <motion.div
                 key="results"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
+                className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
               >
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                  {displayedArticles.map((article, index) => (
-                    <motion.article
-                      key={`${article.slug}-${index}`}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: Math.min(index * 0.02, 0.5) }}
-                      className="group"
-                    >
-                      <Link href={`/articles/${article.slug}`} className="block">
-                        <div className="aspect-[4/3] bg-hampstead-grey/30 mb-4 overflow-hidden relative">
-                          {article.coverImage ? (
-                            <Image
-                              src={article.coverImage}
-                              alt={article.title}
-                              fill
-                              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                              className="object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic group-hover:bg-hampstead-grey/50 transition-colors">
-                              No Image
-                            </div>
-                          )}
+                {filteredArticles.map((article, index) => (
+                  <motion.article
+                    key={article.slug}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="group"
+                  >
+                    <Link href={`/journal/articles/${article.slug}`} className="block">
+                      <div className="aspect-[4/3] bg-hampstead-grey/30 mb-4 overflow-hidden">
+                        <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic group-hover:bg-hampstead-grey/50 transition-colors">
+                          No Image
                         </div>
-                        <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-hampstead-charcoal/60 mb-2">
-                          <span>{getCategoryLabel(article.category)}</span>
-                          <span>•</span>
-                          <time>{format(new Date(article.date), 'MMM d, yyyy')}</time>
-                        </div>
-                        <h3 className="font-serif text-xl mb-2 group-hover:text-hampstead-charcoal transition-colors leading-tight">
-                          {article.title}
-                        </h3>
-                        <p className="text-hampstead-charcoal/70 text-sm line-clamp-2">
-                          {article.excerpt}
-                        </p>
-                      </Link>
-                    </motion.article>
-                  ))}
-                </div>
-
-                {/* Load More Button */}
-                {hasMore && (
-                  <div className="mt-12 text-center">
-                    <button
-                      onClick={loadMore}
-                      disabled={loading}
-                      className="inline-flex items-center gap-2 px-8 py-3 bg-hampstead-black text-hampstead-white hover:bg-hampstead-charcoal transition-colors disabled:opacity-50"
-                    >
-                      {loading ? (
-                        <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                          Loading...
-                        </>
-                      ) : (
-                        <>
-                          Load more articles
-                          <ArrowRight className="w-4 h-4" />
-                        </>
-                      )}
-                    </button>
-                  </div>
-                )}
+                      </div>
+                      <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-hampstead-charcoal/60 mb-2">
+                        <span>{getCategoryLabel(article.category)}</span>
+                        <span>•</span>
+                        <time>{format(new Date(article.date), 'MMM d, yyyy')}</time>
+                      </div>
+                      <h3 className="font-serif text-xl mb-2 group-hover:text-hampstead-charcoal transition-colors leading-tight">
+                        {article.title}
+                      </h3>
+                      <p className="text-hampstead-charcoal/70 text-sm line-clamp-2">
+                        {article.excerpt}
+                      </p>
+                    </Link>
+                  </motion.article>
+                ))}
               </motion.div>
             ) : (
               <motion.div

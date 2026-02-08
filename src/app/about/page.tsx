@@ -93,7 +93,7 @@ export default function AboutPage() {
             <div className="grid md:grid-cols-2 gap-8 my-12">
               <div className="border-l-2 border-hampstead-black pl-6">
                 <h3 className="font-serif text-2xl mb-3">
-                  <Link href="/categories/heritage-architecture" className="no-underline hover:underline">
+                  <Link href="/journal/categories/heritage-architecture" className="no-underline hover:underline">
                     Heritage & Architecture
                   </Link>
                 </h3>
@@ -105,7 +105,7 @@ export default function AboutPage() {
 
               <div className="border-l-2 border-hampstead-black pl-6">
                 <h3 className="font-serif text-2xl mb-3">
-                  <Link href="/categories/planning-regulations" className="no-underline hover:underline">
+                  <Link href="/journal/categories/planning-regulations" className="no-underline hover:underline">
                     Planning & Regulations
                   </Link>
                 </h3>
@@ -117,7 +117,7 @@ export default function AboutPage() {
 
               <div className="border-l-2 border-hampstead-black pl-6">
                 <h3 className="font-serif text-2xl mb-3">
-                  <Link href="/categories/interiors-materials" className="no-underline hover:underline">
+                  <Link href="/journal/categories/interiors-materials" className="no-underline hover:underline">
                     Interiors & Materials
                   </Link>
                 </h3>
@@ -129,7 +129,7 @@ export default function AboutPage() {
 
               <div className="border-l-2 border-hampstead-black pl-6">
                 <h3 className="font-serif text-2xl mb-3">
-                  <Link href="/categories/market-watch" className="no-underline hover:underline">
+                  <Link href="/journal/categories/market-watch" className="no-underline hover:underline">
                     Market Watch
                   </Link>
                 </h3>
@@ -171,7 +171,7 @@ export default function AboutPage() {
                   Book a Consultation
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/journal/contact"
                   className="inline-block px-8 py-3 border border-hampstead-black text-hampstead-black no-underline hover:bg-hampstead-grey transition-colors"
                 >
                   Contact Us

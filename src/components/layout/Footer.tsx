@@ -18,38 +18,38 @@ const Footer: React.FC = () => {
               Celebrating the architecture, history, and lifestyle of North West London.
             </p>
             <nav className="space-y-3">
-              <Link 
-                href="/archive" 
+              <Link
+                href="/journal/archive"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 The Archive
               </Link>
-              <Link 
-                href="/planning-map" 
+              <Link
+                href="/journal/planning-map"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Planning Map
               </Link>
-              <Link 
-                href="/calculators" 
+              <Link
+                href="/journal/calculators"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Cost Calculators
               </Link>
-              <Link 
-                href="/guides" 
+              <Link
+                href="/journal/guides"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Guides
               </Link>
-              <Link 
-                href="/market" 
+              <Link
+                href="/journal/market"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Market Dashboard
               </Link>
-              <Link 
-                href="/careers" 
+              <Link
+                href="/journal/careers"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Careers
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
                 <Instagram className="w-5 h-5" />
               </a>
               <a 
-                href="mailto:info@hampsteadrenovations.co.uk" 
+                href="mailto:info@hampsteadrenovations.com" 
                 className="text-hampstead-grey hover:text-hampstead-white transition-colors"
                 aria-label="Email us"
               >
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
               journal are provided by our parent company.
             </p>
             <a 
-              href="https://www.hampsteadrenovations.co.uk"
+              href="https://hampsteadrenovations.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-hampstead-white hover:text-hampstead-cream transition-colors font-medium"
@@ -137,10 +137,10 @@ const Footer: React.FC = () => {
               <p className="flex items-center gap-2">
                 <Mail className="w-4 h-4 flex-shrink-0 text-hampstead-grey/60" />
                 <a 
-                  href="mailto:info@hampsteadrenovations.co.uk" 
+                  href="mailto:info@hampsteadrenovations.com" 
                   className="hover:text-hampstead-white transition-colors"
                 >
-                  info@hampsteadrenovations.co.uk
+                  info@hampsteadrenovations.com
                 </a>
               </p>
             </address>
@@ -165,7 +165,7 @@ const Footer: React.FC = () => {
               &copy; {new Date().getFullYear()} The Hampstead Design Journal. 
               <span className="hidden sm:inline"> Curated by </span>
               <a 
-                href="https://www.hampsteadrenovations.co.uk" 
+                href="https://hampsteadrenovations.com" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-hampstead-white transition-colors"
@@ -175,13 +175,13 @@ const Footer: React.FC = () => {
               </a>
             </p>
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-              <Link href="/privacy" className="hover:text-hampstead-white transition-colors">
+              <Link href="/journal/privacy" className="hover:text-hampstead-white transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-hampstead-white transition-colors">
+              <Link href="/journal/terms" className="hover:text-hampstead-white transition-colors">
                 Terms
               </Link>
-              <Link href="/sitemap.xml" className="hover:text-hampstead-white transition-colors">
+              <Link href="/journal/sitemap.xml" className="hover:text-hampstead-white transition-colors">
                 Sitemap
               </Link>
             </div>

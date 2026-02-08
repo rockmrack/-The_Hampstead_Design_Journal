@@ -270,7 +270,7 @@ export default function ProjectsPage() {
     "@type": "CollectionPage",
     "name": "Heritage Renovation Projects Portfolio",
     "description": "Explore our portfolio of heritage renovation projects across North West London, featuring before/after transformations of Georgian, Victorian, and Edwardian properties.",
-    "url": "https://www.hampsteadrenovations.co.uk/journal/projects",
+    "url": "https://hampsteaddesignjournal.com/projects",
     "mainEntity": {
       "@type": "ItemList",
       "numberOfItems": projects.length,
@@ -598,14 +598,14 @@ export default function ProjectsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/journal/contact"
               className="inline-flex items-center justify-center gap-2 bg-hampstead-black text-white px-8 py-4 rounded-lg font-medium hover:bg-hampstead-charcoal transition-colors"
             >
               Book Free Consultation
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/calculators"
+              href="/journal/calculators"
               className="inline-flex items-center justify-center gap-2 bg-white text-hampstead-black px-8 py-4 rounded-lg font-medium hover:bg-hampstead-charcoal/5 transition-colors border border-hampstead-charcoal/20"
             >
               Estimate Your Project
@@ -736,7 +736,7 @@ export default function ProjectsPage() {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
-                    href="/contact"
+                    href="/journal/contact"
                     className="flex-1 inline-flex items-center justify-center gap-2 bg-hampstead-black text-white px-6 py-3 rounded-lg font-medium hover:bg-hampstead-charcoal transition-colors"
                   >
                     Discuss a Similar Project

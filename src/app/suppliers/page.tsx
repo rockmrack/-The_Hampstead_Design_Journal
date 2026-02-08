@@ -418,7 +418,7 @@ export default function SuppliersPage() {
       <section className="bg-hampstead-cream border-b border-hampstead-grey">
         <div className="editorial-container py-12 md:py-16">
           <nav className="flex items-center text-sm text-hampstead-charcoal/60 mb-6">
-            <Link href="/" className="hover:text-hampstead-black transition-colors">Home</Link>
+            <Link href="/journal" className="hover:text-hampstead-black transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4 mx-2" />
             <span className="text-hampstead-black">Suppliers Directory</span>
           </nav>
@@ -689,7 +689,7 @@ export default function SuppliersPage() {
               who specialise in heritage and period property materials.
             </p>
             <Link
-              href="/contact?subject=supplier-submission"
+              href="/journal/contact?subject=supplier-submission"
               className="inline-flex items-center gap-2 px-8 py-4 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
             >
               Submit a Supplier

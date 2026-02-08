@@ -2,14 +2,13 @@ import { allArticles } from 'contentlayer/generated';
 import { compareDesc, format } from 'date-fns';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Articles | The Hampstead Design Journal',
   description: 'Expert insights on heritage restoration, planning policy, interior design, and property markets across Hampstead, Belsize Park, and NW3.',
   alternates: {
-    canonical: 'https://www.hampsteadrenovations.co.uk/journal/articles/',
+    canonical: '/articles',
   },
 };
 
@@ -24,13 +23,9 @@ function getCategoryLabel(category: string): string {
 }
 
 export default function ArticlesPage() {
-  const sortedArticles = allArticles.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
-  const featuredArticle = sortedArticles.find((a) => a.featured) || sortedArticles[0];
-  // Show first 47 articles on the listing page (48 total with featured)
-  const remainingArticles = sortedArticles
-    .filter((a) => a.slug !== featuredArticle?.slug)
-    .slice(0, 47);
-  const totalArticles = sortedArticles.length;
+  const articles = allArticles.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  const featuredArticle = articles.find((a) => a.featured) || articles[0];
+  const remainingArticles = articles.filter((a) => a.slug !== featuredArticle?.slug);
 
   return (
     <>
@@ -57,19 +52,19 @@ export default function ArticlesPage() {
               Featured
             </span>
             <article className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="aspect-[4/3] bg-hampstead-grey/30 overflow-hidden relative flex items-center justify-center">
-                 <div className="text-hampstead-charcoal/20 font-serif italic">
-                    Featured Article
-                  </div>
+              <div className="aspect-[4/3] bg-hampstead-grey/30 overflow-hidden">
+                <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic">
+                  Featured Image
+                </div>
               </div>
               <div>
                 <Link 
-                  href={`/categories/${featuredArticle.category}`}
+                  href={`/journal/categories/${featuredArticle.category}`}
                   className="text-xs uppercase tracking-widest text-hampstead-charcoal/60 hover:text-hampstead-black mb-3 block"
                 >
                   {getCategoryLabel(featuredArticle.category)}
                 </Link>
-                <Link href={`/articles/${featuredArticle.slug}`} className="group">
+                <Link href={`/journal/articles/${featuredArticle.slug}`} className="group">
                   <h2 className="font-serif text-3xl md:text-4xl mb-4 group-hover:text-hampstead-charcoal transition-colors leading-tight">
                     {featuredArticle.title}
                   </h2>
@@ -82,7 +77,7 @@ export default function ArticlesPage() {
                     {format(new Date(featuredArticle.date), 'MMMM d, yyyy')}
                   </time>
                   <Link 
-                    href={`/articles/${featuredArticle.slug}`}
+                    href={`/journal/articles/${featuredArticle.slug}`}
                     className="inline-flex items-center text-sm uppercase tracking-widest hover:text-hampstead-charcoal transition-colors"
                   >
                     Read Article
@@ -98,17 +93,17 @@ export default function ArticlesPage() {
       {/* All Articles Grid */}
       <section className="py-16">
         <div className="editorial-container">
-          <div className="flex items-center justify-between mb-12">
-            <h2 className="font-serif text-3xl">Latest Articles</h2>
-            <span className="text-sm text-hampstead-charcoal/60">
-              Showing 48 of {totalArticles.toLocaleString()} articles
-            </span>
-          </div>
+          <h2 className="font-serif text-3xl mb-12">All Articles</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {remainingArticles.map((article) => (
               <article key={article.slug} className="group">
-                <Link href={`/articles/${article.slug}`} className="block">
+                <Link href={`/journal/articles/${article.slug}`} className="block">
+                  <div className="aspect-[4/3] bg-hampstead-grey/30 mb-4 overflow-hidden">
+                    <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic group-hover:bg-hampstead-grey/50 transition-colors">
+                      No Image
+                    </div>
+                  </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-hampstead-charcoal/60 mb-2">
                     <span>{getCategoryLabel(article.category)}</span>
                     <span>•</span>
@@ -123,17 +118,6 @@ export default function ArticlesPage() {
                 </Link>
               </article>
             ))}
-          </div>
-
-          {/* Link to search for more */}
-          <div className="mt-16 text-center">
-            <Link
-              href="/search"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-hampstead-black text-hampstead-white hover:bg-hampstead-charcoal transition-colors"
-            >
-              Browse all {totalArticles.toLocaleString()} articles
-              <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </div>
       </section>

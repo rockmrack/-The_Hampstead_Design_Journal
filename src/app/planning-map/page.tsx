@@ -289,9 +289,9 @@ export default function PlanningMapPage() {
       <section className="bg-hampstead-cream border-b border-hampstead-grey">
         <div className="editorial-container py-12 md:py-16">
           <nav className="flex items-center text-sm text-hampstead-charcoal/60 mb-6">
-            <Link href="/" className="hover:text-hampstead-black transition-colors">Home</Link>
+            <Link href="/journal" className="hover:text-hampstead-black transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4 mx-2" />
-            <Link href="/archive" className="hover:text-hampstead-black transition-colors">Archive</Link>
+            <Link href="/journal/archive" className="hover:text-hampstead-black transition-colors">Archive</Link>
             <ChevronRight className="w-4 h-4 mx-2" />
             <span className="text-hampstead-black">Planning Map</span>
           </nav>
@@ -571,7 +571,7 @@ export default function PlanningMapPage() {
                         {selectedArea.streets.map((street) => (
                           <Link
                             key={street}
-                            href={`/archive/${street.toLowerCase().replace(/\s+/g, '-')}`}
+                            href={`/journal/archive/${street.toLowerCase().replace(/\s+/g, '-')}`}
                             className="px-3 py-1 bg-hampstead-cream text-sm hover:bg-hampstead-grey/30 transition-colors"
                           >
                             {street}
@@ -583,7 +583,7 @@ export default function PlanningMapPage() {
                     {/* CTA */}
                     <div className="pt-4 border-t border-hampstead-grey">
                       <Link
-                        href="/contact?subject=planning-advice"
+                        href="/journal/contact?subject=planning-advice"
                         className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
                       >
                         <FileText className="w-4 h-4" />
@@ -618,7 +618,7 @@ export default function PlanningMapPage() {
                 NW3 contains 7 distinct conservation areas, each with unique character 
                 and planning considerations. Development must preserve or enhance this character.
               </p>
-              <Link href="/archive#conservation" className="text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">
+              <Link href="/journal/archive#conservation" className="text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">
                 Learn more <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
@@ -630,7 +630,7 @@ export default function PlanningMapPage() {
                 Article 4 Directions remove permitted development rights. In these areas, 
                 even minor changes to windows, doors, and boundaries require planning consent.
               </p>
-              <Link href="/articles/article-4-directions-hampstead" className="text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">
+              <Link href="/journal/articles/article-4-directions-hampstead" className="text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">
                 Understand Article 4 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
@@ -642,7 +642,7 @@ export default function PlanningMapPage() {
                 Before submitting a planning application in a conservation area, 
                 pre-application advice from Camden is strongly recommended.
               </p>
-              <Link href="/contact?subject=planning" className="text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">
+              <Link href="/journal/contact?subject=planning" className="text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">
                 Book consultation <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
