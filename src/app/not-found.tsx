@@ -11,13 +11,13 @@ export default function NotFound() {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
-            href="/"
+            href="/journal" 
             className="px-8 py-4 bg-hampstead-black text-hampstead-white hover:bg-hampstead-charcoal transition-colors uppercase tracking-widest text-sm"
           >
             Return Home
           </Link>
           <Link
-            href="/articles"
+            href="/journal/articles"
             className="px-8 py-4 border border-hampstead-black text-hampstead-black hover:bg-hampstead-black hover:text-hampstead-white transition-colors uppercase tracking-widest text-sm"
           >
             Browse Articles

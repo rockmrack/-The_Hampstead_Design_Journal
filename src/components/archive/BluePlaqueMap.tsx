@@ -292,7 +292,7 @@ const BluePlaqueMap: React.FC<BluePlaqueMapProps> = ({ className = '' }) => {
 
             <div className="mt-6 pt-4 border-t border-hampstead-grey flex flex-wrap gap-4">
               <Link
-                href="/contact?subject=heritage-survey"
+                href="/journal/contact?subject=heritage-survey"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-hampstead-black text-white text-sm hover:bg-hampstead-charcoal transition-colors"
               >
                 Book a Heritage Survey

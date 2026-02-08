@@ -41,7 +41,7 @@ export default function StyleGuide() {
               Defining the NW3 Aesthetic
             </h2>
           </div>
-          <Link href="/archive/styles" className="hidden md:block text-sm font-medium border-b border-hampstead-black pb-1 hover:text-hampstead-olive hover:border-hampstead-olive transition-colors">
+          <Link href="/journal/archive/styles" className="hidden md:block text-sm font-medium border-b border-hampstead-black pb-1 hover:text-hampstead-olive hover:border-hampstead-olive transition-colors">
             View All Styles
           </Link>
         </div>
@@ -67,7 +67,7 @@ export default function StyleGuide() {
         </div>
         
         <div className="mt-8 md:hidden text-center">
-           <Link href="/archive/styles" className="text-sm font-medium border-b border-hampstead-black pb-1">
+           <Link href="/journal/archive/styles" className="text-sm font-medium border-b border-hampstead-black pb-1">
             View All Styles
           </Link>
         </div>

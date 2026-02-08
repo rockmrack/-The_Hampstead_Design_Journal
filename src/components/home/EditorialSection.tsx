@@ -81,7 +81,7 @@ const EditorialSection: React.FC<EditorialSectionProps> = ({
               </p>
               
               <Link 
-                href={`/categories/${subtitle.toLowerCase().replace(/\s+/g, '-').replace('&', '')}`}
+                href={`/journal/categories/${subtitle.toLowerCase().replace(/\s+/g, '-').replace('&', '')}`}
                 className="group inline-flex items-center gap-3 text-sm uppercase tracking-[0.15em] font-medium border-b-2 border-hampstead-black pb-2 hover:border-hampstead-charcoal hover:text-hampstead-charcoal transition-all"
               >
                 View Collection
@@ -102,7 +102,7 @@ const EditorialSection: React.FC<EditorialSectionProps> = ({
           <div className="lg:w-2/3 space-y-8">
             {/* Main Feature - Full Width with Overlay */}
             <motion.div variants={itemVariants}>
-              <Link href={`/articles/${mainArticle.slug}`} className="group block relative">
+              <Link href={`/journal/articles/${mainArticle.slug}`} className="group block relative">
                 <div className="aspect-[16/10] bg-hampstead-grey/20 overflow-hidden relative">
                   {/* Placeholder with elegant styling */}
                   <div className="absolute inset-0 bg-gradient-to-br from-hampstead-charcoal/5 to-hampstead-charcoal/10" />
@@ -144,7 +144,7 @@ const EditorialSection: React.FC<EditorialSectionProps> = ({
             <div className="grid md:grid-cols-2 gap-8">
               {secondaryArticles.map((article, idx) => (
                 <motion.div key={idx} variants={itemVariants}>
-                  <Link href={`/articles/${article.slug}`} className="group block">
+                  <Link href={`/journal/articles/${article.slug}`} className="group block">
                     <div className="aspect-[4/3] bg-hampstead-grey/15 mb-5 overflow-hidden relative">
                       <div className="absolute inset-0 bg-gradient-to-br from-hampstead-charcoal/5 to-hampstead-charcoal/10" />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-hampstead-black/50">

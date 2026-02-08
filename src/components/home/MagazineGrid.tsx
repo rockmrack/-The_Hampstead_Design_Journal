@@ -75,7 +75,7 @@ export default function MagazineGrid({ articles }: MagazineGridProps) {
             </h2>
           </div>
           <Link 
-            href="/articles" 
+            href="/journal/articles" 
             className="mt-6 md:mt-0 group inline-flex items-center gap-2 text-sm uppercase tracking-[0.15em] font-medium hover:text-hampstead-charcoal/60 transition-colors"
           >
             View Full Archive 
@@ -94,7 +94,7 @@ export default function MagazineGrid({ articles }: MagazineGridProps) {
           
           {/* Lead Article (8 cols) - Premium Card */}
           <motion.div className="lg:col-span-8" variants={itemVariants}>
-            <Link href={`/articles/${leadArticle.slug}`} className="group block">
+            <Link href={`/journal/articles/${leadArticle.slug}`} className="group block">
               <div className="relative aspect-[16/10] mb-8 overflow-hidden bg-hampstead-grey/20">
                 {/* Elegant placeholder */}
                 <div className="absolute inset-0 bg-gradient-to-br from-hampstead-charcoal/5 to-hampstead-charcoal/15" />
@@ -151,7 +151,7 @@ export default function MagazineGrid({ articles }: MagazineGridProps) {
             {secondaryArticles.map((article, idx) => (
               <Link 
                 key={article._id} 
-                href={`/articles/${article.slug}`} 
+                href={`/journal/articles/${article.slug}`} 
                 className="group flex gap-5 py-6 border-b border-hampstead-charcoal/10 last:border-none"
               >
                 <span className="font-serif text-4xl text-hampstead-charcoal/20 group-hover:text-hampstead-black/40 transition-colors leading-none">
@@ -180,7 +180,7 @@ export default function MagazineGrid({ articles }: MagazineGridProps) {
         >
           {tertiaryArticles.map((article, idx) => (
             <motion.div key={article._id} variants={itemVariants}>
-              <Link href={`/articles/${article.slug}`} className="group block">
+              <Link href={`/journal/articles/${article.slug}`} className="group block">
                 <div className="flex items-center gap-3 mb-4">
                   <span className={`px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] ${categoryColors[article.category] || categoryColors.default}`}>
                     {article.category.replace(/-/g, ' ')}

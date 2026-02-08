@@ -10,35 +10,35 @@ const categories = [
     title: 'Architects',
     description: 'Visionary practices specializing in heritage restoration and contemporary extensions.',
     icon: Ruler,
-    href: '/directory/professionals?category=architects',
+    href: '/journal/directory/professionals?category=architects',
     image: '/images/directory-architects.jpg'
   },
   {
     title: 'Interior Designers',
     description: 'Curators of exceptional spaces, from classic English style to modern minimalism.',
     icon: Paintbrush,
-    href: '/directory/professionals?category=interior-designers',
+    href: '/journal/directory/professionals?category=interior-designers',
     image: '/images/directory-interiors.jpg'
   },
   {
     title: 'Builders & Contractors',
     description: 'Trusted firms with proven track records in high-value residential projects.',
     icon: HardHat,
-    href: '/directory/professionals?category=builders',
+    href: '/journal/directory/professionals?category=builders',
     image: '/images/directory-builders.jpg'
   },
   {
     title: 'Specialist Craftsmen',
     description: 'Master artisans in joinery, stonemasonry, plasterwork, and metalwork.',
     icon: Hammer,
-    href: '/directory/professionals?category=craftsmen',
+    href: '/journal/directory/professionals?category=craftsmen',
     image: '/images/directory-craftsmen.jpg'
   },
   {
     title: 'Suppliers',
     description: 'Source the finest materials, fixtures, and fittings for your project.',
     icon: PenTool,
-    href: '/suppliers',
+    href: '/journal/suppliers',
     image: '/images/directory-suppliers.jpg'
   }
 ];
@@ -96,7 +96,7 @@ export default function DirectoryPage() {
             Apply to join our curated directory of trusted partners. We review every application to ensure the highest standards.
           </p>
           <Link 
-            href="/contact?subject=Directory%20Application" 
+            href="/journal/contact?subject=Directory%20Application" 
             className="inline-block bg-hampstead-black text-white px-8 py-4 uppercase tracking-widest text-sm font-medium hover:bg-hampstead-charcoal transition-colors"
           >
             Apply for Membership

@@ -52,7 +52,7 @@ export default function PlanningRegulationsPage() {
             Browse our directory of architects and planning consultants who specialize in Camden conservation areas.
           </p>
           <a 
-            href="/archive/trades" 
+            href="/journal/archive/trades" 
             className="inline-block px-8 py-4 border border-white/30 hover:bg-white hover:text-hampstead-black transition-colors uppercase tracking-widest text-sm font-bold"
           >
             Find a Specialist

@@ -66,7 +66,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
           <time dateTime={date}>{format(new Date(date), 'MMMM d, yyyy')}</time>
         </div>
 
-        <Link href={`/articles/${slug}`} className="group-hover:text-hampstead-charcoal transition-colors no-underline">
+        <Link href={`/journal/articles/${slug}`} className="group-hover:text-hampstead-charcoal transition-colors no-underline">
           <h3 className={cn(
             "font-serif mb-3 leading-tight",
             isFeatured ? "text-3xl md:text-4xl" : "text-2xl"
@@ -80,7 +80,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         </p>
 
         <Link 
-          href={`/articles/${slug}`} 
+          href={`/journal/articles/${slug}`} 
           className="inline-flex items-center text-sm uppercase tracking-wide border-b border-hampstead-black pb-0.5 self-start hover:opacity-70 transition-opacity no-underline"
         >
           Read Article

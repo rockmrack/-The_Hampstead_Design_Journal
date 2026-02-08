@@ -34,7 +34,7 @@ export default function RelatedArticles({ articles, currentCategory }: RelatedAr
             More in {getCategoryLabel(currentCategory)}
           </h2>
           <Link 
-            href={`/categories/${currentCategory}`}
+            href={`/journal/categories/${currentCategory}`}
             className="hidden md:inline-flex items-center text-sm uppercase tracking-widest hover:text-hampstead-charcoal transition-colors"
           >
             View All
@@ -45,7 +45,7 @@ export default function RelatedArticles({ articles, currentCategory }: RelatedAr
         <div className="grid md:grid-cols-3 gap-8">
           {articles.map((article) => (
             <article key={article.slug} className="group">
-              <Link href={`/articles/${article.slug}`} className="block">
+              <Link href={`/journal/articles/${article.slug}`} className="block">
                 <div className="aspect-[4/3] bg-hampstead-grey/30 mb-4 overflow-hidden">
                   <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic group-hover:bg-hampstead-grey/50 transition-colors">
                     No Image
@@ -67,7 +67,7 @@ export default function RelatedArticles({ articles, currentCategory }: RelatedAr
 
         <div className="md:hidden mt-8 text-center">
           <Link 
-            href={`/categories/${currentCategory}`}
+            href={`/journal/categories/${currentCategory}`}
             className="inline-flex items-center text-sm uppercase tracking-widest hover:text-hampstead-charcoal transition-colors"
           >
             View All

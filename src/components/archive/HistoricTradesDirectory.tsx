@@ -430,7 +430,7 @@ const HistoricTradesDirectory: React.FC<HistoricTradesDirectoryProps> = ({
       {limit && filteredTradespeople.length > limit && (
         <div className="mt-8 text-center">
           <Link
-            href="/archive/trades"
+            href="/journal/archive/trades"
             className="inline-flex items-center gap-2 px-6 py-3 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
           >
             View All Tradespeople
@@ -591,7 +591,7 @@ const HistoricTradesDirectory: React.FC<HistoricTradesDirectoryProps> = ({
 
                 {/* Request Intro */}
                 <Link
-                  href={`/contact?subject=tradesperson-intro&tradesperson=${encodeURIComponent(selectedTradesperson.name)}`}
+                  href={`/journal/contact?subject=tradesperson-intro&tradesperson=${encodeURIComponent(selectedTradesperson.name)}`}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
                   onClick={() => setSelectedTradesperson(null)}
                 >

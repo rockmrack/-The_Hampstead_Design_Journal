@@ -615,7 +615,7 @@ const MaterialsLibrary: React.FC<MaterialsLibraryProps> = ({
       {limit && filteredMaterials.length > limit && (
         <div className="mt-8 text-center">
           <Link
-            href="/archive/materials"
+            href="/journal/archive/materials"
             className="inline-flex items-center gap-2 px-6 py-3 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
           >
             View Full Materials Library
@@ -746,7 +746,7 @@ const MaterialsLibrary: React.FC<MaterialsLibraryProps> = ({
                 {/* CTA */}
                 <div className="mt-8 pt-6 border-t border-hampstead-grey">
                   <Link
-                    href={`/contact?subject=material-enquiry&material=${encodeURIComponent(selectedMaterial.name)}`}
+                    href={`/journal/contact?subject=material-enquiry&material=${encodeURIComponent(selectedMaterial.name)}`}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
                     onClick={() => setSelectedMaterial(null)}
                   >

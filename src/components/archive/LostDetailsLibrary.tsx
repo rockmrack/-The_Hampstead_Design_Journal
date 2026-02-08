@@ -183,7 +183,7 @@ const LostDetailsLibrary: React.FC<LostDetailsLibraryProps> = ({ className = '',
 
               {profile.availability !== 'research' && (
                 <Link
-                  href={`/contact?subject=moulding-enquiry&profile=${profile.id}`}
+                  href={`/journal/contact?subject=moulding-enquiry&profile=${profile.id}`}
                   className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:text-hampstead-charcoal/70 transition-colors"
                 >
                   Enquire about this profile
@@ -199,7 +199,7 @@ const LostDetailsLibrary: React.FC<LostDetailsLibraryProps> = ({ className = '',
       {limit && profiles.length > limit && (
         <div className="mt-8 text-center">
           <Link
-            href="/archive/lost-details"
+            href="/journal/archive/lost-details"
             className="inline-flex items-center gap-2 px-6 py-3 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
           >
             View Full Collection
@@ -220,7 +220,7 @@ const LostDetailsLibrary: React.FC<LostDetailsLibraryProps> = ({ className = '',
             proportion of original Victorian and Edwardian plasterwork.
           </p>
           <Link
-            href="/contact?subject=heritage-restoration"
+            href="/journal/contact?subject=heritage-restoration"
             className="inline-flex items-center gap-2 px-6 py-3 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
           >
             Book a Heritage Consultation

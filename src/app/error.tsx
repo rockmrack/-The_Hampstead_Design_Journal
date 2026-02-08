@@ -30,7 +30,7 @@ export default function Error({
             Try Again
           </button>
           <Link
-            href="/"
+            href="/journal" 
             className="px-8 py-4 border border-hampstead-black text-hampstead-black hover:bg-hampstead-black hover:text-hampstead-white transition-colors uppercase tracking-widest text-sm"
           >
             Return Home

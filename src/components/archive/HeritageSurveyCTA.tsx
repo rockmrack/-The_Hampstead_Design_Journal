@@ -44,7 +44,7 @@ const HeritageSurveyCTA: React.FC<HeritageSurveyCTAProps> = ({
         </p>
 
         <Link
-          href={`/contact?subject=heritage-survey${streetName ? `&street=${encodeURIComponent(streetName)}` : ''}`}
+          href={`/journal/contact?subject=heritage-survey${streetName ? `&street=${encodeURIComponent(streetName)}` : ''}`}
           className="flex items-center justify-center gap-2 w-full py-3 bg-hampstead-black text-white text-sm font-medium hover:bg-hampstead-charcoal transition-colors"
         >
           Book a Heritage Survey
@@ -77,7 +77,7 @@ const HeritageSurveyCTA: React.FC<HeritageSurveyCTAProps> = ({
             </p>
           </div>
           <Link
-            href={`/contact?subject=heritage-survey${streetName ? `&street=${encodeURIComponent(streetName)}` : ''}`}
+            href={`/journal/contact?subject=heritage-survey${streetName ? `&street=${encodeURIComponent(streetName)}` : ''}`}
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-hampstead-black text-white text-sm font-medium hover:bg-hampstead-charcoal transition-colors whitespace-nowrap"
           >
             Book Survey
@@ -107,7 +107,7 @@ const HeritageSurveyCTA: React.FC<HeritageSurveyCTAProps> = ({
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
-            href={`/contact?subject=heritage-survey${streetName ? `&street=${encodeURIComponent(streetName)}` : ''}`}
+            href={`/journal/contact?subject=heritage-survey${streetName ? `&street=${encodeURIComponent(streetName)}` : ''}`}
             className="inline-flex items-center gap-2 px-6 py-3 bg-white text-hampstead-black font-medium hover:bg-hampstead-cream transition-colors"
           >
             Book a Heritage Survey

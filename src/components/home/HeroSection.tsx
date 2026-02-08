@@ -33,7 +33,7 @@ export default function HeroSection() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link 
-                href="/articles" 
+                href="/journal/articles" 
                 className="group inline-flex items-center px-8 py-4 bg-hampstead-black text-hampstead-white hover:bg-hampstead-charcoal transition-all duration-300"
               >
                 <span className="uppercase tracking-widest text-sm">Read the Journal</span>
@@ -41,7 +41,7 @@ export default function HeroSection() {
               </Link>
               
               <Link 
-                href="/about" 
+                href="/journal/about" 
                 className="group inline-flex items-center px-8 py-4 border border-hampstead-black text-hampstead-black hover:bg-hampstead-black hover:text-hampstead-white transition-all duration-300"
               >
                 <span className="uppercase tracking-widest text-sm">Our Philosophy</span>

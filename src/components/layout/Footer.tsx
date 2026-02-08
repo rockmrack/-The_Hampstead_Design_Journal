@@ -19,37 +19,37 @@ const Footer: React.FC = () => {
             </p>
             <nav className="space-y-3">
               <Link
-                href="/archive"
+                href="/journal/archive"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 The Archive
               </Link>
               <Link
-                href="/planning-map"
+                href="/journal/planning-map"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Planning Map
               </Link>
               <Link
-                href="/calculators"
+                href="/journal/calculators"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Cost Calculators
               </Link>
               <Link
-                href="/guides"
+                href="/journal/guides"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Guides
               </Link>
               <Link
-                href="/market"
+                href="/journal/market"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Market Dashboard
               </Link>
               <Link
-                href="/careers"
+                href="/journal/careers"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Careers

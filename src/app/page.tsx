@@ -64,10 +64,10 @@ export default function HomePage() {
         <div className="editorial-container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: Building2, label: 'Heritage Archive', href: '/archive', desc: 'Street-by-street history' },
-              { icon: Compass, label: 'Planning Guide', href: '/guides', desc: 'Navigate regulations' },
-              { icon: Star, label: 'Directory', href: '/directory', desc: 'Trusted professionals' },
-              { icon: MapPin, label: 'Market Data', href: '/market', desc: 'Live NW3 prices' },
+              { icon: Building2, label: 'Heritage Archive', href: '/journal/archive', desc: 'Street-by-street history' },
+              { icon: Compass, label: 'Planning Guide', href: '/journal/guides', desc: 'Navigate regulations' },
+              { icon: Star, label: 'Directory', href: '/journal/directory', desc: 'Trusted professionals' },
+              { icon: MapPin, label: 'Market Data', href: '/journal/market', desc: 'Live NW3 prices' },
             ].map((item, idx) => (
               <Link 
                 key={idx}
@@ -119,7 +119,7 @@ export default function HomePage() {
                 Our latest data reveals a 4.2% uplift in price-per-sq-ft for restored period properties.
               </p>
               <Link 
-                href="/market"
+                href="/journal/market"
                 className="inline-flex items-center gap-3 text-sm uppercase tracking-[0.15em] font-medium border-b border-white/30 pb-2 hover:border-white hover:text-white/80 transition-all"
               >
                 Read Full Report
@@ -161,7 +161,7 @@ export default function HomePage() {
         <div className="editorial-container">
           <div className="flex items-center justify-between mb-12">
             <h2 className="font-serif text-3xl md:text-4xl text-hampstead-black">Cultural Agenda</h2>
-            <Link href="/events" className="text-xs font-bold uppercase tracking-[0.15em] text-hampstead-charcoal/50 hover:text-hampstead-black transition-colors">
+            <Link href="/journal/events" className="text-xs font-bold uppercase tracking-[0.15em] text-hampstead-charcoal/50 hover:text-hampstead-black transition-colors">
               View All Events
             </Link>
           </div>
@@ -218,14 +218,14 @@ export default function HomePage() {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="/archive"
+                  href="/journal/archive"
                   className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-hampstead-black font-medium hover:bg-hampstead-cream transition-all duration-300"
                 >
                   Explore The Archive
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
                 </Link>
                 <Link
-                  href="/archive/redington-road"
+                  href="/journal/archive/redington-road"
                   className="group inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-medium hover:bg-white hover:text-hampstead-black transition-all duration-300"
                 >
                   <MapPin className="w-4 h-4" />
@@ -237,10 +237,10 @@ export default function HomePage() {
             {/* Premium Archive Grid */}
             <div className="grid grid-cols-2 gap-5">
               {[
-                { href: '/archive/redington-road', style: 'Arts & Crafts', name: 'Redington Road', offset: false },
-                { href: '/archive/frognal', style: 'Mixed Heritage', name: 'Frognal', offset: true },
-                { href: '/archive/the-bishops-avenue', style: 'Edwardian', name: 'Bishops Avenue', offset: false },
-                { href: '/archive/church-row', style: 'Georgian', name: 'Church Row', offset: true },
+                { href: '/journal/archive/redington-road', style: 'Arts & Crafts', name: 'Redington Road', offset: false },
+                { href: '/journal/archive/frognal', style: 'Mixed Heritage', name: 'Frognal', offset: true },
+                { href: '/journal/archive/the-bishops-avenue', style: 'Edwardian', name: 'Bishops Avenue', offset: false },
+                { href: '/journal/archive/church-row', style: 'Georgian', name: 'Church Row', offset: true },
               ].map((item, idx) => (
                 <Link 
                   key={idx}

@@ -411,7 +411,7 @@ const ArchitecturalGlossary: React.FC<ArchitecturalGlossaryProps> = ({
       {limit && glossaryTerms.length > limit && (
         <div className="mt-8 text-center">
           <Link
-            href="/archive/glossary"
+            href="/journal/archive/glossary"
             className="inline-flex items-center gap-2 px-6 py-3 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
           >
             View Full Glossary
@@ -511,7 +511,7 @@ const ArchitecturalGlossary: React.FC<ArchitecturalGlossaryProps> = ({
                 {/* Action */}
                 <div className="pt-4 border-t border-hampstead-grey">
                   <Link
-                    href={`/archive/materials?search=${encodeURIComponent(selectedTerm.term)}`}
+                    href={`/journal/archive/materials?search=${encodeURIComponent(selectedTerm.term)}`}
                     className="inline-flex items-center gap-2 text-sm font-medium hover:text-hampstead-charcoal/70 transition-colors"
                     onClick={() => setSelectedTerm(null)}
                   >

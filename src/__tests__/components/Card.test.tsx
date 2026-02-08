@@ -34,7 +34,7 @@ describe('Card Components', () => {
   describe('InteractiveCard', () => {
     it('renders as a link when href is provided', () => {
       render(
-        <InteractiveCard href="/test" data-testid="interactive-card">
+        <InteractiveCard href="/journal/test" data-testid="interactive-card">
           Link Content
         </InteractiveCard>
       );

@@ -58,7 +58,7 @@ export default function ProfessionalsPage() {
     <div className="min-h-screen bg-hampstead-cream">
       <div className="editorial-container py-12 md:py-20">
         <Link 
-          href="/directory" 
+          href="/journal/directory" 
           className="inline-flex items-center text-sm uppercase tracking-widest hover:text-hampstead-charcoal transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />

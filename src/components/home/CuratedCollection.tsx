@@ -43,7 +43,7 @@ export default function CuratedCollection() {
             </h2>
           </div>
           <Link 
-            href="/categories/interiors-materials" 
+            href="/journal/categories/interiors-materials" 
             className="hidden md:inline-flex items-center gap-2 text-sm uppercase tracking-[0.15em] font-medium hover:text-hampstead-charcoal/60 transition-colors mt-6 md:mt-0"
           >
             View All Materials
@@ -83,7 +83,7 @@ export default function CuratedCollection() {
         
         <div className="mt-8 md:hidden text-center">
           <Link 
-            href="/categories/interiors-materials" 
+            href="/journal/categories/interiors-materials" 
             className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.15em] font-medium"
           >
             View All Materials

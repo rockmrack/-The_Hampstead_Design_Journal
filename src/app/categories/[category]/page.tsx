@@ -67,7 +67,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       <section className="bg-hampstead-cream border-b border-hampstead-grey py-16 md:py-24">
         <div className="editorial-container">
           <Link 
-            href="/articles"
+            href="/journal/articles"
             className="inline-flex items-center text-sm uppercase tracking-widest text-hampstead-charcoal/60 hover:text-hampstead-black mb-8 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -94,7 +94,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               No articles in this category yet.
             </p>
             <Link 
-              href="/articles"
+              href="/journal/articles"
               className="inline-flex items-center mt-6 text-sm uppercase tracking-widest hover:text-hampstead-charcoal transition-colors"
             >
               Browse All Articles
@@ -118,7 +118,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                     <span className="text-xs font-bold uppercase tracking-widest text-hampstead-charcoal/60 mb-3 block">
                       Latest
                     </span>
-                    <Link href={`/articles/${featuredArticle.slug}`} className="group">
+                    <Link href={`/journal/articles/${featuredArticle.slug}`} className="group">
                       <h2 className="font-serif text-3xl md:text-4xl mb-4 group-hover:text-hampstead-charcoal transition-colors leading-tight">
                         {featuredArticle.title}
                       </h2>
@@ -131,7 +131,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                         {format(new Date(featuredArticle.date), 'MMMM d, yyyy')}
                       </time>
                       <Link 
-                        href={`/articles/${featuredArticle.slug}`}
+                        href={`/journal/articles/${featuredArticle.slug}`}
                         className="inline-flex items-center text-sm uppercase tracking-widest hover:text-hampstead-charcoal transition-colors"
                       >
                         Read Article
@@ -153,7 +153,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                   {remainingArticles.map((article) => (
                     <article key={article.slug} className="group">
-                      <Link href={`/articles/${article.slug}`} className="block">
+                      <Link href={`/journal/articles/${article.slug}`} className="block">
                         <div className="aspect-[4/3] bg-hampstead-grey/30 mb-4 overflow-hidden">
                           <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic group-hover:bg-hampstead-grey/50 transition-colors">
                             No Image

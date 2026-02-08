@@ -197,7 +197,7 @@ export default function ValuationPage() {
       <section className="bg-hampstead-cream border-b border-hampstead-grey">
         <div className="editorial-container py-12 md:py-16">
           <nav className="flex items-center text-sm text-hampstead-charcoal/60 mb-6">
-            <Link href="/" className="hover:text-hampstead-black transition-colors">Home</Link>
+            <Link href="/journal" className="hover:text-hampstead-black transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4 mx-2" />
             <span className="text-hampstead-black">Property Valuation</span>
           </nav>
@@ -616,7 +616,7 @@ export default function ValuationPage() {
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
-                    href="/contact?subject=formal-valuation"
+                    href="/journal/contact?subject=formal-valuation"
                     className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
                   >
                     <Home className="w-5 h-5" />

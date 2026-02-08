@@ -50,7 +50,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
           {/* Home link */}
           <li className="flex items-center">
             <Link 
-              href="/"
+              href="/journal" 
               className="hover:text-hampstead-black transition-colors flex items-center gap-1"
             >
               <Home className="w-3.5 h-3.5" />

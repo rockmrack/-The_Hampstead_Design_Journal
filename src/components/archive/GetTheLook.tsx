@@ -70,7 +70,7 @@ const GetTheLook: React.FC<GetTheLookProps> = ({
 
       <div className="mt-6 pt-4 border-t border-hampstead-grey">
         <Link
-          href="/contact?subject=showroom-visit"
+          href="/journal/contact?subject=showroom-visit"
           className="flex items-center justify-center gap-2 w-full py-3 bg-hampstead-black text-white text-sm font-medium hover:bg-hampstead-charcoal transition-colors"
         >
           View in Our Showroom

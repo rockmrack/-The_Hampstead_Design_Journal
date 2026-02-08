@@ -184,7 +184,7 @@ export default function CareersPage() {
       <section className="bg-hampstead-cream border-b border-hampstead-grey">
         <div className="editorial-container py-12 md:py-20">
           <nav className="flex items-center text-sm text-hampstead-charcoal/60 mb-6">
-            <Link href="/" className="hover:text-hampstead-black transition-colors">Home</Link>
+            <Link href="/journal" className="hover:text-hampstead-black transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4 mx-2" />
             <span className="text-hampstead-black">Careers</span>
           </nav>
