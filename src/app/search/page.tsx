@@ -150,7 +150,7 @@ export default function SearchPage() {
                     transition={{ delay: index * 0.05 }}
                     className="group"
                   >
-                    <Link href={`/journal/articles/${article.slug}`} className="block">
+                    <Link href={`/articles/${article.slug}`} className="block">
                       <div className="aspect-[4/3] bg-hampstead-grey/30 mb-4 overflow-hidden">
                         <div className="w-full h-full flex items-center justify-center text-hampstead-charcoal/20 font-serif italic group-hover:bg-hampstead-grey/50 transition-colors">
                           No Image

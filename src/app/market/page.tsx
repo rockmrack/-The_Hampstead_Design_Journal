@@ -132,7 +132,7 @@ export default function MarketDashboardPage() {
       <section className="bg-hampstead-black text-white">
         <div className="editorial-container py-12 md:py-16">
           <nav className="flex items-center text-sm text-white/60 mb-6">
-            <Link href="/journal" className="hover:text-white transition-colors">Home</Link>
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4 mx-2" />
             <span className="text-white">Market Dashboard</span>
           </nav>
@@ -319,7 +319,7 @@ export default function MarketDashboardPage() {
                   ))}
                 </div>
                 <Link
-                  href="/journal/archive"
+                  href="/archive"
                   className="flex items-center gap-1 text-sm font-medium mt-4 hover:gap-2 transition-all"
                 >
                   View all streets
@@ -358,7 +358,7 @@ export default function MarketDashboardPage() {
                   Get an instant estimate based on this market data and your property&apos;s specific features.
                 </p>
                 <Link
-                  href="/journal/valuation"
+                  href="/valuation"
                   className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-white text-hampstead-black hover:bg-hampstead-cream transition-colors"
                 >
                   Get Valuation

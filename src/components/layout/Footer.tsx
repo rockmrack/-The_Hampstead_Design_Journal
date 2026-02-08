@@ -19,37 +19,37 @@ const Footer: React.FC = () => {
             </p>
             <nav className="space-y-3">
               <Link
-                href="/journal/archive"
+                href="/archive"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 The Archive
               </Link>
               <Link
-                href="/journal/planning-map"
+                href="/planning-map"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Planning Map
               </Link>
               <Link
-                href="/journal/calculators"
+                href="/calculators"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Cost Calculators
               </Link>
               <Link
-                href="/journal/guides"
+                href="/guides"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Guides
               </Link>
               <Link
-                href="/journal/market"
+                href="/market"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Market Dashboard
               </Link>
               <Link
-                href="/journal/careers"
+                href="/careers"
                 className="block text-hampstead-grey/80 hover:text-hampstead-white transition-colors"
               >
                 Careers
@@ -175,13 +175,13 @@ const Footer: React.FC = () => {
               </a>
             </p>
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-              <Link href="/journal/privacy" className="hover:text-hampstead-white transition-colors">
+              <Link href="/privacy" className="hover:text-hampstead-white transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/journal/terms" className="hover:text-hampstead-white transition-colors">
+              <Link href="/terms" className="hover:text-hampstead-white transition-colors">
                 Terms
               </Link>
-              <Link href="/journal/sitemap.xml" className="hover:text-hampstead-white transition-colors">
+              <Link href="/sitemap.xml" className="hover:text-hampstead-white transition-colors">
                 Sitemap
               </Link>
             </div>

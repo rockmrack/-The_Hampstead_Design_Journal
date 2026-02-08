@@ -27,11 +27,11 @@ const Navigation: React.FC = () => {
   }, [pathname]);
 
   const navLinks = [
-    { href: '/journal/articles', label: 'Latest' },
-    { href: '/journal/categories/interiors-materials', label: 'Interiors' },
-    { href: '/journal/categories/planning-regulations', label: 'Planning' },
-    { href: '/journal/archive', label: 'The Archive', featured: true },
-    { href: '/journal/market', label: 'Market' },
+    { href: '/articles', label: 'Latest' },
+    { href: '/categories/interiors-materials', label: 'Interiors' },
+    { href: '/categories/planning-regulations', label: 'Planning' },
+    { href: '/archive', label: 'The Archive', featured: true },
+    { href: '/market', label: 'Market' },
   ];
 
   // Organized mobile navigation sections
@@ -39,40 +39,40 @@ const Navigation: React.FC = () => {
     explore: {
       label: 'Explore',
       links: [
-        { href: '/journal/articles', label: 'Latest Articles' },
-        { href: '/journal/categories/interiors-materials', label: 'Interiors & Materials' },
-        { href: '/journal/categories/planning-regulations', label: 'Planning & Regulations' },
-        { href: '/journal/archive', label: 'Heritage Archive' },
+        { href: '/articles', label: 'Latest Articles' },
+        { href: '/categories/interiors-materials', label: 'Interiors & Materials' },
+        { href: '/categories/planning-regulations', label: 'Planning & Regulations' },
+        { href: '/archive', label: 'Heritage Archive' },
       ],
     },
     tools: {
       label: 'Tools & Resources',
       links: [
-        { href: '/journal/calculators', label: 'Cost Calculators' },
-        { href: '/journal/valuation', label: 'Property Valuation' },
-        { href: '/journal/planning-map', label: 'Planning Map' },
-        { href: '/journal/guides', label: 'Guides' },
-        { href: '/journal/compare', label: 'Compare Materials' },
-        { href: '/journal/glossary', label: 'Architectural Glossary' },
+        { href: '/calculators', label: 'Cost Calculators' },
+        { href: '/valuation', label: 'Property Valuation' },
+        { href: '/planning-map', label: 'Planning Map' },
+        { href: '/guides', label: 'Guides' },
+        { href: '/compare', label: 'Compare Materials' },
+        { href: '/glossary', label: 'Architectural Glossary' },
       ],
     },
     discover: {
       label: 'Discover',
       links: [
-        { href: '/journal/market', label: 'Market Dashboard' },
-        { href: '/journal/suppliers', label: 'Suppliers Directory' },
-        { href: '/journal/events', label: 'Events Calendar' },
-        { href: '/journal/projects', label: 'Our Projects' },
+        { href: '/market', label: 'Market Dashboard' },
+        { href: '/suppliers', label: 'Suppliers Directory' },
+        { href: '/events', label: 'Events Calendar' },
+        { href: '/projects', label: 'Our Projects' },
       ],
     },
     company: {
       label: 'Company',
       links: [
-        { href: '/journal/about', label: 'About Us' },
-        { href: '/journal/testimonials', label: 'Testimonials' },
-        { href: '/journal/faq', label: 'FAQ' },
-        { href: '/journal/contact', label: 'Contact' },
-        { href: '/journal/careers', label: 'Careers' },
+        { href: '/about', label: 'About Us' },
+        { href: '/testimonials', label: 'Testimonials' },
+        { href: '/faq', label: 'FAQ' },
+        { href: '/contact', label: 'Contact' },
+        { href: '/careers', label: 'Careers' },
       ],
     },
   };
@@ -104,7 +104,7 @@ const Navigation: React.FC = () => {
           </button>
 
           {/* Logo */}
-          <Link href="/journal" className="flex-shrink-0 group">
+          <Link href="/" className="flex-shrink-0 group">
             <h1 className="font-serif text-2xl md:text-3xl tracking-tight group-hover:opacity-80 transition-opacity">
               The Hampstead Design Journal
             </h1>
@@ -132,14 +132,14 @@ const Navigation: React.FC = () => {
           {/* Actions */}
           <div className="flex items-center space-x-4">
             <Link
-              href="/journal/search"
+              href="/search"
               className="p-2 text-hampstead-black hover:text-hampstead-charcoal transition-colors"
               aria-label="Search"
             >
               <Search className="w-5 h-5" />
             </Link>
             <Link
-              href="/journal/subscribe"
+              href="/subscribe"
               className="hidden md:inline-block px-5 py-2 bg-hampstead-black text-hampstead-white text-sm uppercase tracking-wide hover:bg-hampstead-charcoal transition-colors"
             >
               Subscribe
@@ -233,7 +233,7 @@ const Navigation: React.FC = () => {
 
                 {/* Subscribe CTA */}
                 <Link
-                  href="/journal/subscribe"
+                  href="/subscribe"
                   className="block w-full py-3 bg-hampstead-black text-hampstead-white text-center text-sm uppercase tracking-wide hover:bg-hampstead-charcoal transition-colors mb-8"
                 >
                   Subscribe to Newsletter

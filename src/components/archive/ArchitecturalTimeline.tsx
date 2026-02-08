@@ -608,7 +608,7 @@ const ArchitecturalTimeline: React.FC<ArchitecturalTimelineProps> = ({
                     {selectedEra.streetExamples.filter(s => s.slug).map((street, i) => (
                       <Link
                         key={i}
-                        href={`/journal/archive/${street.slug}`}
+                        href={`/archive/${street.slug}`}
                         className="flex items-center justify-between group py-2 border-b border-hampstead-grey/50 last:border-0"
                       >
                         <span className="group-hover:text-hampstead-charcoal/70 transition-colors">
@@ -624,7 +624,7 @@ const ArchitecturalTimeline: React.FC<ArchitecturalTimelineProps> = ({
 
             {compact && (
               <Link
-                href={`/journal/archive/timeline#${selectedEra.id}`}
+                href={`/archive/timeline#${selectedEra.id}`}
                 className="inline-flex items-center gap-2 text-sm font-medium hover:text-hampstead-charcoal/70 transition-colors"
               >
                 Explore {selectedEra.name} architecture

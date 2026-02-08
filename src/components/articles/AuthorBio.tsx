@@ -46,7 +46,7 @@ export default function AuthorBio({ articleTopic }: AuthorBioProps) {
           </p>
 
           <Link
-            href="/journal/contact?subject=consultation"
+            href="/contact?subject=consultation"
             className="inline-flex items-center gap-2 px-6 py-3 bg-hampstead-black text-white font-medium hover:bg-hampstead-charcoal transition-colors"
           >
             Book a Consultation

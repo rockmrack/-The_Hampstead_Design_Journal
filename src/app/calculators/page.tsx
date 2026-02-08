@@ -200,7 +200,7 @@ export default function CalculatorsPage() {
       <section className="bg-hampstead-cream border-b border-hampstead-grey">
         <div className="editorial-container py-12 md:py-16">
           <nav className="flex items-center text-sm text-hampstead-charcoal/60 mb-6">
-            <Link href="/journal" className="hover:text-hampstead-black transition-colors">Home</Link>
+            <Link href="/" className="hover:text-hampstead-black transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4 mx-2" />
             <span className="text-hampstead-black">Calculators</span>
           </nav>
@@ -464,7 +464,7 @@ export default function CalculatorsPage() {
                         </div>
 
                         <Link
-                          href="/journal/contact?subject=renovation-quote"
+                          href="/contact?subject=renovation-quote"
                           className="block text-center w-full mt-6 px-6 py-3 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
                         >
                           Get Detailed Quote
@@ -720,14 +720,14 @@ export default function CalculatorsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/journal/contact?subject=renovation-consultation"
+              href="/contact?subject=renovation-consultation"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
             >
               <Home className="w-5 h-5" />
               Book Site Visit
             </Link>
             <Link
-              href="/journal/planning-map"
+              href="/planning-map"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-hampstead-grey bg-white text-hampstead-charcoal hover:bg-hampstead-cream transition-colors"
             >
               View Planning Map

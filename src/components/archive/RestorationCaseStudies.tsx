@@ -337,7 +337,7 @@ const RestorationCaseStudies: React.FC<RestorationCaseStudiesProps> = ({
       {(limit && caseStudies.length > limit) || featured && (
         <div className="mt-8 text-center">
           <Link
-            href="/journal/archive/case-studies"
+            href="/archive/case-studies"
             className="inline-flex items-center gap-2 px-6 py-3 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
           >
             View All Case Studies
@@ -510,7 +510,7 @@ const RestorationCaseStudies: React.FC<RestorationCaseStudiesProps> = ({
 
                 {/* CTA */}
                 <Link
-                  href={`/journal/contact?subject=restoration-enquiry&project=${encodeURIComponent(selectedStudy.title)}`}
+                  href={`/contact?subject=restoration-enquiry&project=${encodeURIComponent(selectedStudy.title)}`}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-hampstead-black text-white hover:bg-hampstead-charcoal transition-colors"
                   onClick={() => setSelectedStudy(null)}
                 >

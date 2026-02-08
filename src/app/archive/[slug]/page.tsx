@@ -226,9 +226,9 @@ export default async function StreetProfilePage({ params }: PageProps) {
       <div className="bg-hampstead-cream border-b border-hampstead-grey">
         <div className="editorial-container py-4">
           <nav className="flex items-center gap-2 text-sm text-hampstead-charcoal/60">
-            <Link href="/journal" className="hover:text-hampstead-black transition-colors">Home</Link>
+            <Link href="/" className="hover:text-hampstead-black transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/journal/archive" className="hover:text-hampstead-black transition-colors">Archive</Link>
+            <Link href="/archive" className="hover:text-hampstead-black transition-colors">Archive</Link>
             <span>/</span>
             <span className="text-hampstead-black">{profile.name}</span>
           </nav>
@@ -368,7 +368,7 @@ export default async function StreetProfilePage({ params }: PageProps) {
                   {profile.ourExpertise}
                 </p>
                 <Link
-                  href={`/journal/contact?subject=heritage-survey&street=${encodeURIComponent(profile.name)}`}
+                  href={`/contact?subject=heritage-survey&street=${encodeURIComponent(profile.name)}`}
                   className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-white text-hampstead-black font-medium hover:bg-hampstead-cream transition-colors"
                 >
                   Book a {profile.name} Survey
@@ -391,7 +391,7 @@ export default async function StreetProfilePage({ params }: PageProps) {
                     return (
                       <Link
                         key={slug}
-                        href={`/journal/archive/${slug}`}
+                        href={`/archive/${slug}`}
                         className="flex items-center justify-between group"
                       >
                         <span className="group-hover:text-hampstead-charcoal/70 transition-colors">
@@ -435,7 +435,7 @@ export default async function StreetProfilePage({ params }: PageProps) {
       <section className="border-t border-hampstead-grey py-8">
         <div className="editorial-container">
           <Link
-            href="/journal/archive"
+            href="/archive"
             className="inline-flex items-center gap-2 text-sm font-medium hover:text-hampstead-charcoal/70 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />

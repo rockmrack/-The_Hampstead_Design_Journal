@@ -82,16 +82,16 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <div className="editorial-container py-12 md:py-20">
             {/* Breadcrumb */}
             <nav className="flex items-center text-sm text-hampstead-charcoal/60 mb-8">
-              <Link href="/journal" className="hover:text-hampstead-black transition-colors">
+              <Link href="/" className="hover:text-hampstead-black transition-colors">
                 Home
               </Link>
               <ChevronRight className="w-4 h-4 mx-2" />
-              <Link href="/journal/articles" className="hover:text-hampstead-black transition-colors">
+              <Link href="/articles" className="hover:text-hampstead-black transition-colors">
                 Articles
               </Link>
               <ChevronRight className="w-4 h-4 mx-2" />
               <Link 
-                href={`/journal/categories/${article.category}`} 
+                href={`/categories/${article.category}`} 
                 className="hover:text-hampstead-black transition-colors"
               >
                 {getCategoryLabel(article.category)}
@@ -101,7 +101,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             <div className="max-w-4xl">
               {/* Category Badge */}
               <Link 
-                href={`/journal/categories/${article.category}`}
+                href={`/categories/${article.category}`}
                 className="inline-block px-3 py-1 text-xs font-medium uppercase tracking-widest bg-hampstead-black text-hampstead-white mb-6 hover:bg-hampstead-charcoal transition-colors"
               >
                 {getCategoryLabel(article.category)}
@@ -176,7 +176,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         {/* Back Link */}
         <div className="editorial-container pb-16">
           <Link 
-            href="/journal/articles" 
+            href="/articles" 
             className="inline-flex items-center text-sm uppercase tracking-widest hover:text-hampstead-charcoal transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />

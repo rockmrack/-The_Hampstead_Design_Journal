@@ -4,6 +4,9 @@ const { withContentlayer } = require('next-contentlayer');
 const nextConfig = {
   reactStrictMode: true,
 
+  // Serve the app under /journal/ on the parent domain
+  basePath: '/journal',
+
   // Image optimization
   images: {
     domains: ['images.unsplash.com'],

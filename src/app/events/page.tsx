@@ -710,7 +710,7 @@ export default function EventsPage() {
             partners and venues.
           </p>
           <Link
-            href="/journal/contact"
+            href="/contact"
             className="inline-flex items-center justify-center gap-2 bg-hampstead-black text-white px-8 py-4 rounded-lg font-medium hover:bg-hampstead-charcoal transition-colors"
           >
             Get in Touch
